@@ -1,17 +1,24 @@
 import React from 'react';
+// eslint-disable-next-line import/order
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
+
+import './styles/index.css';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { Provider } from 'react-redux';
+
+import App from './components/App/App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
+import { store } from './store/store';
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
+const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
+
 root.render(
   <React.StrictMode>
-    <App />
-  </React.StrictMode>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </React.StrictMode>,
 );
 
 // If you want your app to work offline and load faster, you can change
