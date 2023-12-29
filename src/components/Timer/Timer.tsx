@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import { OTHER_CONSTANTS, SELECT_PROCESS_OPTIONS } from '../../CONSTANTS';
 import { Film, Pause, Play, Set } from '../../shared/icons';
-import { useFetchFilmsQuery } from '../../services/filmApiService';
+import { FilmSelectForm } from '../FilmPresetForm';
 
 interface IProps {
   id: string;
@@ -11,8 +11,6 @@ interface IProps {
 }
 
 export const Timer = ({ id, time, onRemoveTimer }: IProps) => {
-  const { data: films } = useFetchFilmsQuery('');
-
   const [state, setState] = useState({
     id,
     currentTimerValue: time,
@@ -50,7 +48,6 @@ export const Timer = ({ id, time, onRemoveTimer }: IProps) => {
 
   return (
     <div className={timersClassList}>
-      {films?.length}
       <button type="button" onClick={() => onRemoveTimer(id)} className="delete trans-color-btn">
         ×
       </button>
@@ -84,7 +81,7 @@ export const Timer = ({ id, time, onRemoveTimer }: IProps) => {
           <div>
             <Film title="Load film preset time" className="film-button trans-color-btn" onClick={getFilmOptions} />
           </div>
-          {state.formIsActivated}
+          {state.formIsActivated && <FilmSelectForm />}
         </div>
       )}
       <button type="button" onClick={onTogglePanel} className="stork trans-color-btn">

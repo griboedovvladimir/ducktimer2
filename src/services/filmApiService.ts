@@ -9,7 +9,7 @@ export const filmApiService = createApi({
   reducerPath: 'filmApiService',
   tagTypes: ['CloseReason'],
   endpoints: (build) => ({
-    fetchFilms: build.query<any[], string>({
+    fetchFilms: build.query<{ films: string[]; developers: string[] }, string>({
       query: () => ({
         url: `backend/filmform.php`,
         method: RequestMethod.GET,
