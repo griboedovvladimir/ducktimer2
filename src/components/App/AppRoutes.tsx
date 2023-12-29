@@ -2,6 +2,7 @@ import React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { Route, Routes } from 'react-router-dom';
 
+import { ROUTE_CONSTANTS } from '../../CONSTANTS';
 import { Login } from '../../pages/Login';
 import { Main } from '../../pages/Main/Main';
 
@@ -13,11 +14,11 @@ interface IAppRoutes {
 export const AppRoutes = () => {
   const routes: IAppRoutes[] = [
     {
-      path: '/',
+      path: ROUTE_CONSTANTS.ROOT,
       component: <Main />,
     },
     {
-      path: '/login',
+      path: ROUTE_CONSTANTS.LOGIN_PAGE,
       component: <Login />,
     },
   ];

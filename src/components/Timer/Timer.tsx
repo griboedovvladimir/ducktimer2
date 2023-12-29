@@ -41,7 +41,9 @@ export const Timer = ({ id, time, onRemoveTimer }: IProps) => {
   const onTogglePanel = () => {
     setState({ ...state, panelIsOpen: !state.panelIsOpen, formIsActivated: false });
   };
-  const getFilmOptions = () => {};
+  const showFilmSelectionForm = () => {
+    setState({ ...state, formIsActivated: true });
+  };
 
   const getProcessOptions = () =>
     SELECT_PROCESS_OPTIONS.map((processOption) => <option key={processOption}>{processOption}</option>);
@@ -79,7 +81,11 @@ export const Timer = ({ id, time, onRemoveTimer }: IProps) => {
           </div>
           <textarea onChange={onChangeTimerParams} name="note" className="timer-inputs" placeholder="Note" />
           <div>
-            <Film title="Load film preset time" className="film-button trans-color-btn" onClick={getFilmOptions} />
+            <Film
+              title="Load film preset time"
+              className="film-button trans-color-btn"
+              onClick={showFilmSelectionForm}
+            />
           </div>
           {state.formIsActivated && <FilmSelectForm />}
         </div>
