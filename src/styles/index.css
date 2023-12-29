@@ -183,8 +183,8 @@ h1 {
         font-size: 20px;
     }
 
-    #timeicon {
-        font-size: 20px;
+    .time-icon {
+        width: 32px;
     }
 }
 
@@ -612,7 +612,6 @@ textarea::-webkit-input-placeholder {
 }
 
 .film-button {
-    font-size: 40px;
     box-shadow: none;
     border: 2px solid var(--color-1);
     background: none;

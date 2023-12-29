@@ -1,5 +1,3 @@
-import React, { useEffect } from 'react';
-
 import { useFetchFilmsQuery } from '../../services/filmApiService';
 
 enum FormFields {
@@ -9,21 +7,13 @@ enum FormFields {
 }
 
 export const FilmSelectForm = () => {
-  const { data: filmsOptions, isLoading } = useFetchFilmsQuery('');
+  const { data: filmsOptions, isLoading, error } = useFetchFilmsQuery('');
 
   const filmFormModel = {
     film: '',
     type: '35mm',
     dev: '',
   };
-
-  useEffect(() => {
-    // filmFormModel = {
-    //   film: this.props.formsOptions[0][0],
-    //   type: '35mm',
-    //   dev: this.props.formsOptions[1][0],
-    // };
-  }, []);
 
   const onChangeFormFields = (type: FormFields, value: string): void => {
     switch (type) {
@@ -43,31 +33,11 @@ export const FilmSelectForm = () => {
 
   const getSecondFilmFormOptions = (): void => {};
 
-  // const getSecondFilmFormOptions = (): void => {
-  //   this.setSecondFilmPresetForm('Loading...');
-  //   restService
-  //     .post(API_CONSTANTS.FILM_FORM_SECOND_STEP, this.filmFormModel)
-  //     .then((resp) => resp.json())
-  //     .then((data: any) => {
-  //       data === 'false'
-  //         ? this.setSecondFilmPresetForm("Selected film and developer can't use together")
-  //         : this
-  //             .setSecondFilmPresetForm
-  //             // <SecondFilmPresetForm
-  //             //   id={this.props.id}
-  //             //   firstFormData={this.filmFormModel}
-  //             //   formsOptions={data}
-  //             // />
-  //             ();
-  //     });
-  // };
-
-  // private setSecondFilmPresetForm(value: string | null | React.ReactNode) {
-  //   this.setState({ ...this.state, secondFilmPresetForm: value });
-  // }
-
+  // eslint-disable-next-line no-nested-ternary
   return isLoading ? (
     <p>Loading...</p>
+  ) : error ? (
+    <p>Something went wrong</p>
   ) : (
     <form>
       <p>Select film, film type and developer</p>

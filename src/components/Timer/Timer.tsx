@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { OTHER_CONSTANTS, SELECT_PROCESS_OPTIONS } from '../../CONSTANTS';
 import { Film, Pause, Play, Set } from '../../shared/icons';
 import { FilmSelectForm } from '../FilmPresetForm';
+import styles from './Timer.module.css';
 
 interface IProps {
   id: string;
@@ -35,12 +36,19 @@ export const Timer = ({ id, time, onRemoveTimer }: IProps) => {
   };
   const onStopTimer = () => {};
   const onStartTimer = () => {};
-  const onSelectProcess = () => {};
-  const onChangeTimerParams = () => {};
+  const onSelectProcess = (value: string) => {
+    setState({ ...state, selectProcess: value });
+  };
+
+  const onChangeNete = (note: string) => {
+    setState({ ...state, note });
+  };
+
   const onChangeTimerValue = () => {};
   const onTogglePanel = () => {
     setState({ ...state, panelIsOpen: !state.panelIsOpen, formIsActivated: false });
   };
+
   const showFilmSelectionForm = () => {
     setState({ ...state, formIsActivated: true });
   };
@@ -53,7 +61,7 @@ export const Timer = ({ id, time, onRemoveTimer }: IProps) => {
       <button type="button" onClick={() => onRemoveTimer(id)} className="delete trans-color-btn">
         ×
       </button>
-      <h4>{process}</h4>
+      <h4 className={styles.process}>{process}</h4>
       <div className="timer-panel">
         <span>{state.currentTimerValue || OTHER_CONSTANTS.START_TIME}</span>
         <p> Note: {state.note}</p>
@@ -66,12 +74,18 @@ export const Timer = ({ id, time, onRemoveTimer }: IProps) => {
       {state.panelIsOpen && (
         <div className="set-timer-panel" defaultValue=" ">
           Select process
-          <select onChange={onSelectProcess} name="selectProcess">
+          <select onChange={({ target }) => onSelectProcess(target.value)} name="selectProcess">
             {getProcessOptions()}
           </select>
           <br />
           Other process
-          <input onChange={onChangeTimerParams} type="text" name="process" size={4} defaultValue={state.otherProcess} />
+          <input
+            onChange={({ target }) => onSelectProcess(target.value)}
+            type="text"
+            name="process"
+            size={4}
+            defaultValue={state.otherProcess}
+          />
           <div>
             <input onChange={onChangeTimerValue} type="text" name="hours" size={1} defaultValue={timerValue.hours} />
             :
@@ -79,7 +93,12 @@ export const Timer = ({ id, time, onRemoveTimer }: IProps) => {
             :
             <input onChange={onChangeTimerValue} type="text" name="sec" size={1} defaultValue={timerValue.sec} />
           </div>
-          <textarea onChange={onChangeTimerParams} name="note" className="timer-inputs" placeholder="Note" />
+          <textarea
+            onChange={({ target }) => onChangeNete(target.value)}
+            name="note"
+            className="timer-inputs"
+            placeholder="Note"
+          />
           <div>
             <Film
               title="Load film preset time"
