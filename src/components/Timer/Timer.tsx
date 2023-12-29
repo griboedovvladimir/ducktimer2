@@ -13,8 +13,6 @@ interface IProps {
 export const Timer = ({ id, time, onRemoveTimer }: IProps) => {
   const { data: films } = useFetchFilmsQuery('');
 
-  console.log('films', films);
-
   const [state, setState] = useState({
     id,
     currentTimerValue: time,
@@ -52,6 +50,7 @@ export const Timer = ({ id, time, onRemoveTimer }: IProps) => {
 
   return (
     <div className={timersClassList}>
+      {films?.length}
       <button type="button" onClick={() => onRemoveTimer(id)} className="delete trans-color-btn">
         ×
       </button>
