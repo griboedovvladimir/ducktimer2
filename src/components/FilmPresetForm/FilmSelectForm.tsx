@@ -17,10 +17,6 @@ export const FilmSelectForm = () => {
     dev: '',
   };
 
-  const state = {
-    secondFilmPresetForm: null,
-  };
-
   useEffect(() => {
     // filmFormModel = {
     //   film: this.props.formsOptions[0][0],
@@ -39,6 +35,8 @@ export const FilmSelectForm = () => {
         break;
       case FormFields.Dev:
         filmFormModel.dev = value;
+        break;
+      default:
         break;
     }
   };
@@ -68,30 +66,26 @@ export const FilmSelectForm = () => {
   //   this.setState({ ...this.state, secondFilmPresetForm: value });
   // }
 
-  return (
-    <>
-      {isLoading ? (
-        <p>Loading...</p>
-      ) : (
-        <form>
-          <p>Select film, film type and developer</p>
-          <select onChange={({target}) => onChangeFormFields(FormFields.Film, target.value)} name="film-select">
-            {filmsOptions?.films.map((film) => <option>{film}</option>)}
-          </select>
-          <select onChange={({target}) => onChangeFormFields(FormFields.Type, target.value)} name="film-type-select">
-            <option>35mm</option>
-            <option>120</option>
-            <option>sheet</option>
-          </select>
-          <select onChange={({target}) => onChangeFormFields(FormFields.Dev, target.value)} name="dev-select">
-            {filmsOptions?.developers.map((developer) => <option>{developer}</option>)}
-          </select>
-          <button className="trans-color-btn" onClick={getSecondFilmFormOptions} type="button">
-            Select
-          </button>
-          {/* {secondFilmPresetForm} */}
-        </form>
-      )}
-    </>
+  return isLoading ? (
+    <p>Loading...</p>
+  ) : (
+    <form>
+      <p>Select film, film type and developer</p>
+      <select onChange={({ target }) => onChangeFormFields(FormFields.Film, target.value)} name="film-select">
+        {filmsOptions?.films.map((film) => <option>{film}</option>)}
+      </select>
+      <select onChange={({ target }) => onChangeFormFields(FormFields.Type, target.value)} name="film-type-select">
+        <option>35mm</option>
+        <option>120</option>
+        <option>sheet</option>
+      </select>
+      <select onChange={({ target }) => onChangeFormFields(FormFields.Dev, target.value)} name="dev-select">
+        {filmsOptions?.developers.map((developer) => <option>{developer}</option>)}
+      </select>
+      <button className="trans-color-btn" onClick={getSecondFilmFormOptions} type="button">
+        Select
+      </button>
+      {/* {secondFilmPresetForm} */}
+    </form>
   );
 };
