@@ -1,3 +1,6 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { ConfigProvider, TimePicker } from 'antd';
+import dayjs from 'dayjs';
 import { useState } from 'react';
 
 import { OTHER_CONSTANTS, SELECT_PROCESS_OPTIONS } from '../../CONSTANTS';
@@ -44,7 +47,10 @@ export const Timer = ({ id, time, onRemoveTimer }: IProps) => {
     setState({ ...state, note });
   };
 
-  const onChangeTimerValue = () => {};
+  const setTime = (e: any) => {
+    setState({ ...state, currentTimerValue: e.format('HH:mm:ss') });
+  };
+
   const onTogglePanel = () => {
     setState({ ...state, panelIsOpen: !state.panelIsOpen, formIsActivated: false });
   };
@@ -86,13 +92,28 @@ export const Timer = ({ id, time, onRemoveTimer }: IProps) => {
             size={4}
             defaultValue={state.otherProcess}
           />
-          <div>
-            <input onChange={onChangeTimerValue} type="text" name="hours" size={1} defaultValue={timerValue.hours} />
-            :
-            <input onChange={onChangeTimerValue} type="text" name="min" size={1} defaultValue={timerValue.min} />
-            :
-            <input onChange={onChangeTimerValue} type="text" name="sec" size={1} defaultValue={timerValue.sec} />
-          </div>
+          <ConfigProvider
+            theme={{
+              components: {
+                DatePicker: {
+                  activeBorderColor: '#000',
+                  activeShadow: '0 0 0 2px rgba(0, 0, 0, 0.2)',
+                  colorTextDisabled: '#000',
+                  colorPrimary: '#000',
+                  controlItemBgActive: '#fff',
+                },
+              },
+            }}
+          >
+            <TimePicker
+              className={styles.timePicker}
+              onChange={setTime}
+              defaultValue={dayjs('00:00:00', 'HH:mm:ss')}
+              showNow={false}
+              allowClear={false}
+              changeOnBlur
+            />
+          </ConfigProvider>
           <textarea
             onChange={({ target }) => onChangeNete(target.value)}
             name="note"

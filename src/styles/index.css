@@ -824,6 +824,18 @@ textarea::-webkit-input-placeholder {
     }
 }
 
+.ant-picker-time-panel-cell-selected .ant-picker-time-panel-cell-inner {
+    border: 1px solid black;
+}
+
+.ant-btn-primary {
+    background: black;
+}
+
+.ant-btn-primary:not(:disabled):not(.ant-btn-disabled):hover {
+    background: gray;
+}
+
 /*.b-n-w {*/
 /*    @include common-styles();*/
 /*}*/

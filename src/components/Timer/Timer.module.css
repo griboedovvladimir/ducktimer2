@@ -5,3 +5,19 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
+.timePicker {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-color: black;
+}
+
+.timePicker:hover {
+    border-color: black;
+}
+
+.ant-picker-time-panel-cell-selected .ant-picker-time-panel-cell-inner {
+    border: 1px solid black;
+}
