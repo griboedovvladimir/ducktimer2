@@ -15,30 +15,33 @@ interface IProps {
 }
 
 export const Timer = ({ id, time, onRemoveTimer }: IProps) => {
+  const [timePickerValue, setTimePickerValue] = useState('00:00:00');
+  const [currentTimerValue, setCurrentTimerValue] = useState(time);
   const [state, setState] = useState({
     id,
-    currentTimerValue: time,
     timerFinished: false,
     panelIsOpen: false,
     formIsActivated: false,
     otherProcess: '',
     selectProcess: '',
     note: '',
-  });
-
-  const [timerValue, setTimerValue] = useState({
-    hours: '00',
-    min: '00',
-    sec: '00',
+    set: 0,
   });
 
   const timersClassList = state.timerFinished ? 'timers finished' : 'timers';
   const process = (state.otherProcess ? state.otherProcess : state.selectProcess) || 'default value';
-  const onSetTimer = () => {
-    setTimerValue({ ...timerValue, hours: '00', min: '00', sec: '00' });
+
+  const onStopTimer = () => {
+    cancelAnimationFrame(state.set);
+    setState({ ...state, set: 0 });
   };
-  const onStopTimer = () => {};
-  const onStartTimer = () => {};
+
+  const onSetTimer = () => {
+    onStopTimer();
+    setCurrentTimerValue(timePickerValue);
+    setState({ ...state, timerFinished: false });
+  };
+
   const onSelectProcess = (value: string) => {
     setState({ ...state, selectProcess: value });
   };
@@ -48,7 +51,8 @@ export const Timer = ({ id, time, onRemoveTimer }: IProps) => {
   };
 
   const setTime = (e: any) => {
-    setState({ ...state, currentTimerValue: e.format('HH:mm:ss') });
+    setCurrentTimerValue(e.format('HH:mm:ss'));
+    setTimePickerValue(e.format('HH:mm:ss'));
   };
 
   const onTogglePanel = () => {
@@ -62,6 +66,50 @@ export const Timer = ({ id, time, onRemoveTimer }: IProps) => {
   const getProcessOptions = () =>
     SELECT_PROCESS_OPTIONS.map((processOption) => <option key={processOption}>{processOption}</option>);
 
+  const timerOverHandle = () => {
+    const audio = new Audio('./static/media/duck.mp3');
+
+    audio.autoplay = true;
+    setState({ ...state, timerFinished: true });
+  };
+
+  const onStartTimer = () => {
+    const arr = currentTimerValue.split(':');
+    const hour = arr[0];
+    const min = arr[1];
+    const sec = arr[2];
+    const parsedTime = parseInt(hour, 10) * 3600 + parseInt(min, 10) * 60 + parseInt(sec, 10);
+    const countdown = new Date();
+    const responseTime = new Date(Date.now() + 1000 * parsedTime);
+
+    const goTimer = () => {
+      if (currentTimerValue !== OTHER_CONSTANTS.START_TIME) {
+        countdown.setTime(Number(responseTime) - Date.now());
+        let h = countdown.getUTCHours().toString();
+        let m = countdown.getUTCMinutes().toString();
+        let s = countdown.getUTCSeconds().toString();
+
+        if (+h < 10) h = `0${h}`;
+
+        if (+m < 10) m = `0${m}`;
+
+        if (+s < 10) s = `0${s}`;
+
+        if (+m === 0 && +s === 0) {
+          s = '00';
+          timerOverHandle();
+        }
+
+        setCurrentTimerValue(`${h}:${m}:${s}`);
+
+        if (countdown.getUTCHours() > 0 || countdown.getUTCMinutes() > 0 || countdown.getUTCSeconds() > 0)
+          setState({ ...state, set: requestAnimationFrame(goTimer) });
+      }
+    };
+
+    setState({ ...state, set: requestAnimationFrame(goTimer) });
+  };
+
   return (
     <div className={timersClassList}>
       <button type="button" onClick={() => onRemoveTimer(id)} className="delete trans-color-btn">
@@ -69,7 +117,7 @@ export const Timer = ({ id, time, onRemoveTimer }: IProps) => {
       </button>
       <h4 className={styles.process}>{process}</h4>
       <div className="timer-panel">
-        <span>{state.currentTimerValue || OTHER_CONSTANTS.START_TIME}</span>
+        <span>{currentTimerValue || OTHER_CONSTANTS.START_TIME}</span>
         <p> Note: {state.note}</p>
         <div className="timer-buttons">
           <Pause title="Pause" className="icon2" onClick={onStopTimer} />

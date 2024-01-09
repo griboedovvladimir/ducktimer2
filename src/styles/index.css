@@ -273,6 +273,7 @@ h1 {
     height: 192px;
     justify-content: space-around;
     margin: 10px 0 0 0;
+    align-items: center;
 }
 
 /*//////////////////////dialog window//////////////////////*/
@@ -492,7 +493,6 @@ dt {
     font-family: 'ProximaNova-Regular';
     text-align: left;
     margin: 0;
-    display: block;
     width: 100%;
     display: inline-block;
 }
