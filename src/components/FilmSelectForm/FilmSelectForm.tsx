@@ -4,36 +4,23 @@ import { useFetchFilmsQuery } from '../../services/filmApiService';
 import { FilmPropertiesForm } from '../FilmPropertiesForm';
 
 enum FormFields {
-  Film = 'film-select',
-  Type = 'film-type-select',
-  Dev = 'dev-select',
+  Film = 'film',
+  Type = 'type',
+  Dev = 'dev',
 }
 
 export const FilmSelectForm = () => {
   const { data: filmsOptions, isLoading, error } = useFetchFilmsQuery('');
 
   const [isFilmSelected, setIsFilmSelected] = useState(false);
-
-  const filmFormModel = {
+  const [filmFormModel, setFilmFormModel] = useState({
     film: '',
     type: '35mm',
     dev: '',
-  };
+  });
 
   const onChangeFormFields = (type: FormFields, value: string): void => {
-    switch (type) {
-      case FormFields.Film:
-        filmFormModel.film = value;
-        break;
-      case FormFields.Type:
-        filmFormModel.type = value;
-        break;
-      case FormFields.Dev:
-        filmFormModel.dev = value;
-        break;
-      default:
-        break;
-    }
+    setFilmFormModel({ ...filmFormModel, [type]: value });
   };
 
   // eslint-disable-next-line no-nested-ternary

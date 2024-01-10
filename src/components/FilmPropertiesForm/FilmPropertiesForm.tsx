@@ -4,7 +4,7 @@ export const FilmPropertiesForm = ({ film, type, dev }: any) => {
   const { data: filmProperties } = useFetchFilmsPropertiesQuery({ film, dev });
 
   const setTime = () => {
-    console.log(type);
+    type.toString();
   };
   const errorMessage = 'errorMessage';
 
