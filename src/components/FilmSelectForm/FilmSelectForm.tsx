@@ -1,4 +1,7 @@
+import { useState } from 'react';
+
 import { useFetchFilmsQuery } from '../../services/filmApiService';
+import { FilmPropertiesForm } from '../FilmPropertiesForm';
 
 enum FormFields {
   Film = 'film-select',
@@ -8,6 +11,8 @@ enum FormFields {
 
 export const FilmSelectForm = () => {
   const { data: filmsOptions, isLoading, error } = useFetchFilmsQuery('');
+
+  const [isFilmSelected, setIsFilmSelected] = useState(false);
 
   const filmFormModel = {
     film: '',
@@ -31,8 +36,6 @@ export const FilmSelectForm = () => {
     }
   };
 
-  const getSecondFilmFormOptions = (): void => {};
-
   // eslint-disable-next-line no-nested-ternary
   return isLoading ? (
     <p>Loading...</p>
@@ -52,10 +55,10 @@ export const FilmSelectForm = () => {
       <select onChange={({ target }) => onChangeFormFields(FormFields.Dev, target.value)} name="dev-select">
         {filmsOptions?.developers.map((developer) => <option>{developer}</option>)}
       </select>
-      <button className="trans-color-btn" onClick={getSecondFilmFormOptions} type="button">
+      <button className="trans-color-btn" onClick={() => setIsFilmSelected(true)} type="button">
         Select
       </button>
-      {/* {secondFilmPresetForm} */}
+      {isFilmSelected && <FilmPropertiesForm {...filmFormModel} />}
     </form>
   );
 };

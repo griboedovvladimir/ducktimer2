@@ -5,7 +5,7 @@ import { useState } from 'react';
 
 import { OTHER_CONSTANTS, SELECT_PROCESS_OPTIONS } from '../../CONSTANTS';
 import { Film, Pause, Play, Set } from '../../shared/icons';
-import { FilmSelectForm } from '../FilmPresetForm';
+import { FilmSelectForm } from '../FilmSelectForm';
 import styles from './Timer.module.css';
 
 interface IProps {

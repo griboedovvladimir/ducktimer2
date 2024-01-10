@@ -7,16 +7,27 @@ import { RequestMethod } from '../shared/enums';
 export const filmApiService = createApi({
   baseQuery,
   reducerPath: 'filmApiService',
-  tagTypes: ['CloseReason'],
+  tagTypes: ['Films', 'FilmProperty'],
   endpoints: (build) => ({
     fetchFilms: build.query<{ films: string[]; developers: string[] }, string>({
       query: () => ({
         url: `backend/filmform.php`,
         method: RequestMethod.GET,
       }),
-      providesTags: () => ['CloseReason'],
+      providesTags: () => ['Films'],
+    }),
+    fetchFilmsProperties: build.query<
+      { iso: string[]; dilution: string[]; temp: string[] },
+      { film: string; dev: string }
+    >({
+      query: (body) => ({
+        url: `backend/filmform2.php`,
+        method: RequestMethod.POST,
+        body,
+      }),
+      providesTags: () => ['FilmProperty'],
     }),
   }),
 });
 
-export const { useFetchFilmsQuery } = filmApiService;
+export const { useFetchFilmsQuery, useFetchFilmsPropertiesQuery } = filmApiService;
