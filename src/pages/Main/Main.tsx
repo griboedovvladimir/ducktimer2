@@ -1,4 +1,3 @@
-// @ts-nocheck // TODO: remove this line after stable popover API
 import React from 'react';
 
 import { Clock } from '../../components/Clock';
@@ -12,7 +11,6 @@ export const Main = ({ currentTheme }: any) => {
   const popupType = null;
   const [timers, setTimers] = React.useState([]);
 
-  const onClosePopup = () => {};
   const onLogOut = () => {};
   const onOpenRightMenuPopup = () => {};
   const onAddTimer = () => {
@@ -27,16 +25,7 @@ export const Main = ({ currentTheme }: any) => {
   };
 
   return (
-    <div className={currentTheme?.theme} onClick={onClosePopup}>
-      {/* eslint-disable-next-line react/no-unknown-property */}
-      <button type="button" popovertarget="mypopover">
-        Toggle the popover
-      </button>
-      {/* eslint-disable-next-line react/no-unknown-property */}
-      <div id="mypopover" popover="auto">
-        Popover content
-      </div>
-
+    <div className={currentTheme?.theme}>
       <div className={popupType ? 'effect-background' : ''} />
       {/* <ThemeSwitcher /> */}
       <div className="row1">

@@ -354,35 +354,32 @@ h1 {
     font-family: 'ProximaNova-Bold';
 }
 
-.popup-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
 .popup {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
     max-width: 500px;
     min-height: 250px;
+    max-height: 70vh;
     box-shadow: var(--shadowColor);
     border-radius: 5px;
-    margin: 20px 0;
-    align-self: center;
     font-family: 'ProximaNova-Regular';
     font-size: 10pt;
-    z-index: 1005;
     background-color: var(--color-2);
+    top: 10vh;
+    left:0;
+    right:0;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+::backdrop {
+    backdrop-filter: blur(4px);
 }
 
 .content {
-    padding: 0 8px 15px 8px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-self: center;
+    padding: 15px 8px 15px 8px;
     align-content: flex-start;
 }
 

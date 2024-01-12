@@ -43,7 +43,7 @@ export const FilmSelectForm = () => {
         {filmsOptions?.developers.map((developer) => <option>{developer}</option>)}
       </select>
       <button className="trans-color-btn" onClick={() => setIsFilmSelected(true)} type="button">
-        Select
+        Next
       </button>
       {isFilmSelected && <FilmPropertiesForm {...filmFormModel} />}
     </form>

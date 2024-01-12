@@ -29,7 +29,7 @@ export const Timer = ({ id, time, onRemoveTimer }: IProps) => {
   });
 
   const timersClassList = state.timerFinished ? 'timers finished' : 'timers';
-  const process = (state.otherProcess ? state.otherProcess : state.selectProcess) || 'default value';
+  const process = state.otherProcess ? state.otherProcess : state.selectProcess;
 
   const onStopTimer = () => {
     cancelAnimationFrame(state.set);
@@ -118,11 +118,20 @@ export const Timer = ({ id, time, onRemoveTimer }: IProps) => {
       <h4 className={styles.process}>{process}</h4>
       <div className="timer-panel">
         <span>{currentTimerValue || OTHER_CONSTANTS.START_TIME}</span>
-        <p> Note: {state.note}</p>
+        {state.note && <p> Note: {state.note}</p>}
         <div className="timer-buttons">
-          <Pause title="Pause" className="icon2" onClick={onStopTimer} />
-          <Play title="Start" onClick={onStartTimer} className="icon2" />
-          <Set title="Set" onClick={onSetTimer} className="icon2" />
+          {state.set ? (
+            <button type="button" aria-label="pause">
+              <Pause title="Pause" className="icon2" onClick={onStopTimer} />
+            </button>
+          ) : (
+            <button type="button" aria-label="start">
+              <Play title="Start" onClick={onStartTimer} className="icon2" />
+            </button>
+          )}
+          <button type="button" aria-label="set">
+            <Set title="Set" onClick={onSetTimer} className="icon2" />
+          </button>
         </div>
       </div>
       {state.panelIsOpen && (
@@ -168,13 +177,15 @@ export const Timer = ({ id, time, onRemoveTimer }: IProps) => {
             className="timer-inputs"
             placeholder="Note"
           />
-          <div>
-            <Film
-              title="Load film preset time"
-              className="film-button trans-color-btn"
-              onClick={showFilmSelectionForm}
-            />
-          </div>
+          <button
+            type="button"
+            aria-label="film"
+            className="film-button trans-color-btn"
+            onClick={showFilmSelectionForm}
+            title="Load film preset time"
+          >
+            <Film />
+          </button>
           {state.formIsActivated && <FilmSelectForm />}
         </div>
       )}
