@@ -31,6 +31,10 @@ code {
     background: transparent; /* Optional: just make scrollbar invisible */
 }
 
+button {
+    cursor: pointer;
+}
+
 button:hover, .icon2:hover {
     opacity: .7;
 }
@@ -370,6 +374,11 @@ h1 {
     margin-right:auto;
 }
 
+.popup-container {
+    display: flex;
+    flex-direction: column;
+}
+
 ::backdrop {
     backdrop-filter: blur(4px);
 }
@@ -379,7 +388,7 @@ h1 {
     flex-wrap: wrap;
     flex-direction: column;
     align-self: center;
-    padding: 15px 8px 15px 8px;
+    padding: 0 8px 15px 8px;
     align-content: flex-start;
 }
 
@@ -606,6 +615,20 @@ textarea::-webkit-input-placeholder {
     outline: none;
     cursor: pointer;
     color: var(--color-1);
+}
+
+.button-icon {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    box-shadow: none;
+    border: none;
+    background: none;
+    outline: none;
+    cursor: pointer;
+    color: var(--color-1);
+    display: flex;
+    align-items: center;
 }
 
 .film-button {

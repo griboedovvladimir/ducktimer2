@@ -12,7 +12,6 @@ export const Main = ({ currentTheme }: any) => {
   const [timers, setTimers] = React.useState([]);
 
   const onLogOut = () => {};
-  const onOpenRightMenuPopup = () => {};
   const onAddTimer = () => {
     // @ts-ignore
     setTimers([...timers, { id: guid(), time: '00:00:00' }]);
@@ -30,21 +29,21 @@ export const Main = ({ currentTheme }: any) => {
       {/* <ThemeSwitcher /> */}
       <div className="row1">
         <Clock />
-
         <div className="logout">
           <Person title="Log out" className="icon" onClick={onLogOut} />
         </div>
       </div>
+
       <TopMenu addTimer={onAddTimer} clearBoard={onClearBoard} />
+
       <div className="row2">
-        <RightMenu onOpenRightMenuPopup={onOpenRightMenuPopup} />
+        <RightMenu />
         <div className="table">
           {timers.map((timer: { time: string; id: string }) => (
             <Timer key={timer.id} id={timer.id} time={timer.time} onRemoveTimer={onRemoveTimer} />
           ))}
         </div>
       </div>
-      {/* {this.state.popupType && <Popup popupType={popupType} popClose={onClosePopup} />} */}
     </div>
   );
 };

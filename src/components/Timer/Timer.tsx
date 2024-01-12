@@ -122,15 +122,15 @@ export const Timer = ({ id, time, onRemoveTimer }: IProps) => {
         <div className="timer-buttons">
           {state.set ? (
             <button type="button" aria-label="pause">
-              <Pause title="Pause" className="icon2" onClick={onStopTimer} />
+              <Pause title="Pause" className="button-icon" onClick={onStopTimer} />
             </button>
           ) : (
             <button type="button" aria-label="start">
-              <Play title="Start" onClick={onStartTimer} className="icon2" />
+              <Play title="Start" onClick={onStartTimer} className="button-icon" />
             </button>
           )}
           <button type="button" aria-label="set">
-            <Set title="Set" onClick={onSetTimer} className="icon2" />
+            <Set title="Set" onClick={onSetTimer} className="button-icon" />
           </button>
         </div>
       </div>

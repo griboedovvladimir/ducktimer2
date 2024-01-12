@@ -4,8 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ae2f3c1-f473-4031-83c8-da72db6d1454" name="Changes" comment="Fix code">
-      <change beforePath="$PROJECT_DIR$/src/service-worker.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/service-worker.ts" afterDir="false" />
+    <list default="true" id="6ae2f3c1-f473-4031-83c8-da72db6d1454" name="Changes" comment="Add second form view">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,9 +15,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="CSS File" />
         <option value="TypeScript JSX File" />
         <option value="TypeScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -42,8 +42,9 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
     "js.linters.configure.manually.selectedeslint": "true",
-    "last_opened_file_path": "/home/vgriboedov/projects/ducktimer2/src",
+    "last_opened_file_path": "/home/vgriboedov/projects/pmi_framework_kpidashboard",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.standard": "true",
@@ -55,16 +56,16 @@
     "nodejs_package_manager_path": "npm",
     "npm.build.executor": "Run",
     "npm.start.executor": "Run",
-    "settings.editor.selected.configurable": "settings.nodejs",
+    "settings.editor.selected.configurable": "preferences.editor",
     "ts.external.directory.path": "/home/vgriboedov/projects/ducktimer2/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/components" />
       <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/src/shared/enums" />
-      <recent name="$PROJECT_DIR$/src/components" />
       <recent name="$PROJECT_DIR$/src/shared" />
       <recent name="$PROJECT_DIR$" />
     </key>
@@ -76,7 +77,7 @@
       <recent name="$PROJECT_DIR$/public" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.build">
+  <component name="RunManager" selected="npm.start">
     <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -99,8 +100,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.build" />
         <item itemvalue="npm.start" />
+        <item itemvalue="npm.build" />
       </list>
     </recent_temporary>
   </component>
@@ -119,7 +120,13 @@
       <workItem from="1702650902799" duration="599000" />
       <workItem from="1702742906168" duration="3740000" />
       <workItem from="1702908872596" duration="17448000" />
-      <workItem from="1703410429206" duration="43621000" />
+      <workItem from="1703410429206" duration="49838000" />
+      <workItem from="1703854624785" duration="24097000" />
+      <workItem from="1704653189123" duration="3766000" />
+      <workItem from="1704700498353" duration="2481000" />
+      <workItem from="1704717890466" duration="740000" />
+      <workItem from="1704754273540" duration="1159000" />
+      <workItem from="1704805360205" duration="16238000" />
     </task>
     <task id="LOCAL-00001" summary="init app">
       <option name="closed" value="true" />
@@ -313,7 +320,87 @@
       <option name="project" value="LOCAL" />
       <updated>1703838818550</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Fix code">
+      <option name="closed" value="true" />
+      <created>1703839298221</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1703839298221</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Fix code">
+      <option name="closed" value="true" />
+      <created>1703840693396</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1703840693396</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Fix code">
+      <option name="closed" value="true" />
+      <created>1703854750661</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1703854750661</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Fix code">
+      <option name="closed" value="true" />
+      <created>1703855153164</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1703855153164</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Fix code">
+      <option name="closed" value="true" />
+      <created>1703855468917</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1703855468917</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Fix small issues">
+      <option name="closed" value="true" />
+      <created>1703881667411</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1703881667411</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Add time piker">
+      <option name="closed" value="true" />
+      <created>1704196805559</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1704196805559</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Add timer logic">
+      <option name="closed" value="true" />
+      <created>1704837819244</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1704837819244</updated>
+    </task>
+    <task id="LOCAL-00033" summary="Add second form view">
+      <option name="closed" value="true" />
+      <created>1704922164174</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1704922164174</updated>
+    </task>
+    <task id="LOCAL-00034" summary="Add second form view">
+      <option name="closed" value="true" />
+      <created>1704923521400</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1704923521400</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -340,6 +427,10 @@
     <MESSAGE value="Turn on service worker" />
     <MESSAGE value="Add files" />
     <MESSAGE value="Fix code" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix code" />
+    <MESSAGE value="Fix small issues" />
+    <MESSAGE value="Add time piker" />
+    <MESSAGE value="Add timer logic" />
+    <MESSAGE value="Add second form view" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add second form view" />
   </component>
 </project>
