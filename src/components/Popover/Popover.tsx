@@ -1,11 +1,20 @@
 // @ts-nocheck // TODO: remove this line after stable popover API
 import React from 'react';
 
+import { PopupTarget } from '../../shared/enums/popup-target';
+
+const PopupsTitles = {
+  [PopupTarget.VolumeMixer]: 'Volume mixer',
+  [PopupTarget.TempConverter]: 'Time/temp converter',
+  [PopupTarget.PushProcessing]: 'Push processing',
+};
+
 export const Popover = ({ popoverTarget, children }: PropsWithChildren<{ popoverTarget: string }>) => {
   return (
     // eslint-disable-next-line react/no-unknown-property
     <div id={popoverTarget} popover="auto" className="popup">
       <div className="popup-container">
+        <h1>{PopupsTitles[popoverTarget]}</h1>
         {/* eslint-disable-next-line react/no-unknown-property */}
         <button type="button" className="popup__close" popovertarget={popoverTarget} popovertargetaction="hide">
           ×

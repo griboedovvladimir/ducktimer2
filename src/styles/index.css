@@ -74,43 +74,11 @@ a {
     color: gray;
 }
 
-#effectWrapper {
-    height: 100%;
-    width: 100%;
-}
-
 body {
     padding: 5px 10px 0;
     height: 100%;
     background-color: var(--main-color);
     color: var(--color-1);
-}
-
-#footer {
-    height: 30px;
-    text-align: center;
-}
-
-#footer p {
-    right: 10px;
-    position: absolute;
-    text-align: right;
-    display: inline-block;
-    font-family: 'ProximaNova-Bold';
-    font-size: 8pt;
-}
-
-#footer button {
-    font-family: 'ProximaNova-Bold';
-    border: none;
-    background: transparent;
-    outline: none;
-}
-
-#footer hr {
-    background-color: var(--color-1);
-    border: none;
-    height: 1px;
 }
 
 @media screen and (max-width: 900px) {
@@ -120,17 +88,6 @@ body {
         min-height: calc(100vh - 70px);
         background: none;
     }
-}
-
-.tooltip {
-    position: fixed;
-    padding: 3px 8px;
-    border-radius: 4px;
-    border: 1px solid black;
-    text-align: center;
-    font: 12px/1.3 'ProximaNova-Bold', sans-serif;
-    color: #333;
-    background: #fff;
 }
 
 /*//////////////////main page//////////////*/
@@ -280,84 +237,7 @@ h1 {
     align-items: center;
 }
 
-/*//////////////////////dialog window//////////////////////*/
-#dialogWin {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    justify-content: space-around;
-    background-color: white;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    width: 200px;
-    border-radius: 5px;
-    text-align: center;
-    font-family: 'ProximaNova-Bold';
-}
-
-#dialogWin select {
-    width: 95%;
-    height: 40px;
-    border-radius: 5px;
-    margin: 0 0 10px 0;
-    outline: none;
-    border: 1px solid var(--color-1);
-}
-
-.dialogButtons {
-    height: 40px;
-    box-shadow: none;
-    border-radius: 5px;
-    border: 2px solid var(--color-1);
-    margin: 0 5px 10px 5px;
-    width: 95%;
-    background-color: transparent;
-    font-family: 'ProximaNova-Bold';
-    letter-spacing: 0.1em;
-    outline: none;
-}
-
-#load,
-#clearLoad {
-    font-size: 8pt;
-    letter-spacing: 0;
-}
-
-#dialogWin input {
-    width: 90%;
-    height: 25px;
-    border-radius: 5px;
-    margin: 0 0 10px 0;
-    box-shadow: none;
-    border: 1px solid var(--color-1);
-    padding: 3px;
-    outline: none;
-}
-
-#close,
-#closeContentWin {
-    background-color: white;
-    align-self: flex-end;
-    border-radius: 5px;
-    font-size: 16pt;
-    box-shadow: none;
-    border: none;
-    outline: none;
-    width: 25px;
-}
-
 /*////////////////////////////Content window//////////////////////////////*/
-#closeContentWin {
-    position: absolute;
-}
-
-#ContentWinHead {
-    height: 30px;
-    text-align: center;
-    align-self: center;
-    line-height: 30px;
-    font-family: 'ProximaNova-Bold';
-}
-
 .popup {
     max-width: 500px;
     min-height: 250px;
@@ -390,6 +270,39 @@ h1 {
     align-self: center;
     padding: 0 8px 15px 8px;
     align-content: flex-start;
+}
+
+.submit {
+    text-align: left;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.converter__header {
+    margin: 5px 0;
+    text-align: center
+}
+
+.converter__svg {
+    margin: 10px 0 0 0;
+    fill: var(--color-1);
+}
+
+.popup__close {
+    background-color: var(--color-2);
+    color: var(--color-1);
+    align-self: flex-end;
+    border-radius: 5px;
+    font-size: 16pt;
+    box-shadow: none;
+    border: none;
+    outline: none;
+    width: 25px;
+    cursor: pointer;
+
+    &:hover {
+        opacity: .7;
+    }
 }
 
 #winContent select {
@@ -700,6 +613,7 @@ textarea::-webkit-input-placeholder {
     margin: 5px auto;
     position: relative;
     box-shadow: 0 0 0 2px black;
+    cursor: pointer;
 }
 
 .checkbox-label .on {
@@ -797,51 +711,6 @@ textarea::-webkit-input-placeholder {
 .mixer__calc {
     margin-top: 30px;
     margin-bottom: 30px;
-}
-
-/*////////////////////////////Popup/////////////////////////////////////////*/
-.effect-background {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    z-index: 1000;
-    backdrop-filter: blur(4px);
-    pointer-events: none;
-}
-
-.submit {
-    text-align: left;
-    padding-top: 10px;
-    padding-bottom: 10px;
-}
-
-.converter__header {
-    margin: 5px 0;
-    text-align: center
-}
-
-.converter__svg {
-    margin: 10px 0 0 0;
-    fill: var(--color-1);
-}
-
-.popup__close {
-    background-color: var(--color-2);
-    color: var(--color-1);
-    align-self: flex-end;
-    border-radius: 5px;
-    font-size: 16pt;
-    box-shadow: none;
-    border: none;
-    outline: none;
-    width: 25px;
-    cursor: pointer;
-
-    &:hover {
-        opacity: .7;
-    }
 }
 
 .ant-picker-time-panel-cell-selected .ant-picker-time-panel-cell-inner {

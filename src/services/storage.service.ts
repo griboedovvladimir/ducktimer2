@@ -1,16 +1,5 @@
 import { STORAGE_CONSTANTS } from '../CONSTANTS';
 
-export const storageService = {
-  setTokenToLocalStorage,
-  setTokenToSessionStorage,
-  getTokenFromLocalStorage,
-  getTokenFromSessionStorage,
-  removeTokenFromLocalStorage,
-  removeTokenFromSessionStorage,
-  setThemeToSessionStorage,
-  getThemeFromLocalStorage,
-};
-
 function setTokenToLocalStorage(token: string) {
   localStorage.setItem(STORAGE_CONSTANTS.SET_TOKEN, token);
 }
@@ -42,3 +31,14 @@ function setThemeToSessionStorage(theme: string) {
 function getThemeFromLocalStorage(): string | null {
   return sessionStorage.getItem(STORAGE_CONSTANTS.SET_THEME);
 }
+
+export const storageService = {
+  setTokenToLocalStorage,
+  setTokenToSessionStorage,
+  getTokenFromLocalStorage,
+  getTokenFromSessionStorage,
+  removeTokenFromLocalStorage,
+  removeTokenFromSessionStorage,
+  setThemeToSessionStorage,
+  getThemeFromLocalStorage,
+};

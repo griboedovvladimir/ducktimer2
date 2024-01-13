@@ -15,7 +15,7 @@ interface IProps {
 }
 
 export const Timer = ({ id, time, onRemoveTimer }: IProps) => {
-  const [timePickerValue, setTimePickerValue] = useState('00:00:00');
+  const [timePickerValue, setTimePickerValue] = useState(OTHER_CONSTANTS.START_TIME);
   const [currentTimerValue, setCurrentTimerValue] = useState(time);
   const [state, setState] = useState({
     id,
@@ -74,40 +74,42 @@ export const Timer = ({ id, time, onRemoveTimer }: IProps) => {
   };
 
   const onStartTimer = () => {
-    const arr = currentTimerValue.split(':');
-    const hour = arr[0];
-    const min = arr[1];
-    const sec = arr[2];
-    const parsedTime = parseInt(hour, 10) * 3600 + parseInt(min, 10) * 60 + parseInt(sec, 10);
-    const countdown = new Date();
-    const responseTime = new Date(Date.now() + 1000 * parsedTime);
+    if (currentTimerValue !== OTHER_CONSTANTS.START_TIME) {
+      const arr = currentTimerValue.split(':');
+      const hour = arr[0];
+      const min = arr[1];
+      const sec = arr[2];
+      const parsedTime = parseInt(hour, 10) * 3600 + parseInt(min, 10) * 60 + parseInt(sec, 10);
+      const countdown = new Date();
+      const responseTime = new Date(Date.now() + 1000 * parsedTime);
 
-    const goTimer = () => {
-      if (currentTimerValue !== OTHER_CONSTANTS.START_TIME) {
-        countdown.setTime(Number(responseTime) - Date.now());
-        let h = countdown.getUTCHours().toString();
-        let m = countdown.getUTCMinutes().toString();
-        let s = countdown.getUTCSeconds().toString();
+      const goTimer = () => {
+        if (currentTimerValue !== OTHER_CONSTANTS.START_TIME) {
+          countdown.setTime(Number(responseTime) - Date.now());
+          let h = countdown.getUTCHours().toString();
+          let m = countdown.getUTCMinutes().toString();
+          let s = countdown.getUTCSeconds().toString();
 
-        if (+h < 10) h = `0${h}`;
+          if (+h < 10) h = `0${h}`;
 
-        if (+m < 10) m = `0${m}`;
+          if (+m < 10) m = `0${m}`;
 
-        if (+s < 10) s = `0${s}`;
+          if (+s < 10) s = `0${s}`;
 
-        if (+m === 0 && +s === 0) {
-          s = '00';
-          timerOverHandle();
+          if (+m === 0 && +s === 0) {
+            s = '00';
+            timerOverHandle();
+          }
+
+          setCurrentTimerValue(`${h}:${m}:${s}`);
+
+          if (countdown.getUTCHours() > 0 || countdown.getUTCMinutes() > 0 || countdown.getUTCSeconds() > 0)
+            setState({ ...state, set: requestAnimationFrame(goTimer) });
         }
+      };
 
-        setCurrentTimerValue(`${h}:${m}:${s}`);
-
-        if (countdown.getUTCHours() > 0 || countdown.getUTCMinutes() > 0 || countdown.getUTCSeconds() > 0)
-          setState({ ...state, set: requestAnimationFrame(goTimer) });
-      }
-    };
-
-    setState({ ...state, set: requestAnimationFrame(goTimer) });
+      setState({ ...state, set: requestAnimationFrame(goTimer) });
+    }
   };
 
   return (

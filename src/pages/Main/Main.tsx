@@ -2,13 +2,13 @@ import React from 'react';
 
 import { Clock } from '../../components/Clock';
 import { RightMenu } from '../../components/RightMenu';
+import { ThemeSwitcher } from '../../components/ThemeSwitcher';
 import { Timer } from '../../components/Timer';
 import { TopMenu } from '../../components/TopMenu';
 import { guid } from '../../shared/helpers/guid';
 import { Person } from '../../shared/icons';
 
 export const Main = ({ currentTheme }: any) => {
-  const popupType = null;
   const [timers, setTimers] = React.useState([]);
 
   const onLogOut = () => {};
@@ -25,8 +25,7 @@ export const Main = ({ currentTheme }: any) => {
 
   return (
     <div className={currentTheme?.theme}>
-      <div className={popupType ? 'effect-background' : ''} />
-      {/* <ThemeSwitcher /> */}
+      <ThemeSwitcher />
       <div className="row1">
         <Clock />
         <div className="logout">

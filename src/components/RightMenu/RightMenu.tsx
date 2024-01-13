@@ -1,6 +1,7 @@
 // @ts-nocheck // TODO: remove this line after stable popover API
 import React from 'react';
 
+import { PopupTarget } from '../../shared/enums/popup-target';
 import { Exp, Temp, Vol } from '../../shared/icons';
 import { Converter } from '../Converter';
 import { Popover } from '../Popover/Popover';
@@ -16,7 +17,7 @@ export const RightMenu = () => {
           <button
             type="button"
             // eslint-disable-next-line react/no-unknown-property
-            popovertarget="volumMixer"
+            popovertarget={PopupTarget.VolumeMixer}
           >
             <Vol title="Volume mixer" className="button-icon" />
           </button>
@@ -24,7 +25,7 @@ export const RightMenu = () => {
             type="button"
             aria-label="Time/temp converter"
             // eslint-disable-next-line react/no-unknown-property
-            popovertarget="tempConverter"
+            popovertarget={PopupTarget.TempConverter}
           >
             <Temp title="Time/temp converter" className="button-icon" />
           </button>
@@ -32,22 +33,22 @@ export const RightMenu = () => {
             type="button"
             aria-label="Push processing"
             // eslint-disable-next-line react/no-unknown-property
-            popovertarget="pushProcessing"
+            popovertarget={PopupTarget.PushProcessing}
           >
             <Exp title="Push processing" className="button-icon" />
           </button>
         </div>
       </div>
 
-      <Popover popoverTarget="volumMixer">
+      <Popover popoverTarget={PopupTarget.VolumeMixer}>
         <VolumeMixer />
       </Popover>
 
-      <Popover popoverTarget="tempConverter">
+      <Popover popoverTarget={PopupTarget.TempConverter}>
         <Converter />
       </Popover>
 
-      <Popover popoverTarget="pushProcessing">
+      <Popover popoverTarget={PopupTarget.PushProcessing}>
         <PushProcessing />
       </Popover>
     </>
