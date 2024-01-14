@@ -14,9 +14,9 @@ export const FilmSelectForm = () => {
 
   const [isFilmSelected, setIsFilmSelected] = useState(false);
   const [filmFormModel, setFilmFormModel] = useState({
-    film: filmsOptions?.films[0],
+    film: '',
     type: '35mm',
-    dev: filmsOptions?.developers[0],
+    dev: '',
   });
 
   const onChangeFormFields = (type: FilmFormFields, value: string): void => {

@@ -11,6 +11,7 @@ enum FilmPropertiesFormField {
 export const FilmPropertiesForm = ({ film, type, dev }: any) => {
   const { data: filmProperties, isLoading } = useFetchFilmsPropertiesQuery({ film, dev });
 
+  const [isFormChanged, setIsFormChanged] = useState(false);
   const [state, setState] = useState({
     type,
     film,
@@ -20,20 +21,22 @@ export const FilmPropertiesForm = ({ film, type, dev }: any) => {
     [FilmPropertiesFormField.Temp]: '',
   });
 
-  // eslint-disable-next-line no-unused-expressions
-  !isLoading &&
-    setState({
-      ...state,
-      [FilmPropertiesFormField.Asaiso]: filmProperties?.asaiso[0] || '',
-      [FilmPropertiesFormField.Dilution]: filmProperties?.dilution[0] || '',
-      [FilmPropertiesFormField.Temp]: filmProperties?.temp[0] || '',
-    });
-
   const [skip, setSkip] = useState(true);
 
-  const { data: time } = useFetchTimeQuery(state, { skip });
+  const { data: time } = useFetchTimeQuery(
+    isFormChanged
+      ? state
+      : {
+          ...state,
+          [FilmPropertiesFormField.Asaiso]: filmProperties?.asaiso[0] || '',
+          [FilmPropertiesFormField.Dilution]: filmProperties?.dilution[0] || '',
+          [FilmPropertiesFormField.Temp]: filmProperties?.temp[0] || '',
+        },
+    { skip },
+  );
 
   const onChangeForm = (field: FilmPropertiesFormField, value: string) => {
+    setIsFormChanged(true);
     setState({ ...state, [field]: value });
   };
 
