@@ -8,35 +8,32 @@ export const Converter = () => {
         encType="multipart/form-data"
       >
         <p>
-          <input type="text" name="nominal_temp" value="20" maxLength={6} size={6} /> Recommended Temperature (degrees)
+          <input type="text" name="nominal_temp" defaultValue="20" maxLength={6} size={6} /> Recommended Temperature
+          (degrees)
         </p>
         <p>
-          <input type="text" name="nominal_time" value="10" maxLength={6} size={6} /> Recommended Time (minutes)
+          <input type="text" name="nominal_time" defaultValue="10" maxLength={6} size={6} /> Recommended Time (minutes)
         </p>
         <p>
-          <input type="text" name="actual_temp" value="20" maxLength={6} size={6} /> Modified Temperature (the actual
-          temperature you want to use)
+          <input type="text" name="actual_temp" defaultValue="20" maxLength={6} size={6} /> Modified Temperature (the
+          actual temperature you want to use)
         </p>
         <p>
           The temperature units{' '}
-          <select name="units">
-            <option selected value="C">
-              C
-            </option>
+          <select name="units" defaultValue="C">
+            <option value="C">C</option>
             <option value="F">F</option>
           </select>
         </p>
         <p>
           Will you be agitating constantly?{' '}
-          <select name="agitate">
-            <option selected value="No">
-              No
-            </option>
+          <select name="agitate" defaultValue="No">
+            <option value="No">No</option>
             <option value="Yes">Yes</option>
           </select>
         </p>
         <p className="submit">
-          <input id="buttonSubmit" className="converter__submit" type="Submit" name="Submit" value="Submit" />
+          <input id="buttonSubmit" className="converter__submit" type="Submit" name="Submit" defaultValue="Submit" />
         </p>
       </form>
       <h3>Result:</h3>

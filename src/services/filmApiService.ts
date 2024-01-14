@@ -17,7 +17,7 @@ export const filmApiService = createApi({
       providesTags: () => ['Films'],
     }),
     fetchFilmsProperties: build.query<
-      { iso: string[]; dilution: string[]; temp: string[] },
+      { asaiso: string[]; dilution: string[]; temp: string[] },
       { film: string; dev: string }
     >({
       query: (body) => ({

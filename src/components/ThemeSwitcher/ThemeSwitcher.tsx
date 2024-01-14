@@ -12,7 +12,6 @@ export const ThemeSwitcher = () => {
     // this.props.switchTheme(theme);
     storageService.setThemeToSessionStorage(theme);
     setSwitcher(event.target.checked);
-    console.log(event.target.checked);
   };
 
   const setDefaultTheme = () => {

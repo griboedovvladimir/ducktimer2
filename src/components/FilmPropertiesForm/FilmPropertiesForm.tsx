@@ -1,14 +1,17 @@
 import { useFetchFilmsPropertiesQuery } from '../../services/filmApiService';
 
 export const FilmPropertiesForm = ({ film, type, dev }: any) => {
-  const { data: filmProperties } = useFetchFilmsPropertiesQuery({ film, dev });
+  console.log(film, type, dev);
+  const { data: filmProperties, isLoading } = useFetchFilmsPropertiesQuery({ film, dev });
 
   const setTime = () => {
     type.toString();
   };
   const errorMessage = 'errorMessage';
 
-  return (
+  return isLoading ? (
+    'dsdasdads'
+  ) : (
     <div>
       <div>
         Select parameters
@@ -19,7 +22,7 @@ export const FilmPropertiesForm = ({ film, type, dev }: any) => {
         </p>
       </div>
       <select name="iso" id="iso">
-        {filmProperties?.iso.map((iso) => <option>{iso}</option>)}
+        {filmProperties?.asaiso.map((iso) => <option>{iso}</option>)}
       </select>
       <select name="dilution" id="dilution">
         {filmProperties?.dilution.map((dilution) => <option>{dilution}</option>)}
