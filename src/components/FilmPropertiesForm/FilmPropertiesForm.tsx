@@ -20,6 +20,15 @@ export const FilmPropertiesForm = ({ film, type, dev }: any) => {
     [FilmPropertiesFormField.Temp]: '',
   });
 
+  // eslint-disable-next-line no-unused-expressions
+  !isLoading &&
+    setState({
+      ...state,
+      [FilmPropertiesFormField.Asaiso]: filmProperties?.asaiso[0] || '',
+      [FilmPropertiesFormField.Dilution]: filmProperties?.dilution[0] || '',
+      [FilmPropertiesFormField.Temp]: filmProperties?.temp[0] || '',
+    });
+
   const [skip, setSkip] = useState(true);
 
   const { data: time } = useFetchTimeQuery(state, { skip });
