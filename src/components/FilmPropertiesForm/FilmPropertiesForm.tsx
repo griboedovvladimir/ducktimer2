@@ -1,7 +1,6 @@
 import { useFetchFilmsPropertiesQuery } from '../../services/filmApiService';
 
 export const FilmPropertiesForm = ({ film, type, dev }: any) => {
-  console.log(film, type, dev);
   const { data: filmProperties, isLoading } = useFetchFilmsPropertiesQuery({ film, dev });
 
   const setTime = () => {
