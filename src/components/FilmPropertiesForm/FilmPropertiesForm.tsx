@@ -29,7 +29,7 @@ export const FilmPropertiesForm = ({ film, type, dev }: any) => {
   };
 
   const setTime = () => {
-    setSkip(false);
+    setSkip((prev) => !prev);
   };
   const errorMessage = 'errorMessage';
 
