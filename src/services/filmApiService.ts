@@ -4,6 +4,14 @@ import { createApi } from '@reduxjs/toolkit/query/react';
 import { baseQuery } from '../store/base-query';
 import { RequestMethod } from '../shared/enums';
 
+interface ITimeParams {
+  asaiso: string;
+  dilution: string;
+  temp: string;
+  film: string;
+  dev: string;
+}
+
 export const filmApiService = createApi({
   baseQuery,
   reducerPath: 'filmApiService',
@@ -16,12 +24,17 @@ export const filmApiService = createApi({
       }),
       providesTags: () => ['Films'],
     }),
-    fetchFilmsProperties: build.query<
-      { asaiso: string[]; dilution: string[]; temp: string[] },
-      { film: string; dev: string }
-    >({
+    fetchFilmsProperties: build.query<{ asaiso: string[]; dilution: string[]; temp: string[] }, Partial<ITimeParams>>({
       query: (body) => ({
         url: `backend/filmform2.php`,
+        method: RequestMethod.POST,
+        body,
+      }),
+      providesTags: () => ['FilmProperty'],
+    }),
+    fetchTime: build.query<string, ITimeParams>({
+      query: (body) => ({
+        url: `backend/filmformset.php`,
         method: RequestMethod.POST,
         body,
       }),
@@ -30,4 +43,4 @@ export const filmApiService = createApi({
   }),
 });
 
-export const { useFetchFilmsQuery, useFetchFilmsPropertiesQuery } = filmApiService;
+export const { useFetchFilmsQuery, useFetchFilmsPropertiesQuery, useFetchTimeQuery } = filmApiService;

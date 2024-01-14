@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useFetchFilmsQuery } from '../../services/filmApiService';
 import { FilmPropertiesForm } from '../FilmPropertiesForm';
 
-enum FormFields {
+export enum FilmFormFields {
   Film = 'film',
   Type = 'type',
   Dev = 'dev',
@@ -19,7 +19,7 @@ export const FilmSelectForm = () => {
     dev: '',
   });
 
-  const onChangeFormFields = (type: FormFields, value: string): void => {
+  const onChangeFormFields = (type: FilmFormFields, value: string): void => {
     setFilmFormModel({ ...filmFormModel, [type]: value });
   };
 
@@ -31,15 +31,15 @@ export const FilmSelectForm = () => {
   ) : (
     <form>
       <p>Select film, film type and developer</p>
-      <select onChange={({ target }) => onChangeFormFields(FormFields.Film, target.value)} name="film-select">
+      <select onChange={({ target }) => onChangeFormFields(FilmFormFields.Film, target.value)} name="film-select">
         {filmsOptions?.films.map((film) => <option>{film}</option>)}
       </select>
-      <select onChange={({ target }) => onChangeFormFields(FormFields.Type, target.value)} name="film-type-select">
+      <select onChange={({ target }) => onChangeFormFields(FilmFormFields.Type, target.value)} name="film-type-select">
         <option>35mm</option>
         <option>120</option>
         <option>sheet</option>
       </select>
-      <select onChange={({ target }) => onChangeFormFields(FormFields.Dev, target.value)} name="dev-select">
+      <select onChange={({ target }) => onChangeFormFields(FilmFormFields.Dev, target.value)} name="dev-select">
         {filmsOptions?.developers.map((developer) => <option>{developer}</option>)}
       </select>
       <button className="trans-color-btn" onClick={() => setIsFilmSelected(true)} type="button">
