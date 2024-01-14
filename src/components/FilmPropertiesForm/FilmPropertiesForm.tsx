@@ -9,7 +9,7 @@ export const FilmPropertiesForm = ({ film, type, dev }: any) => {
   const errorMessage = 'errorMessage';
 
   return isLoading ? (
-    'dsdasdads'
+    <div>dsdasdads</div>
   ) : (
     <div>
       <div>
