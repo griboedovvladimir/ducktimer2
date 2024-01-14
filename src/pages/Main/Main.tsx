@@ -1,3 +1,4 @@
+import { Tooltip } from 'antd';
 import React from 'react';
 
 import { Clock } from '../../components/Clock';
@@ -29,7 +30,9 @@ export const Main = ({ currentTheme }: any) => {
       <div className="row1">
         <Clock />
         <div className="logout">
-          <Person title="Log out" className="icon" onClick={onLogOut} />
+          <Tooltip title="Log out">
+            <Person className="icon" onClick={onLogOut} />
+          </Tooltip>
         </div>
       </div>
 

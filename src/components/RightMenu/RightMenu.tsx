@@ -1,4 +1,5 @@
 // @ts-nocheck // TODO: remove this line after stable popover API
+import { Tooltip } from 'antd';
 import React from 'react';
 
 import { PopupTarget } from '../../shared/enums/popup-target';
@@ -13,30 +14,36 @@ export const RightMenu = () => {
     <>
       <div className="rightpanel">
         <div className="panel">
-          {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
-          <button
-            type="button"
-            // eslint-disable-next-line react/no-unknown-property
-            popovertarget={PopupTarget.VolumeMixer}
-          >
-            <Vol title="Volume mixer" className="button-icon" />
-          </button>
-          <button
-            type="button"
-            aria-label="Time/temp converter"
-            // eslint-disable-next-line react/no-unknown-property
-            popovertarget={PopupTarget.TempConverter}
-          >
-            <Temp title="Time/temp converter" className="button-icon" />
-          </button>
-          <button
-            type="button"
-            aria-label="Push processing"
-            // eslint-disable-next-line react/no-unknown-property
-            popovertarget={PopupTarget.PushProcessing}
-          >
-            <Exp title="Push processing" className="button-icon" />
-          </button>
+          <Tooltip title="Volume mixer">
+            {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
+            <button
+              type="button"
+              // eslint-disable-next-line react/no-unknown-property
+              popovertarget={PopupTarget.VolumeMixer}
+            >
+              <Vol className="button-icon" />
+            </button>
+          </Tooltip>
+          <Tooltip title="Time/temp converter">
+            <button
+              type="button"
+              aria-label="Time/temp converter"
+              // eslint-disable-next-line react/no-unknown-property
+              popovertarget={PopupTarget.TempConverter}
+            >
+              <Temp className="button-icon" />
+            </button>
+          </Tooltip>
+          <Tooltip title="Push processing">
+            <button
+              type="button"
+              aria-label="Push processing"
+              // eslint-disable-next-line react/no-unknown-property
+              popovertarget={PopupTarget.PushProcessing}
+            >
+              <Exp className="button-icon" />
+            </button>
+          </Tooltip>
         </div>
       </div>
 

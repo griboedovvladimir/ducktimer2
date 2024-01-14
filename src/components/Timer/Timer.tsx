@@ -1,5 +1,5 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { ConfigProvider, TimePicker } from 'antd';
+import { ConfigProvider, TimePicker, Tooltip } from 'antd';
 import dayjs from 'dayjs';
 import { useState } from 'react';
 
@@ -179,15 +179,16 @@ export const Timer = ({ id, time, onRemoveTimer }: IProps) => {
             className="timer-inputs"
             placeholder="Note"
           />
-          <button
-            type="button"
-            aria-label="film"
-            className="film-button trans-color-btn"
-            onClick={showFilmSelectionForm}
-            title="Load film preset time"
-          >
-            <Film />
-          </button>
+          <Tooltip title="Load film preset time">
+            <button
+              type="button"
+              aria-label="film"
+              className="film-button trans-color-btn"
+              onClick={showFilmSelectionForm}
+            >
+              <Film />
+            </button>
+          </Tooltip>
           {state.formIsActivated && <FilmSelectForm />}
         </div>
       )}
