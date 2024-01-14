@@ -31,15 +31,27 @@ export const FilmSelectForm = () => {
   ) : (
     <form>
       <p>Select film, film type and developer</p>
-      <select onChange={({ target }) => onChangeFormFields(FilmFormFields.Film, target.value)} name="film-select">
+      <select
+        defaultValue={filmsOptions?.films[0]}
+        onChange={({ target }) => onChangeFormFields(FilmFormFields.Film, target.value)}
+        name="film-select"
+      >
         {filmsOptions?.films.map((film) => <option>{film}</option>)}
       </select>
-      <select onChange={({ target }) => onChangeFormFields(FilmFormFields.Type, target.value)} name="film-type-select">
+      <select
+        onChange={({ target }) => onChangeFormFields(FilmFormFields.Type, target.value)}
+        name="film-type-select"
+        defaultValue="35mm"
+      >
         <option>35mm</option>
         <option>120</option>
         <option>sheet</option>
       </select>
-      <select onChange={({ target }) => onChangeFormFields(FilmFormFields.Dev, target.value)} name="dev-select">
+      <select
+        defaultValue={filmsOptions?.developers[0]}
+        onChange={({ target }) => onChangeFormFields(FilmFormFields.Dev, target.value)}
+        name="dev-select"
+      >
         {filmsOptions?.developers.map((developer) => <option>{developer}</option>)}
       </select>
       <button className="trans-color-btn" onClick={() => setIsFilmSelected(true)} type="button">

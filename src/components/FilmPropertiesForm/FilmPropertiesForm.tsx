@@ -45,13 +45,25 @@ export const FilmPropertiesForm = ({ film, type, dev }: any) => {
           <span>temperature</span>
         </p>
       </div>
-      <select name="iso" onChange={({ target }) => onChangeForm(FilmPropertiesFormField.Asaiso, target.value)}>
+      <select
+        defaultValue={filmProperties?.asaiso[0]}
+        name="iso"
+        onChange={({ target }) => onChangeForm(FilmPropertiesFormField.Asaiso, target.value)}
+      >
         {filmProperties?.asaiso.map((iso) => <option>{iso}</option>)}
       </select>
-      <select name="dilution" onChange={({ target }) => onChangeForm(FilmPropertiesFormField.Dilution, target.value)}>
+      <select
+        defaultValue={filmProperties?.dilution[0]}
+        name="dilution"
+        onChange={({ target }) => onChangeForm(FilmPropertiesFormField.Dilution, target.value)}
+      >
         {filmProperties?.dilution.map((dilution) => <option>{dilution}</option>)}
       </select>
-      <select name="temp" onChange={({ target }) => onChangeForm(FilmPropertiesFormField.Temp, target.value)}>
+      <select
+        defaultValue={filmProperties?.temp[0]}
+        name="temp"
+        onChange={({ target }) => onChangeForm(FilmPropertiesFormField.Temp, target.value)}
+      >
         {filmProperties?.temp.map((temp) => <option>{temp}</option>)}
       </select>
       <button className="trans-color-btn" onClick={setTime} type="button">
