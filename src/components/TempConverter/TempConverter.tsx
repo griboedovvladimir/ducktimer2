@@ -21,7 +21,6 @@ export const TempConverter = () => {
 
   return (
     <div className="content">
-      {result}
       <form
         id="convertForm"
         method="post"
