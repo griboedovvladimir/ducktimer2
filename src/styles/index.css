@@ -340,6 +340,7 @@ dt {
     font-family: 'ProximaNova-Bold';
     letter-spacing: 0.1em;
     outline: none;
+    cursor: pointer;
 }
 
 .film-button:hover,

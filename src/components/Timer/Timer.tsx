@@ -117,7 +117,7 @@ export const Timer = ({ id, time, onRemoveTimer }: IProps) => {
       <button type="button" onClick={() => onRemoveTimer(id)} className="delete trans-color-btn">
         ×
       </button>
-      <h4 className={styles.process}>{process}</h4>
+      <h4 className={styles.process}>{process || SELECT_PROCESS_OPTIONS[0]}</h4>
       <div className="timer-panel">
         <span>{currentTimerValue || OTHER_CONSTANTS.START_TIME}</span>
         {state.note && <p> Note: {state.note}</p>}

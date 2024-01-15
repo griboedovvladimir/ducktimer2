@@ -4,7 +4,7 @@ import React from 'react';
 
 import { PopupTarget } from '../../shared/enums/popup-target';
 import { Exp, Temp, Vol } from '../../shared/icons';
-import { Converter } from '../Converter';
+import { TempConverter } from '../TempConverter';
 import { Popover } from '../Popover/Popover';
 import { PushProcessing } from '../PushProcessing';
 import { VolumeMixer } from '../VolumeMixer';
@@ -52,7 +52,7 @@ export const RightMenu = () => {
       </Popover>
 
       <Popover popoverTarget={PopupTarget.TempConverter}>
-        <Converter />
+        <TempConverter />
       </Popover>
 
       <Popover popoverTarget={PopupTarget.PushProcessing}>

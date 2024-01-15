@@ -1,11 +1,28 @@
-export const Converter = () => {
+import { FormEvent, useState } from 'react';
+
+import { useCalculateTempQuery } from '../../services/filmApiService';
+
+export const TempConverter = () => {
+  const [skip, setSkip] = useState(true);
+  const { data: result } = useCalculateTempQuery(
+    `nominal_temp=20&amp;nominal_time=10&amp;actual_temp=20&amp;units=C&amp;agitate=No&amp;Submit=Submit`,
+    { skip },
+  );
+
+  const onSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    setSkip(false);
+  };
+
   return (
     <div className="content">
+      {result}
       <form
         id="convertForm"
         method="post"
         action="https://www.digitaltruth.com/cgi-bin/develop.cgi?nominal_temp=20&amp;nominal_time=10&amp;actual_temp=20&amp;units=C&amp;agitate=No&amp;Submit=Submit"
         encType="multipart/form-data"
+        onSubmit={onSubmit}
       >
         <p>
           <input type="text" name="nominal_temp" defaultValue="20" maxLength={6} size={6} /> Recommended Temperature

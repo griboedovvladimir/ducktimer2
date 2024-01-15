@@ -15,7 +15,7 @@ interface ITimeParams {
 export const filmApiService = createApi({
   baseQuery,
   reducerPath: 'filmApiService',
-  tagTypes: ['Films', 'FilmProperty'],
+  tagTypes: ['Films', 'FilmProperty', 'FilmTime', 'TempConvert'],
   endpoints: (build) => ({
     fetchFilms: build.query<{ films: string[]; developers: string[] }, string>({
       query: () => ({
@@ -38,9 +38,18 @@ export const filmApiService = createApi({
         method: RequestMethod.POST,
         body,
       }),
-      providesTags: () => ['FilmProperty'],
+      providesTags: () => ['FilmTime'],
+    }),
+    calculateTemp: build.query<null, string>({
+      query: (body) => ({
+        url: `backend/todigitaltruth.php`,
+        method: RequestMethod.POST,
+        body,
+      }),
+      providesTags: () => ['TempConvert'],
     }),
   }),
 });
 
-export const { useFetchFilmsQuery, useFetchFilmsPropertiesQuery, useFetchTimeQuery } = filmApiService;
+export const { useFetchFilmsQuery, useFetchFilmsPropertiesQuery, useFetchTimeQuery, useCalculateTempQuery } =
+  filmApiService;
