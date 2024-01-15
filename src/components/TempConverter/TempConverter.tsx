@@ -1,11 +1,16 @@
-import { FormEvent, useState } from 'react';
+import { FormEvent, useRef, useState } from 'react';
 
 import { useCalculateTempQuery } from '../../services/filmApiService';
 
 export const TempConverter = () => {
+  const agitate = useRef<any>('');
+  const units = useRef<any>('');
+  const nominalTemp = useRef<any>('');
+  const nominalTime = useRef<any>('');
+  const actualTime = useRef<any>('');
   const [skip, setSkip] = useState(true);
   const { data: result } = useCalculateTempQuery(
-    `nominal_temp=20&amp;nominal_time=10&amp;actual_temp=20&amp;units=C&amp;agitate=No&amp;Submit=Submit`,
+    `nominal_temp=${nominalTemp.current.value}&amp;nominal_time=${nominalTime.current.value}&amp;actual_temp=${actualTime.current.value}&amp;units=${units.current.value}&amp;agitate=${agitate.current.value}&amp;Submit=Submit`,
     { skip },
   );
 
@@ -25,26 +30,27 @@ export const TempConverter = () => {
         onSubmit={onSubmit}
       >
         <p>
-          <input type="text" name="nominal_temp" defaultValue="20" maxLength={6} size={6} /> Recommended Temperature
-          (degrees)
+          <input type="text" name="nominal_temp" ref={nominalTemp} defaultValue="20" maxLength={6} size={6} />{' '}
+          Recommended Temperature (degrees)
         </p>
         <p>
-          <input type="text" name="nominal_time" defaultValue="10" maxLength={6} size={6} /> Recommended Time (minutes)
+          <input type="text" name="nominal_time" ref={nominalTime} defaultValue="10" maxLength={6} size={6} />{' '}
+          Recommended Time (minutes)
         </p>
         <p>
-          <input type="text" name="actual_temp" defaultValue="20" maxLength={6} size={6} /> Modified Temperature (the
-          actual temperature you want to use)
+          <input type="text" name="actual_temp" ref={actualTime} defaultValue="20" maxLength={6} size={6} /> Modified
+          Temperature (the actual temperature you want to use)
         </p>
         <p>
           The temperature units{' '}
-          <select name="units" defaultValue="C">
+          <select name="units" ref={units} defaultValue="C">
             <option value="C">C</option>
             <option value="F">F</option>
           </select>
         </p>
         <p>
           Will you be agitating constantly?{' '}
-          <select name="agitate" defaultValue="No">
+          <select name="agitate" defaultValue="No" ref={agitate}>
             <option value="No">No</option>
             <option value="Yes">Yes</option>
           </select>
@@ -54,7 +60,7 @@ export const TempConverter = () => {
         </p>
       </form>
       <h3>Result:</h3>
-      <p id="convertResult">Modified development time = 10 minutes and 0 seconds.</p>
+      <p id="convertResult">{result}</p>
       <br />
       <p>
         This calculator takes a standard developing time and adjusts it for temperature. To use it, enter the
