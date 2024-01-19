@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { useFetchFilmsQuery } from '../../services/filmApiService';
 import { FilmPropertiesForm } from '../FilmPropertiesForm';
@@ -18,6 +18,16 @@ export const FilmSelectForm = () => {
     type: '35mm',
     dev: '',
   });
+
+  useEffect(() => {
+    if (filmsOptions) {
+      setFilmFormModel({
+        ...filmFormModel,
+        film: filmsOptions.films[0],
+        dev: filmsOptions.developers[0],
+      });
+    }
+  }, [filmFormModel, filmsOptions]);
 
   const onChangeFormFields = (type: FilmFormFields, value: string): void => {
     setFilmFormModel({ ...filmFormModel, [type]: value });

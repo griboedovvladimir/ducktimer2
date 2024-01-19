@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { useFetchFilmsPropertiesQuery, useFetchTimeQuery } from '../../services/filmApiService';
 
@@ -20,6 +20,17 @@ export const FilmPropertiesForm = ({ film, type, dev }: any) => {
     [FilmPropertiesFormField.Dilution]: '',
     [FilmPropertiesFormField.Temp]: '',
   });
+
+  useEffect(() => {
+    if (filmProperties) {
+      setState({
+        ...state,
+        [FilmPropertiesFormField.Asaiso]: filmProperties.asaiso[0],
+        [FilmPropertiesFormField.Dilution]: filmProperties.dilution[0],
+        [FilmPropertiesFormField.Temp]: filmProperties.temp[0],
+      });
+    }
+  }, [filmProperties, state]);
 
   const [skip, setSkip] = useState(true);
 
