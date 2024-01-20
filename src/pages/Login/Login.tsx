@@ -8,7 +8,9 @@ import InputLabel from '@mui/material/InputLabel';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 
+import { ROUTE_CONSTANTS } from '../../CONSTANTS';
 import styles from './Login.module.css';
 
 export const Login = () => {
@@ -93,7 +95,7 @@ export const Login = () => {
           )}
           <Typography component="p" variant="subtitle2">
             If you are unable to authorize, you may need to{' '}
-            {/* <NavLink to={ROUTE_CONSTANTS.REGISTRATION_PAGE}>register</NavLink> */}
+            <NavLink to={ROUTE_CONSTANTS.REGISTRATION_PAGE}>register</NavLink>
           </Typography>
         </form>
       </Paper>
