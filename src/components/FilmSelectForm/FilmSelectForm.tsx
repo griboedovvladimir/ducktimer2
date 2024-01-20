@@ -33,8 +33,8 @@ export const FilmSelectForm = () => {
     setFilmFormModel({ ...filmFormModel, [type]: value });
   };
 
-  if(!isLoading && !error && !filmsOptions?.films.length && !filmsOptions?.developers.length) {
-    return <p>Selected film and developer can't use together</p>
+  if (!isLoading && !error && !filmsOptions?.films.length && !filmsOptions?.developers.length) {
+    return <p>{`Selected film and developer can't use together`}</p>;
   }
 
   // eslint-disable-next-line no-nested-ternary
