@@ -8,13 +8,15 @@ export const TempConverter = () => {
   const nominalTemp = useRef<any>('');
   const nominalTime = useRef<any>('');
   const actualTime = useRef<any>('');
-  const [trigger, { data: result }] = useCalculateTempMutation();
+  const [trigger, { data: result, isLoading }] = useCalculateTempMutation();
 
   const onSubmit = (e: FormEvent) => {
     e.preventDefault();
-    trigger(
-      `nominal_temp=${nominalTemp.current.value}&amp;nominal_time=${nominalTime.current.value}&amp;actual_temp=${actualTime.current.value}&amp;units=${units.current.value}&amp;agitate=${agitate.current.value}&amp;Submit=Submit`,
-    );
+    // eslint-disable-next-line no-unused-expressions
+    !isLoading &&
+      trigger(
+        `nominal_temp=${nominalTemp.current.value}&amp;nominal_time=${nominalTime.current.value}&amp;actual_temp=${actualTime.current.value}&amp;units=${units.current.value}&amp;agitate=${agitate.current.value}&amp;Submit=Submit`,
+      );
   };
 
   return (
