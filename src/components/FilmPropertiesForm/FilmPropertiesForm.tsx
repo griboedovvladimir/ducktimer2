@@ -56,6 +56,10 @@ export const FilmPropertiesForm = ({ film, type, dev }: any) => {
   };
   const errorMessage = 'errorMessage';
 
+  if(!isLoading && !filmProperties?.asaiso.length && !filmProperties?.dilution.length && !filmProperties?.temp.length) {
+    return <p>Time not found, select other parameters</p>
+  }
+
   return isLoading ? (
     <p>Loading...</p>
   ) : (
