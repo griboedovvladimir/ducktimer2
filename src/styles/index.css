@@ -171,7 +171,7 @@ h1 {
 
 .table {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     grid-template-rows: repeat(1, 1fr);
     grid-gap: 1rem;
     grid-column-start: 1;
@@ -181,7 +181,33 @@ h1 {
     align-items: start;
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1600px) {
+    .table {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows: repeat(1, 1fr);
+        grid-gap: 1rem;
+        grid-column-start: 1;
+        grid-column-end: 1;
+        grid-row-start: 1;
+        grid-row-end: 1;
+    }
+}
+
+@media screen and (max-width: 1400px) {
+    .table {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(1, 1fr);
+        grid-gap: 1rem;
+        grid-column-start: 1;
+        grid-column-end: 1;
+        grid-row-start: 1;
+        grid-row-end: 1;
+    }
+}
+
+@media screen and (max-width: 1200px) {
     .table {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -194,7 +220,7 @@ h1 {
     }
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 900px) {
     .table {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -207,7 +233,7 @@ h1 {
     }
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 620px) {
     .table {
         display: grid;
         grid-template-columns: repeat(1, 1fr);

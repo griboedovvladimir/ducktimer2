@@ -1,6 +1,6 @@
-import { FormEvent, useRef, useState } from 'react';
+import { FormEvent, useRef } from 'react';
 
-import { useCalculateTempQuery } from '../../services/filmApiService';
+import { useCalculateTempMutation } from '../../services/filmApiService';
 
 export const TempConverter = () => {
   const agitate = useRef<any>('');
@@ -8,15 +8,13 @@ export const TempConverter = () => {
   const nominalTemp = useRef<any>('');
   const nominalTime = useRef<any>('');
   const actualTime = useRef<any>('');
-  const [skip, setSkip] = useState(true);
-  const { data: result } = useCalculateTempQuery(
-    `nominal_temp=${nominalTemp.current.value}&amp;nominal_time=${nominalTime.current.value}&amp;actual_temp=${actualTime.current.value}&amp;units=${units.current.value}&amp;agitate=${agitate.current.value}&amp;Submit=Submit`,
-    { skip },
-  );
+  const [trigger, { data: result }] = useCalculateTempMutation();
 
   const onSubmit = (e: FormEvent) => {
     e.preventDefault();
-    setSkip(false);
+    trigger(
+      `nominal_temp=${nominalTemp.current.value}&amp;nominal_time=${nominalTime.current.value}&amp;actual_temp=${actualTime.current.value}&amp;units=${units.current.value}&amp;agitate=${agitate.current.value}&amp;Submit=Submit`,
+    );
   };
 
   return (

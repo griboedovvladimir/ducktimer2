@@ -40,16 +40,15 @@ export const filmApiService = createApi({
       }),
       providesTags: () => ['FilmTime'],
     }),
-    calculateTemp: build.query<null, string>({
+    calculateTemp: build.mutation<null, string>({
       query: (body) => ({
         url: `backend/todigitaltruth.php`,
         method: RequestMethod.POST,
         body,
       }),
-      providesTags: () => ['TempConvert'],
     }),
   }),
 });
 
-export const { useFetchFilmsQuery, useFetchFilmsPropertiesQuery, useFetchTimeQuery, useCalculateTempQuery } =
+export const { useFetchFilmsQuery, useFetchFilmsPropertiesQuery, useFetchTimeQuery, useCalculateTempMutation } =
   filmApiService;
