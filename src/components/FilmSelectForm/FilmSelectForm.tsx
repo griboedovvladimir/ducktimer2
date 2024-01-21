@@ -26,7 +26,7 @@ export const FilmSelectForm = () => {
   // eslint-disable-next-line no-nested-ternary
   return isLoading ? (
     <p>Loading...</p>
-  ) : !error ? (
+  ) : error ? (
     <p>Something went wrong</p>
   ) : (
     <form>
