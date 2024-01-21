@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useRef } from 'react';
 
 import { useFetchTimeMutation } from '../../services/filmApiService';
 
@@ -8,52 +8,34 @@ enum FilmPropertiesFormField {
   Temp = 'temp',
 }
 
-export const FilmPropertiesForm = ({ film, type, dev, filmProperties }: any) => {
-  const [isFormChanged, setIsFormChanged] = useState(false);
-  const [state, setState] = useState({
-    type,
-    film,
-    dev,
-    [FilmPropertiesFormField.Asaiso]: '',
-    [FilmPropertiesFormField.Dilution]: '',
-    [FilmPropertiesFormField.Temp]: '',
-  });
-
-  useEffect(() => {
-    if (filmProperties) {
-      setState({
-        ...state,
-        [FilmPropertiesFormField.Asaiso]: filmProperties.asaiso[0],
-        [FilmPropertiesFormField.Dilution]: filmProperties.dilution[0],
-        [FilmPropertiesFormField.Temp]: filmProperties.temp[0],
-      });
-    }
-  }, [filmProperties, state]);
-
-  const [trigger, { data: time }] = useFetchTimeMutation();
-
-  const onChangeForm = (field: FilmPropertiesFormField, value: string) => {
-    setIsFormChanged(true);
-    setState({ ...state, [field]: value });
+interface IProps {
+  film: string;
+  type: string;
+  dev: string;
+  filmProperties: {
+    asaiso: string[];
+    dilution: string[];
+    temp: string[];
   };
+}
+
+export const FilmPropertiesForm = ({ film, type, dev, filmProperties }: IProps) => {
+  const asaiso = useRef<any>();
+  const dilution = useRef<any>();
+  const temp = useRef<any>();
+
+  const [trigger, { data: time, isLoading }] = useFetchTimeMutation();
 
   const setTime = () => {
-    trigger(
-      isFormChanged
-        ? state
-        : {
-            ...state,
-            [FilmPropertiesFormField.Asaiso]: filmProperties?.asaiso[0] || '',
-            [FilmPropertiesFormField.Dilution]: filmProperties?.dilution[0] || '',
-            [FilmPropertiesFormField.Temp]: filmProperties?.temp[0] || '',
-          },
-    );
+    trigger({
+      film,
+      type,
+      dev,
+      [FilmPropertiesFormField.Asaiso]: asaiso.current.value,
+      [FilmPropertiesFormField.Dilution]: dilution.current.value,
+      [FilmPropertiesFormField.Temp]: temp.current.value,
+    });
   };
-  const errorMessage = 'errorMessage';
-
-  if (!filmProperties?.asaiso.length && !filmProperties?.dilution.length && !filmProperties?.temp.length) {
-    return <p>Time not found, select other parameters</p>;
-  }
 
   return (
     <div>
@@ -65,32 +47,20 @@ export const FilmPropertiesForm = ({ film, type, dev, filmProperties }: any) => 
           <span>temperature</span>
         </p>
       </div>
-      <select
-        defaultValue={filmProperties?.asaiso[0]}
-        name="iso"
-        onChange={({ target }) => onChangeForm(FilmPropertiesFormField.Asaiso, target.value)}
-      >
-        {filmProperties?.asaiso.map((iso: any) => <option>{iso}</option>)}
+      <select defaultValue={filmProperties?.asaiso[0]} name="iso" ref={asaiso}>
+        {filmProperties?.asaiso.map((isoProperty: any) => <option>{isoProperty}</option>)}
       </select>
-      <select
-        defaultValue={filmProperties?.dilution[0]}
-        name="dilution"
-        onChange={({ target }) => onChangeForm(FilmPropertiesFormField.Dilution, target.value)}
-      >
-        {filmProperties?.dilution.map((dilution: any) => <option>{dilution}</option>)}
+      <select defaultValue={filmProperties?.dilution[0]} name="dilution" ref={dilution}>
+        {filmProperties?.dilution.map((dilutionProperty: any) => <option>{dilutionProperty}</option>)}
       </select>
-      <select
-        defaultValue={filmProperties?.temp[0]}
-        name="temp"
-        onChange={({ target }) => onChangeForm(FilmPropertiesFormField.Temp, target.value)}
-      >
-        {filmProperties?.temp.map((temp: any) => <option>{temp}</option>)}
+      <select defaultValue={filmProperties?.temp[0]} name="temp" ref={temp}>
+        {filmProperties?.temp.map((tempProperty: any) => <option>{tempProperty}</option>)}
       </select>
       <button className="trans-color-btn" onClick={setTime} type="button">
         Set time
       </button>
-      {errorMessage}
-      {time}
+      {!isLoading && !time && <p>Time not found, select other parameters</p>}
+      {isLoading && <p>Loading...</p>}
     </div>
   );
 };

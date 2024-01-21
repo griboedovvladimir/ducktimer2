@@ -11,7 +11,7 @@ export enum FilmFormFields {
 
 export const FilmSelectForm = () => {
   const { data: filmsOptions, isLoading, error } = useFetchFilmsQuery('');
-  const [trigger, { data: filmProperties }] = useFetchFilmsPropertiesMutation();
+  const [trigger, { data: filmProperties, isLoading: isFilmPropertiesLoading }] = useFetchFilmsPropertiesMutation();
   const film = useRef<any>();
   const type = useRef<any>();
   const dev = useRef<any>();
@@ -45,7 +45,14 @@ export const FilmSelectForm = () => {
       <button className="trans-color-btn" onClick={() => onFilmSelect()} type="button">
         Next
       </button>
-      {isFilmSelected && <FilmPropertiesForm film={film} dev={dev} type={type} filmProperties={filmProperties} />}
+      {isFilmSelected &&
+        !isFilmPropertiesLoading &&
+        (filmProperties?.asaiso.length && filmProperties.temp.length && filmProperties.dilution.length ? (
+          <FilmPropertiesForm film={film} dev={dev} type={type} filmProperties={filmProperties} />
+        ) : (
+          <p>Selected film and developer can&apost use together</p>
+        ))}
+      {isFilmSelected && isFilmPropertiesLoading && <p>Loading...</p>}
     </form>
   );
 };

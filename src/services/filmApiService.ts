@@ -10,6 +10,7 @@ interface ITimeParams {
   temp: string;
   film: string;
   dev: string;
+  type: string;
 }
 
 export const filmApiService = createApi({
