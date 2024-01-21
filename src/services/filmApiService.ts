@@ -15,7 +15,7 @@ interface ITimeParams {
 export const filmApiService = createApi({
   baseQuery,
   reducerPath: 'filmApiService',
-  tagTypes: ['Films', 'FilmProperty', 'FilmTime', 'TempConvert'],
+  tagTypes: ['Films'],
   endpoints: (build) => ({
     fetchFilms: build.query<{ films: string[]; developers: string[] }, string>({
       query: () => ({
@@ -24,21 +24,22 @@ export const filmApiService = createApi({
       }),
       providesTags: () => ['Films'],
     }),
-    fetchFilmsProperties: build.query<{ asaiso: string[]; dilution: string[]; temp: string[] }, Partial<ITimeParams>>({
+    fetchFilmsProperties: build.mutation<
+      { asaiso: string[]; dilution: string[]; temp: string[] },
+      Partial<ITimeParams>
+    >({
       query: (body) => ({
         url: `backend/filmform2.php`,
         method: RequestMethod.POST,
         body,
       }),
-      providesTags: () => ['FilmProperty'],
     }),
-    fetchTime: build.query<string, ITimeParams>({
+    fetchTime: build.mutation<string, ITimeParams>({
       query: (body) => ({
         url: `backend/filmformset.php`,
         method: RequestMethod.POST,
         body,
       }),
-      providesTags: () => ['FilmTime'],
     }),
     calculateTemp: build.mutation<null, string>({
       query: (body) => ({
@@ -50,5 +51,5 @@ export const filmApiService = createApi({
   }),
 });
 
-export const { useFetchFilmsQuery, useFetchFilmsPropertiesQuery, useFetchTimeQuery, useCalculateTempMutation } =
+export const { useFetchFilmsQuery, useFetchFilmsPropertiesMutation, useFetchTimeMutation, useCalculateTempMutation } =
   filmApiService;

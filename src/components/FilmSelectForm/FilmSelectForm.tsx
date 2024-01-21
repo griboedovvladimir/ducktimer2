@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { useFetchFilmsQuery } from '../../services/filmApiService';
+import { useFetchFilmsPropertiesMutation, useFetchFilmsQuery } from '../../services/filmApiService';
 import { FilmPropertiesForm } from '../FilmPropertiesForm';
 
 export enum FilmFormFields {
@@ -11,6 +11,7 @@ export enum FilmFormFields {
 
 export const FilmSelectForm = () => {
   const { data: filmsOptions, isLoading, error } = useFetchFilmsQuery('');
+  const [trigger, { data: filmProperties }] = useFetchFilmsPropertiesMutation();
 
   const [isFilmSelected, setIsFilmSelected] = useState(false);
   const [filmFormModel, setFilmFormModel] = useState({
@@ -31,6 +32,11 @@ export const FilmSelectForm = () => {
 
   const onChangeFormFields = (type: FilmFormFields, value: string): void => {
     setFilmFormModel({ ...filmFormModel, [type]: value });
+  };
+
+  const onFilmSelect = () => {
+    setIsFilmSelected(true);
+    trigger({ film: filmFormModel.film, dev: filmFormModel.dev });
   };
 
   // eslint-disable-next-line no-nested-ternary
@@ -64,10 +70,10 @@ export const FilmSelectForm = () => {
       >
         {filmsOptions?.developers.map((developer) => <option>{developer}</option>)}
       </select>
-      <button className="trans-color-btn" onClick={() => setIsFilmSelected(true)} type="button">
+      <button className="trans-color-btn" onClick={() => onFilmSelect()} type="button">
         Next
       </button>
-      {isFilmSelected && <FilmPropertiesForm {...filmFormModel} />}
+      {isFilmSelected && <FilmPropertiesForm {...filmFormModel} filmProperties={filmProperties} />}
     </form>
   );
 };
