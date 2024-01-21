@@ -48,7 +48,12 @@ export const FilmSelectForm = () => {
       {isFilmSelected &&
         !isFilmPropertiesLoading &&
         (filmProperties?.asaiso.length && filmProperties.temp.length && filmProperties.dilution.length ? (
-          <FilmPropertiesForm film={film} dev={dev} type={type} filmProperties={filmProperties} />
+          <FilmPropertiesForm
+            film={film.current.value}
+            dev={dev.current.value}
+            type={type.current.value}
+            filmProperties={filmProperties}
+          />
         ) : (
           <p>Selected film and developer can&apost use together</p>
         ))}
