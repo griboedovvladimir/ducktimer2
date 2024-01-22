@@ -278,6 +278,7 @@ h1 {
     right:0;
     margin-left:auto;
     margin-right:auto;
+    color: var(--color-1);
 }
 
 .popup-container {
