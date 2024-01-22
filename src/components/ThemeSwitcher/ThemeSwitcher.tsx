@@ -9,7 +9,8 @@ export const ThemeSwitcher = () => {
   const switchHandle = (event: React.ChangeEvent<HTMLInputElement>): void => {
     const theme: string = event.target.checked ? 'b-n-r' : 'b-n-w';
 
-    // this.props.switchTheme(theme);
+    document.documentElement.classList.remove(event.target.checked ? 'b-n-w' : 'b-n-r');
+    document.documentElement.classList.add(event.target.checked ? 'b-n-r' : 'b-n-w');
     storageService.setThemeToSessionStorage(theme);
     setSwitcher(event.target.checked);
   };
@@ -22,10 +23,8 @@ export const ThemeSwitcher = () => {
 
   useEffect(() => {
     setDefaultTheme();
-    // this.props.switchTheme(
-    //   storageService.getThemeFromLocalStorage() || 'b-n-w'
-    // );
-    // setSwitcher(!(storageService.getThemeFromLocalStorage() === 'b-n-w'));
+    document.documentElement.classList.add(storageService.getThemeFromLocalStorage() || 'b-n-w');
+    setSwitcher(!(storageService.getThemeFromLocalStorage() === 'b-n-w'));
   }, []);
 
   return (

@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ae2f3c1-f473-4031-83c8-da72db6d1454" name="Changes" comment="Add second form view">
+    <list default="true" id="6ae2f3c1-f473-4031-83c8-da72db6d1454" name="Changes" comment="Fix form requests">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -16,8 +16,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="TypeScript JSX File" />
-        <option value="TypeScript File" />
         <option value="CSS File" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -44,7 +44,7 @@
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "main",
     "js.linters.configure.manually.selectedeslint": "true",
-    "last_opened_file_path": "/home/vgriboedov/projects/pmi_framework_kpidashboard",
+    "last_opened_file_path": "/home/vgriboedov/projects/ducktimer2/src",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.standard": "true",
@@ -63,18 +63,18 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/components" />
       <recent name="$PROJECT_DIR$/src" />
+      <recent name="$PROJECT_DIR$/src/components" />
       <recent name="$PROJECT_DIR$/src/shared/enums" />
       <recent name="$PROJECT_DIR$/src/shared" />
       <recent name="$PROJECT_DIR$" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/shared" />
       <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/src/styles" />
       <recent name="$PROJECT_DIR$/src/components" />
       <recent name="$PROJECT_DIR$/src/App" />
-      <recent name="$PROJECT_DIR$/public" />
     </key>
   </component>
   <component name="RunManager" selected="npm.start">
@@ -127,142 +127,8 @@
       <workItem from="1704717890466" duration="740000" />
       <workItem from="1704754273540" duration="1159000" />
       <workItem from="1704805360205" duration="16238000" />
-    </task>
-    <task id="LOCAL-00001" summary="init app">
-      <option name="closed" value="true" />
-      <created>1702415254055</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1702415254055</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Add deploy file">
-      <option name="closed" value="true" />
-      <created>1702416615041</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1702416615042</updated>
-    </task>
-    <task id="LOCAL-00003" summary="Add deploy file">
-      <option name="closed" value="true" />
-      <created>1702418015319</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1702418015319</updated>
-    </task>
-    <task id="LOCAL-00004" summary="Test deploy file">
-      <option name="closed" value="true" />
-      <created>1702421313002</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1702421313002</updated>
-    </task>
-    <task id="LOCAL-00005" summary="Test deploy file">
-      <option name="closed" value="true" />
-      <created>1702424456545</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1702424456545</updated>
-    </task>
-    <task id="LOCAL-00006" summary="Delete files">
-      <option name="closed" value="true" />
-      <created>1702469751786</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1702469751786</updated>
-    </task>
-    <task id="LOCAL-00007" summary="Add files">
-      <option name="closed" value="true" />
-      <created>1702469943653</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1702469943653</updated>
-    </task>
-    <task id="LOCAL-00008" summary="Add files">
-      <option name="closed" value="true" />
-      <created>1702471715664</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1702471715664</updated>
-    </task>
-    <task id="LOCAL-00009" summary="Add files">
-      <option name="closed" value="true" />
-      <created>1702473952411</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1702473952411</updated>
-    </task>
-    <task id="LOCAL-00010" summary="Add files">
-      <option name="closed" value="true" />
-      <created>1702474391151</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1702474391151</updated>
-    </task>
-    <task id="LOCAL-00011" summary="Delete files">
-      <option name="closed" value="true" />
-      <created>1702475165922</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1702475165922</updated>
-    </task>
-    <task id="LOCAL-00012" summary="Add files">
-      <option name="closed" value="true" />
-      <created>1702475227732</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1702475227732</updated>
-    </task>
-    <task id="LOCAL-00013" summary="Add placeholder">
-      <option name="closed" value="true" />
-      <created>1702845790885</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1702845790885</updated>
-    </task>
-    <task id="LOCAL-00014" summary="Change web app description">
-      <option name="closed" value="true" />
-      <created>1702846224714</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1702846224714</updated>
-    </task>
-    <task id="LOCAL-00015" summary="Turn on service worker">
-      <option name="closed" value="true" />
-      <created>1702898734113</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1702898734113</updated>
-    </task>
-    <task id="LOCAL-00016" summary="Add files">
-      <option name="closed" value="true" />
-      <created>1702935960206</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1702935960206</updated>
-    </task>
-    <task id="LOCAL-00017" summary="Add files">
-      <option name="closed" value="true" />
-      <created>1702937003161</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1702937003161</updated>
+      <workItem from="1705009495152" duration="46593000" />
+      <workItem from="1705693638250" duration="22379000" />
     </task>
     <task id="LOCAL-00018" summary="Add files">
       <option name="closed" value="true" />
@@ -400,7 +266,263 @@
       <option name="project" value="LOCAL" />
       <updated>1704923521400</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="Add popovers">
+      <option name="closed" value="true" />
+      <created>1705088597506</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1705088597506</updated>
+    </task>
+    <task id="LOCAL-00036" summary="Fix popovers">
+      <option name="closed" value="true" />
+      <created>1705096138672</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1705096138672</updated>
+    </task>
+    <task id="LOCAL-00037" summary="Add switcher">
+      <option name="closed" value="true" />
+      <created>1705153274806</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1705153274806</updated>
+    </task>
+    <task id="LOCAL-00038" summary="Fix backend">
+      <option name="closed" value="true" />
+      <created>1705244413670</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1705244413670</updated>
+    </task>
+    <task id="LOCAL-00039" summary="Fix backend">
+      <option name="closed" value="true" />
+      <created>1705244433482</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1705244433482</updated>
+    </task>
+    <task id="LOCAL-00040" summary="Fix lint issue">
+      <option name="closed" value="true" />
+      <created>1705244641142</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1705244641142</updated>
+    </task>
+    <task id="LOCAL-00041" summary="Fix lint issue">
+      <option name="closed" value="true" />
+      <created>1705244887679</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1705244887679</updated>
+    </task>
+    <task id="LOCAL-00042" summary="Add handle second form">
+      <option name="closed" value="true" />
+      <created>1705253380335</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1705253380335</updated>
+    </task>
+    <task id="LOCAL-00043" summary="Resolve condition fetch">
+      <option name="closed" value="true" />
+      <created>1705254203584</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1705254203584</updated>
+    </task>
+    <task id="LOCAL-00044" summary="Resolve condition fetch">
+      <option name="closed" value="true" />
+      <created>1705254383926</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1705254383926</updated>
+    </task>
+    <task id="LOCAL-00045" summary="Resolve condition fetch">
+      <option name="closed" value="true" />
+      <created>1705255673944</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1705255673944</updated>
+    </task>
+    <task id="LOCAL-00046" summary="Resolve condition fetch">
+      <option name="closed" value="true" />
+      <created>1705256073929</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1705256073929</updated>
+    </task>
+    <task id="LOCAL-00047" summary="Resolve condition fetch">
+      <option name="closed" value="true" />
+      <created>1705256319486</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1705256319486</updated>
+    </task>
+    <task id="LOCAL-00048" summary="Resolve condition fetch">
+      <option name="closed" value="true" />
+      <created>1705257544362</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1705257544362</updated>
+    </task>
+    <task id="LOCAL-00049" summary="Resolve condition fetch">
+      <option name="closed" value="true" />
+      <created>1705258472361</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1705258472361</updated>
+    </task>
+    <task id="LOCAL-00050" summary="Fix popovers">
+      <option name="closed" value="true" />
+      <created>1705260093863</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1705260093863</updated>
+    </task>
+    <task id="LOCAL-00051" summary="Add call to converter">
+      <option name="closed" value="true" />
+      <created>1705352223904</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1705352223904</updated>
+    </task>
+    <task id="LOCAL-00052" summary="Add call to converter">
+      <option name="closed" value="true" />
+      <created>1705353143186</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1705353143187</updated>
+    </task>
+    <task id="LOCAL-00053" summary="Add call to converter">
+      <option name="closed" value="true" />
+      <created>1705356250324</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1705356250324</updated>
+    </task>
+    <task id="LOCAL-00054" summary="Fix default form values">
+      <option name="closed" value="true" />
+      <created>1705694012640</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1705694012640</updated>
+    </task>
+    <task id="LOCAL-00055" summary="Fix error message">
+      <option name="closed" value="true" />
+      <created>1705743870255</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1705743870255</updated>
+    </task>
+    <task id="LOCAL-00056" summary="Fix manifest">
+      <option name="closed" value="true" />
+      <created>1705744125845</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1705744125845</updated>
+    </task>
+    <task id="LOCAL-00057" summary="Fix manifest">
+      <option name="closed" value="true" />
+      <created>1705744202636</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1705744202637</updated>
+    </task>
+    <task id="LOCAL-00058" summary="Fix manifest">
+      <option name="closed" value="true" />
+      <created>1705744424209</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1705744424209</updated>
+    </task>
+    <task id="LOCAL-00059" summary="Fix manifest">
+      <option name="closed" value="true" />
+      <created>1705768486913</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1705768486913</updated>
+    </task>
+    <task id="LOCAL-00060" summary="Fix manifest">
+      <option name="closed" value="true" />
+      <created>1705787355503</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1705787355503</updated>
+    </task>
+    <task id="LOCAL-00061" summary="Fix manifest">
+      <option name="closed" value="true" />
+      <created>1705790600980</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1705790600984</updated>
+    </task>
+    <task id="LOCAL-00062" summary="Fix form requests">
+      <option name="closed" value="true" />
+      <created>1705847118971</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1705847118971</updated>
+    </task>
+    <task id="LOCAL-00063" summary="Fix form requests">
+      <option name="closed" value="true" />
+      <created>1705855818160</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1705855818160</updated>
+    </task>
+    <task id="LOCAL-00064" summary="Fix form requests">
+      <option name="closed" value="true" />
+      <created>1705857093591</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1705857093591</updated>
+    </task>
+    <task id="LOCAL-00065" summary="Fix form requests">
+      <option name="closed" value="true" />
+      <created>1705866610447</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1705866610447</updated>
+    </task>
+    <task id="LOCAL-00066" summary="Fix form requests">
+      <option name="closed" value="true" />
+      <created>1705866827734</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1705866827736</updated>
+    </task>
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -431,6 +553,18 @@
     <MESSAGE value="Add time piker" />
     <MESSAGE value="Add timer logic" />
     <MESSAGE value="Add second form view" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add second form view" />
+    <MESSAGE value="Add popovers" />
+    <MESSAGE value="Add switcher" />
+    <MESSAGE value="Fix backend" />
+    <MESSAGE value="Fix lint issue" />
+    <MESSAGE value="Add handle second form" />
+    <MESSAGE value="Resolve condition fetch" />
+    <MESSAGE value="Fix popovers" />
+    <MESSAGE value="Add call to converter" />
+    <MESSAGE value="Fix default form values" />
+    <MESSAGE value="Fix error message" />
+    <MESSAGE value="Fix manifest" />
+    <MESSAGE value="Fix form requests" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix form requests" />
   </component>
 </project>

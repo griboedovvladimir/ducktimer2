@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 
 import { useFetchTimeMutation } from '../../services/filmApiService';
 
@@ -23,10 +23,12 @@ export const FilmPropertiesForm = ({ film, type, dev, filmProperties }: IProps) 
   const asaiso = useRef<any>();
   const dilution = useRef<any>();
   const temp = useRef<any>();
+  const [isFilmSelected, setIsFilmSelected] = useState(false);
 
   const [trigger, { data: time, isLoading }] = useFetchTimeMutation();
 
   const setTime = () => {
+    setIsFilmSelected(true);
     trigger({
       film,
       type,
@@ -59,7 +61,7 @@ export const FilmPropertiesForm = ({ film, type, dev, filmProperties }: IProps) 
       <button className="trans-color-btn" onClick={setTime} type="button">
         Set time
       </button>
-      {!isLoading && !time && <p>Time not found, select other parameters</p>}
+      {!isLoading && !time && isFilmSelected && <p>Time not found, select other parameters</p>}
       {isLoading && <p>Loading...</p>}
     </div>
   );

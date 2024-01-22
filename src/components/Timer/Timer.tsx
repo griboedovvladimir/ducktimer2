@@ -7,6 +7,8 @@ import { OTHER_CONSTANTS, SELECT_PROCESS_OPTIONS } from '../../CONSTANTS';
 import { Film, Pause, Play, Set } from '../../shared/icons';
 import { FilmSelectForm } from '../FilmSelectForm';
 import styles from './Timer.module.css';
+// @ts-ignore
+import beep from '../../assets/sounds/duck.mp3';
 
 interface IProps {
   id: string;
@@ -67,7 +69,7 @@ export const Timer = ({ id, time, onRemoveTimer }: IProps) => {
     SELECT_PROCESS_OPTIONS.map((processOption) => <option key={processOption}>{processOption}</option>);
 
   const timerOverHandle = () => {
-    const audio = new Audio('./static/media/duck.mp3');
+    const audio = new Audio(beep);
 
     audio.autoplay = true;
     setState({ ...state, timerFinished: true });
@@ -123,17 +125,23 @@ export const Timer = ({ id, time, onRemoveTimer }: IProps) => {
         {state.note && <p> Note: {state.note}</p>}
         <div className="timer-buttons">
           {state.set ? (
-            <button type="button" aria-label="pause">
-              <Pause title="Pause" className="button-icon" onClick={onStopTimer} />
-            </button>
+            <Tooltip title="Pause">
+              <button type="button" aria-label="pause">
+                <Pause className="button-icon" onClick={onStopTimer} />
+              </button>
+            </Tooltip>
           ) : (
-            <button type="button" aria-label="start">
-              <Play title="Start" onClick={onStartTimer} className="button-icon" />
-            </button>
+            <Tooltip title="Start">
+              <button type="button" aria-label="start">
+                <Play onClick={onStartTimer} className="button-icon" />
+              </button>
+            </Tooltip>
           )}
-          <button type="button" aria-label="set">
-            <Set title="Set" onClick={onSetTimer} className="button-icon" />
-          </button>
+          <Tooltip title="Set">
+            <button type="button" aria-label="set">
+              <Set onClick={onSetTimer} className="button-icon" />
+            </button>
+          </Tooltip>
         </div>
       </div>
       {state.panelIsOpen && (
