@@ -56,7 +56,7 @@ export const Main = ({ currentTheme }: any) => {
         <RightMenu />
         <div className="table">
           {timers.map((timer: { time: string; id: string }) => (
-            <Timer key={timer.id} id={timer.id} time={timer.time} onRemoveTimer={onRemoveTimer} theme={theme} />
+            <Timer key={timer.id} id={timer.id} time={timer.time} onRemoveTimer={onRemoveTimer} />
           ))}
         </div>
       </div>

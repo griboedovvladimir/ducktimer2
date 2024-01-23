@@ -14,7 +14,6 @@ interface IProps {
   id: string;
   time: string;
   onRemoveTimer(id: string): void;
-  theme: string;
 }
 
 export const Timer = ({ id, time, onRemoveTimer }: IProps) => {
