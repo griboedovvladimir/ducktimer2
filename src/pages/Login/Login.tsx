@@ -8,13 +8,18 @@ import InputLabel from '@mui/material/InputLabel';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 import { ROUTE_CONSTANTS } from '../../CONSTANTS';
+import { filmApiService } from '../../services/filmApiService';
+import { storageService } from '../../services/storage.service';
+import { Logo } from '../../shared/icons';
 import styles from './Login.module.css';
 
 export const Login = () => {
+  const navigate = useNavigate();
   const [showMessage, setShowMessage] = useState(false);
+  const [trigger] = filmApiService.useGetTokenMutation();
 
   const signIn = {
     email: '',
@@ -37,21 +42,22 @@ export const Login = () => {
     }
   };
 
-  const onSubmit = (): void => {
-    // event.preventDefault();
-    // restService.post(API_CONSTANTS.LOGIN, this.signIn).then((response) => {
-    //   response.text().then((token) => {
-    //     if (token) {
-    //       this.props.authorize({ authorize: token });
-    //       this.signIn.remember
-    //         ? storageService.setTokenToLocalStorage(token)
-    //         : storageService.setTokenToSessionStorage(token);
-    //       this.props.history.push('/main');
-    //     } else {
-    //       this.setState({ ...this.state, showMessage: true });
-    //     }
-    //   });
-    // });
+  const onSubmit = (event: any): void => {
+    event.preventDefault();
+    trigger(signIn)
+      .unwrap()
+      .then((response) => {
+        if (response) {
+          // this.props.authorize({ authorize: token });
+          // eslint-disable-next-line no-unused-expressions
+          signIn.remember
+            ? storageService.setTokenToLocalStorage(response)
+            : storageService.setTokenToSessionStorage(response);
+          navigate('/main');
+        } else {
+          // this.setState({ ...this.state, showMessage: true });
+        }
+      });
     setShowMessage(true);
   };
 
@@ -59,9 +65,7 @@ export const Login = () => {
     <main className={styles.main}>
       <CssBaseline />
       <Paper className={styles.paper}>
-        {/* eslint-disable-next-line jsx-a11y/alt-text */}
-        <img src="./img/logo.svg" />
-
+        <Logo className={styles.logo} />
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>

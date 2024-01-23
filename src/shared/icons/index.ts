@@ -13,3 +13,4 @@ export { ReactComponent as Temp } from './temp.svg';
 export { ReactComponent as Time } from './time2.svg';
 export { ReactComponent as Timer } from './timer.svg';
 export { ReactComponent as Vol } from './vol.svg';
+export { ReactComponent as Logo } from './logo.svg';

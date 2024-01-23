@@ -1,16 +1,18 @@
 import { Tooltip } from 'antd';
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { Clock } from '../../components/Clock';
 import { RightMenu } from '../../components/RightMenu';
 import { ThemeSwitcher } from '../../components/ThemeSwitcher';
 import { Timer } from '../../components/Timer';
 import { TopMenu } from '../../components/TopMenu';
+import { storageService } from '../../services/storage.service';
 import { guid } from '../../shared/helpers/guid';
 import { Person } from '../../shared/icons';
 
 export const Main = ({ currentTheme }: any) => {
   const [timers, setTimers] = React.useState([]);
+  const [theme, setTheme] = React.useState('b-n-w');
 
   const onLogOut = () => {};
   const onAddTimer = () => {
@@ -24,9 +26,21 @@ export const Main = ({ currentTheme }: any) => {
     setTimers([]);
   };
 
+  const setDefaultTheme = () => {
+    if (!storageService.getThemeFromLocalStorage()) {
+      storageService.setThemeToSessionStorage('b-n-w');
+    }
+  };
+
+  useEffect(() => {
+    setDefaultTheme();
+    document.documentElement.classList.add(storageService.getThemeFromLocalStorage() || 'b-n-w');
+    setTheme(storageService.getThemeFromLocalStorage() || 'b-n-w');
+  }, []);
+
   return (
     <div className={currentTheme?.theme}>
-      <ThemeSwitcher />
+      <ThemeSwitcher theme={theme} setTheme={setTheme} />
       <div className="row1">
         <Clock />
         <div className="logout">
@@ -42,7 +56,7 @@ export const Main = ({ currentTheme }: any) => {
         <RightMenu />
         <div className="table">
           {timers.map((timer: { time: string; id: string }) => (
-            <Timer key={timer.id} id={timer.id} time={timer.time} onRemoveTimer={onRemoveTimer} />
+            <Timer key={timer.id} id={timer.id} time={timer.time} onRemoveTimer={onRemoveTimer} theme={theme} />
           ))}
         </div>
       </div>
