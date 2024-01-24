@@ -1,0 +1,15 @@
+.b-n-w {
+    --main-color: transpetent;
+    --color-1: black;
+    --color-2: white;
+    --color-3: gray;
+    --shadowColor: 0 0 10px rgba(0, 0, 0, 0.5)
+}
+
+.b-n-r {
+    --main-color: black;
+    --color-1: red;
+    --color-2: black;
+    --color-3: red;
+    --shadowColor: 0 0 10px rgba(255, 0, 0, 0.5);
+}

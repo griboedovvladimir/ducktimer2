@@ -10,6 +10,12 @@ export const ThemeSwitcher = ({ theme, setTheme }: any) => {
     document.documentElement.classList.add(event.target.checked ? 'b-n-r' : 'b-n-w');
     storageService.setThemeToSessionStorage(themeValue);
     setTheme(themeValue);
+
+    if (themeValue === 'b-n-r') {
+      document.documentElement.requestFullscreen();
+    } else {
+      document.exitFullscreen().then(() => {});
+    }
   };
 
   return (

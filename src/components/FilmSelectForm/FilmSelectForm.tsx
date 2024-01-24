@@ -29,7 +29,7 @@ export const FilmSelectForm = () => {
   ) : error ? (
     <p>Something went wrong</p>
   ) : (
-    <form>
+    <form onChange={() => setIsFilmSelected(false)}>
       <p>Select film, film type and developer</p>
       <select defaultValue={filmsOptions?.films[0]} name="film-select" ref={film}>
         {filmsOptions?.films.map((filmOption) => <option>{filmOption}</option>)}

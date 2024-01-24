@@ -14,9 +14,10 @@ interface IProps {
   id: string;
   time: string;
   onRemoveTimer(id: string): void;
+  theme: string;
 }
 
-export const Timer = ({ id, time, onRemoveTimer }: IProps) => {
+export const Timer = ({ id, time, onRemoveTimer, theme }: IProps) => {
   const [timePickerValue, setTimePickerValue] = useState(OTHER_CONSTANTS.START_TIME);
   const [currentTimerValue, setCurrentTimerValue] = useState(time);
   const [state, setState] = useState({
@@ -32,6 +33,7 @@ export const Timer = ({ id, time, onRemoveTimer }: IProps) => {
 
   const timersClassList = state.timerFinished ? 'timers finished' : 'timers';
   const process = state.otherProcess ? state.otherProcess : state.selectProcess;
+  const isDarkTheme = theme === 'b-n-r';
 
   const onStopTimer = () => {
     cancelAnimationFrame(state.set);
@@ -163,11 +165,11 @@ export const Timer = ({ id, time, onRemoveTimer }: IProps) => {
             theme={{
               components: {
                 DatePicker: {
-                  activeBorderColor: '#000',
+                  activeBorderColor: isDarkTheme ? '#ff0000' : '#000',
                   activeShadow: '0 0 0 2px rgba(0, 0, 0, 0.2)',
-                  colorTextDisabled: '#000',
-                  colorPrimary: '#000',
-                  controlItemBgActive: '#fff',
+                  colorTextDisabled: isDarkTheme ? '#ff0000' : '#000',
+                  colorPrimary: isDarkTheme ? '#ff0000' : '#000',
+                  controlItemBgActive: isDarkTheme ? '#000' : '#fff',
                 },
               },
             }}
