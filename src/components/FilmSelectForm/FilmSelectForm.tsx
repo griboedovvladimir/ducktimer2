@@ -9,7 +9,7 @@ export enum FilmFormFields {
   Dev = 'dev',
 }
 
-export const FilmSelectForm = () => {
+export const FilmSelectForm = ({ setTimer }: { setTimer: any }) => {
   const { data: filmsOptions, isLoading, error } = useFetchFilmsQuery('');
   const [trigger, { data: filmProperties, isLoading: isFilmPropertiesLoading }] = useFetchFilmsPropertiesMutation();
   const film = useRef<any>();
@@ -53,6 +53,7 @@ export const FilmSelectForm = () => {
             dev={dev.current.value}
             type={type.current.value}
             filmProperties={filmProperties}
+            setTimer={setTimer}
           />
         ) : (
           <p>Selected film and developer can&apost use together</p>

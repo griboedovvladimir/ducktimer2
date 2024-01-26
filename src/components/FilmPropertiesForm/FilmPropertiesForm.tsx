@@ -12,6 +12,7 @@ interface IProps {
   film: string;
   type: string;
   dev: string;
+  setTimer: (time: string) => void;
   filmProperties: {
     asaiso: string[];
     dilution: string[];
@@ -19,7 +20,7 @@ interface IProps {
   };
 }
 
-export const FilmPropertiesForm = ({ film, type, dev, filmProperties }: IProps) => {
+export const FilmPropertiesForm = ({ film, type, dev, filmProperties, setTimer }: IProps) => {
   const asaiso = useRef<any>();
   const dilution = useRef<any>();
   const temp = useRef<any>();
@@ -36,7 +37,9 @@ export const FilmPropertiesForm = ({ film, type, dev, filmProperties }: IProps) 
       [FilmPropertiesFormField.Asaiso]: asaiso.current.value,
       [FilmPropertiesFormField.Dilution]: dilution.current.value,
       [FilmPropertiesFormField.Temp]: temp.current.value,
-    });
+    })
+      .unwrap()
+      .then((res) => setTimer(new Date((res as unknown as number) * 60 * 1000).toISOString().substring(11, 16)));
   };
 
   return (
@@ -61,7 +64,7 @@ export const FilmPropertiesForm = ({ film, type, dev, filmProperties }: IProps) 
       <button className="trans-color-btn" onClick={setTime} type="button">
         Set time
       </button>
-      {!isLoading && !time && isFilmSelected && <p>Time not found, select other parameters</p>}
+      {!isLoading && time === 'false' && isFilmSelected && <p>Time not found, select other parameters</p>}
       {isLoading && <p>Loading...</p>}
     </div>
   );

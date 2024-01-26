@@ -199,7 +199,7 @@ export const Timer = ({ id, time, onRemoveTimer, theme }: IProps) => {
               <Film />
             </button>
           </Tooltip>
-          {state.formIsActivated && <FilmSelectForm />}
+          {state.formIsActivated && <FilmSelectForm setTimer={setCurrentTimerValue} />}
         </div>
       )}
       <button type="button" onClick={onTogglePanel} className="stork trans-color-btn">
