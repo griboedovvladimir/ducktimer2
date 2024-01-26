@@ -39,7 +39,7 @@ export const FilmPropertiesForm = ({ film, type, dev, filmProperties, setTimer }
       [FilmPropertiesFormField.Temp]: temp.current.value,
     })
       .unwrap()
-      .then((res) => setTimer(new Date((res as unknown as number) * 60 * 1000).toISOString().substring(11, 16)));
+      .then((res) => setTimer(new Date((res as unknown as number) * 60 * 1000).toTimeString().split(' ')[0]));
   };
 
   return (

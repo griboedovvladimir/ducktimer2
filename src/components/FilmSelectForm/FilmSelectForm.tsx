@@ -29,17 +29,27 @@ export const FilmSelectForm = ({ setTimer }: { setTimer: any }) => {
   ) : error ? (
     <p>Something went wrong</p>
   ) : (
-    <form onChange={() => setIsFilmSelected(false)}>
+    <form>
       <p>Select film, film type and developer</p>
-      <select defaultValue={filmsOptions?.films[0]} name="film-select" ref={film}>
+      <select
+        defaultValue={filmsOptions?.films[0]}
+        name="film-select"
+        ref={film}
+        onChange={() => setIsFilmSelected(false)}
+      >
         {filmsOptions?.films.map((filmOption) => <option>{filmOption}</option>)}
       </select>
-      <select name="film-type-select" defaultValue="35mm" ref={type}>
+      <select name="film-type-select" defaultValue="35mm" ref={type} onChange={() => setIsFilmSelected(false)}>
         <option>35mm</option>
         <option>120</option>
         <option>sheet</option>
       </select>
-      <select defaultValue={filmsOptions?.developers[0]} name="dev-select" ref={dev}>
+      <select
+        defaultValue={filmsOptions?.developers[0]}
+        name="dev-select"
+        ref={dev}
+        onChange={() => setIsFilmSelected(false)}
+      >
         {filmsOptions?.developers.map((developer) => <option>{developer}</option>)}
       </select>
       <button className="trans-color-btn" onClick={() => onFilmSelect()} type="button">
