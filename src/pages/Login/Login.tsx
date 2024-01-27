@@ -47,7 +47,6 @@ export const Login = () => {
 
   return (
     <main className={styles.main}>
-      <CssBaseline />
       <Card className={styles.paper}>
         <Logo className={styles.logo} />
         <Form
