@@ -12,7 +12,7 @@ interface IProps {
   film: string;
   type: string;
   dev: string;
-  setTimer: (time: string) => void;
+  setTimer: (time: string | undefined) => void;
   filmProperties: {
     asaiso: string[];
     dilution: string[];
@@ -39,7 +39,7 @@ export const FilmPropertiesForm = ({ film, type, dev, filmProperties, setTimer }
       [FilmPropertiesFormField.Temp]: temp.current.value,
     })
       .unwrap()
-      .then((res) => setTimer(new Date((res as unknown as number) * 60).toTimeString().split(' ')[0]));
+      .then((res) => setTimer(new Date(parseInt(res, 10) * 60 * 1000).toUTCString().match(/(\d\d:\d\d:\d\d)/)?.[0]));
   };
 
   return (
