@@ -1,4 +1,3 @@
-import CssBaseline from '@mui/material/CssBaseline';
 import { Button, Checkbox, Form, Typography, Input, Card } from 'antd';
 import { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
@@ -48,7 +47,6 @@ export const Login = () => {
 
   return (
     <main className={styles.main}>
-      <CssBaseline />
       <Card className={styles.paper}>
         <div className={styles.logoContainer}>
           <Logo className={styles.logo} />
