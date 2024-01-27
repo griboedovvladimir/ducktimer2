@@ -36,3 +36,8 @@
   margin: 10px;
   opacity: 0.9;
 }
+
+.logoContainer {
+  display: flex;
+  justify-content: center;
+}

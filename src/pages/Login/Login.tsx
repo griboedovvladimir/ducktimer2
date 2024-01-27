@@ -50,7 +50,9 @@ export const Login = () => {
     <main className={styles.main}>
       <CssBaseline />
       <Card className={styles.paper}>
-        <Logo className={styles.logo} />
+        <div className={styles.logoContainer}>
+          <Logo className={styles.logo} />
+        </div>
         <Form
           name="basic"
           labelCol={{ span: 8 }}
