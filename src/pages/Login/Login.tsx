@@ -1,5 +1,5 @@
 import { Button, Checkbox, Form, Typography, Input, Card } from 'antd';
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 
 import { ROUTE_CONSTANTS } from '../../CONSTANTS';
@@ -17,22 +17,19 @@ type FieldType = {
 };
 
 export const Login = () => {
-  const email = useRef<any>();
-  const password = useRef<any>();
-  const remember = useRef<any>();
   const navigate = useNavigate();
   const [showMessage, setShowMessage] = useState(false);
   const [trigger] = useGetTokenMutation();
 
-  const onSubmit = (): void => {
+  const onSubmit = (e: FieldType): void => {
     storageService.setTokenToLocalStorage('token');
-    trigger({ email: email.current.value, password: password.current.value })
+    trigger(e)
       .unwrap()
       .then((response) => {
         if (response) {
           // this.props.authorize({ authorize: token });
           // eslint-disable-next-line no-unused-expressions
-          remember.current.value
+          e.remember
             ? storageService.setTokenToLocalStorage(response)
             : storageService.setTokenToSessionStorage(response);
           navigate('/main');
@@ -64,7 +61,7 @@ export const Login = () => {
             name="email"
             rules={[{ required: true, message: 'Please input your username!' }]}
           >
-            <Input bordered={false} ref={email} />
+            <Input bordered={false} />
           </Form.Item>
 
           <Form.Item<FieldType>
@@ -72,11 +69,11 @@ export const Login = () => {
             name="password"
             rules={[{ required: true, message: 'Please input your password!' }]}
           >
-            <Input.Password bordered={false} ref={password} />
+            <Input.Password bordered={false} />
           </Form.Item>
 
           <Form.Item<FieldType> name="remember" valuePropName="checked" wrapperCol={{ offset: 8, span: 16 }}>
-            <Checkbox ref={remember}>Remember me</Checkbox>
+            <Checkbox>Remember me</Checkbox>
           </Form.Item>
 
           <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
