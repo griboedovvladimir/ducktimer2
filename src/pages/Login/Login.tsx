@@ -27,6 +27,7 @@ export const Login = () => {
       .unwrap()
       .then((response) => {
         if (response) {
+          // eslint-disable-next-line no-unused-expressions
           e.remember
             ? storageService.setTokenToLocalStorage(response)
             : storageService.setTokenToSessionStorage(response);
