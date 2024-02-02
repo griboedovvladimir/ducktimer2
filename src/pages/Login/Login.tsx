@@ -17,22 +17,22 @@ type FieldType = {
 };
 
 export const Login = () => {
-  const email = useRef<string>();
-  const password = useRef<string>();
-  const remember = useRef<boolean>();
+  const email = useRef<any>();
+  const password = useRef<any>();
+  const remember = useRef<any>();
   const navigate = useNavigate();
   const [showMessage, setShowMessage] = useState(false);
   const [trigger] = useGetTokenMutation();
 
   const onSubmit = (): void => {
     storageService.setTokenToLocalStorage('token');
-    trigger({ email, password })
+    trigger({ email: email.current.value, password: password.current.value })
       .unwrap()
       .then((response) => {
         if (response) {
           // this.props.authorize({ authorize: token });
           // eslint-disable-next-line no-unused-expressions
-          remember
+          remember.current.value
             ? storageService.setTokenToLocalStorage(response)
             : storageService.setTokenToSessionStorage(response);
           navigate('/main');
@@ -64,7 +64,7 @@ export const Login = () => {
             name="email"
             rules={[{ required: true, message: 'Please input your username!' }]}
           >
-            <Input bordered={false} />
+            <Input bordered={false} ref={email} />
           </Form.Item>
 
           <Form.Item<FieldType>
@@ -72,11 +72,11 @@ export const Login = () => {
             name="password"
             rules={[{ required: true, message: 'Please input your password!' }]}
           >
-            <Input.Password bordered={false} />
+            <Input.Password bordered={false} ref={password} />
           </Form.Item>
 
           <Form.Item<FieldType> name="remember" valuePropName="checked" wrapperCol={{ offset: 8, span: 16 }}>
-            <Checkbox>Remember me</Checkbox>
+            <Checkbox ref={remember}>Remember me</Checkbox>
           </Form.Item>
 
           <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
