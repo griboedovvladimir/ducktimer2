@@ -16,7 +16,11 @@ export const Main = ({ currentTheme }: any) => {
   const [timers, setTimers] = React.useState([]);
   const [theme, setTheme] = React.useState('b-n-w');
 
-  const onLogOut = () => {};
+  const onLogOut = () => {
+    storageService.removeTokenFromSessionStorage();
+    storageService.removeTokenFromLocalStorage();
+    navigate('/login');
+  };
   const onAddTimer = () => {
     // @ts-ignore
     setTimers([...timers, { id: guid(), time: '00:00:00' }]);
