@@ -15,7 +15,7 @@ interface IAppRoutes {
 export const AppRoutes = () => {
   const routes: IAppRoutes[] = [
     {
-      path: ROUTE_CONSTANTS.MAIN_PAGE,
+      path: ROUTE_CONSTANTS.ROOT,
       component: <Main />,
     },
     {

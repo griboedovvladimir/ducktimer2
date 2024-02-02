@@ -32,7 +32,7 @@ export const Login = () => {
           e.remember
             ? storageService.setTokenToLocalStorage(response)
             : storageService.setTokenToSessionStorage(response);
-          navigate('/main');
+          navigate('/');
         } else {
           // this.setState({ ...this.state, showMessage: true });
         }

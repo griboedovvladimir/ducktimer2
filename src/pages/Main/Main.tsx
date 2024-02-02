@@ -38,8 +38,9 @@ export const Main = ({ currentTheme }: any) => {
     setDefaultTheme();
     document.documentElement.classList.add(storageService.getThemeFromLocalStorage() || 'b-n-w');
     setTheme(storageService.getThemeFromLocalStorage() || 'b-n-w');
+    console.log(storageService.getTokenFromLocalStorage());
 
-    if (!storageService.getTokenFromSessionStorage()) {
+    if (!storageService.getTokenFromSessionStorage() && !storageService.getTokenFromLocalStorage()) {
       navigate('/login');
     }
   }, [navigate]);
