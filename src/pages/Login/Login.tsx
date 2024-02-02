@@ -27,17 +27,14 @@ export const Login = () => {
       .unwrap()
       .then((response) => {
         if (response) {
-          // this.props.authorize({ authorize: token });
-          // eslint-disable-next-line no-unused-expressions
           e.remember
             ? storageService.setTokenToLocalStorage(response)
             : storageService.setTokenToSessionStorage(response);
           navigate('/');
         } else {
-          // this.setState({ ...this.state, showMessage: true });
+          setShowMessage(true);
         }
       });
-    setShowMessage(true);
   };
 
   return (
