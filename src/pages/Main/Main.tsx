@@ -1,5 +1,6 @@
 import { Tooltip } from 'antd';
 import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { Clock } from '../../components/Clock';
 import { RightMenu } from '../../components/RightMenu';
@@ -11,6 +12,7 @@ import { guid } from '../../shared/helpers/guid';
 import { Person } from '../../shared/icons';
 
 export const Main = ({ currentTheme }: any) => {
+  const navigate = useNavigate();
   const [timers, setTimers] = React.useState([]);
   const [theme, setTheme] = React.useState('b-n-w');
 
@@ -36,9 +38,13 @@ export const Main = ({ currentTheme }: any) => {
     setDefaultTheme();
     document.documentElement.classList.add(storageService.getThemeFromLocalStorage() || 'b-n-w');
     setTheme(storageService.getThemeFromLocalStorage() || 'b-n-w');
-  }, []);
 
-  return (
+    if (!storageService.getTokenFromSessionStorage()) {
+      navigate('/login');
+    }
+  }, [navigate]);
+
+  return !storageService.getTokenFromSessionStorage() ? (
     <div className={currentTheme?.theme}>
       <ThemeSwitcher theme={theme} setTheme={setTheme} />
       <div className="row1">
@@ -61,5 +67,5 @@ export const Main = ({ currentTheme }: any) => {
         </div>
       </div>
     </div>
-  );
+  ) : null;
 };

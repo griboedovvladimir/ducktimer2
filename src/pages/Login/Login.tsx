@@ -1,9 +1,9 @@
 import { Button, Checkbox, Form, Typography, Input, Card } from 'antd';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 
 import { ROUTE_CONSTANTS } from '../../CONSTANTS';
-import { filmApiService } from '../../services/filmApiService';
+import { useGetTokenMutation } from '../../services/filmApiService';
 import { storageService } from '../../services/storage.service';
 import { Logo } from '../../shared/icons';
 import styles from './Login.module.css';
@@ -17,24 +17,22 @@ type FieldType = {
 };
 
 export const Login = () => {
+  const email = useRef<string>();
+  const password = useRef<string>();
+  const remember = useRef<boolean>();
   const navigate = useNavigate();
   const [showMessage, setShowMessage] = useState(false);
-  const [trigger] = filmApiService.useGetTokenMutation();
-
-  const signIn = {
-    email: '',
-    password: '',
-    remember: false,
-  };
+  const [trigger] = useGetTokenMutation();
 
   const onSubmit = (): void => {
-    trigger(signIn)
+    storageService.setTokenToLocalStorage('token');
+    trigger({ email, password })
       .unwrap()
       .then((response) => {
         if (response) {
           // this.props.authorize({ authorize: token });
           // eslint-disable-next-line no-unused-expressions
-          signIn.remember
+          remember
             ? storageService.setTokenToLocalStorage(response)
             : storageService.setTokenToSessionStorage(response);
           navigate('/main');

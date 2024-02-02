@@ -5,6 +5,7 @@ import { Route, Routes } from 'react-router-dom';
 import { ROUTE_CONSTANTS } from '../../CONSTANTS';
 import { Login } from '../../pages/Login';
 import { Main } from '../../pages/Main/Main';
+import { Registration } from '../../pages/Registration';
 
 interface IAppRoutes {
   path: string;
@@ -20,6 +21,10 @@ export const AppRoutes = () => {
     {
       path: ROUTE_CONSTANTS.LOGIN_PAGE,
       component: <Login />,
+    },
+    {
+      path: ROUTE_CONSTANTS.REGISTRATION_PAGE,
+      component: <Registration />,
     },
   ];
 
