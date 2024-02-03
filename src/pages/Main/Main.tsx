@@ -1,4 +1,4 @@
-import { Tooltip } from 'antd';
+import { ConfigProvider, Tooltip } from 'antd';
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -7,23 +7,27 @@ import { RightMenu } from '../../components/RightMenu';
 import { ThemeSwitcher } from '../../components/ThemeSwitcher';
 import { Timer } from '../../components/Timer';
 import { TopMenu } from '../../components/TopMenu';
+import { ROUTE_CONSTANTS } from '../../CONSTANTS';
 import { storageService } from '../../services/storage.service';
 import { guid } from '../../shared/helpers/guid';
 import { Person } from '../../shared/icons';
 
-export const Main = ({ currentTheme }: any) => {
+export const Main = () => {
+  const maxTimersCount = 20;
   const navigate = useNavigate();
-  const [timers, setTimers] = React.useState([]);
+  const [timers, setTimers] = React.useState<{ id: string; time: string }[]>([]);
   const [theme, setTheme] = React.useState('b-n-w');
+  const isDarkTheme = theme === 'b-n-r';
 
   const onLogOut = () => {
     storageService.removeTokenFromSessionStorage();
     storageService.removeTokenFromLocalStorage();
-    navigate('/login');
+    navigate(ROUTE_CONSTANTS.LOGIN_PAGE);
   };
   const onAddTimer = () => {
-    // @ts-ignore
-    setTimers([...timers, { id: guid(), time: '00:00:00' }]);
+    if (timers.length !== maxTimersCount) {
+      setTimers([...timers, { id: guid(), time: '00:00:00' }]);
+    }
   };
   const onRemoveTimer = (id: string) => {
     setTimers(timers.filter((timer: { id: string }) => timer.id !== id));
@@ -44,32 +48,51 @@ export const Main = ({ currentTheme }: any) => {
     setTheme(storageService.getThemeFromLocalStorage() || 'b-n-w');
 
     if (!storageService.getTokenFromSessionStorage() && !storageService.getTokenFromLocalStorage()) {
-      navigate('/login');
+      navigate(ROUTE_CONSTANTS.LOGIN_PAGE);
     }
   }, [navigate]);
 
   return !storageService.getTokenFromSessionStorage() ? (
-    <div className={currentTheme?.theme}>
-      <ThemeSwitcher theme={theme} setTheme={setTheme} />
-      <div className="row1">
-        <Clock />
-        <div className="logout">
-          <Tooltip title="Log out">
-            <Person className="icon" onClick={onLogOut} />
-          </Tooltip>
+    <ConfigProvider
+      theme={{
+        token: {
+          colorText: isDarkTheme ? '#ff0000' : '#000',
+          colorTextLightSolid: isDarkTheme ? '#ff0000' : '#fff',
+          boxShadowSecondary: isDarkTheme ? '0 0 0 2px #ff0000' : '0 0 0 2px #000',
+        },
+        components: {
+          DatePicker: {
+            activeBorderColor: isDarkTheme ? '#ff0000' : '#000',
+            activeShadow: '0 0 0 2px rgba(0, 0, 0, 0.2)',
+            colorTextDisabled: isDarkTheme ? '#ff0000' : '#000',
+            colorPrimary: isDarkTheme ? '#ff0000' : '#000',
+            controlItemBgActive: isDarkTheme ? '#000' : '#fff',
+          },
+        },
+      }}
+    >
+      <div className={theme}>
+        <ThemeSwitcher theme={theme} setTheme={setTheme} />
+        <div className="row1">
+          <Clock />
+          <div className="logout">
+            <Tooltip title="Log out">
+              <Person className="icon" onClick={onLogOut} />
+            </Tooltip>
+          </div>
+        </div>
+
+        <TopMenu addTimer={onAddTimer} clearBoard={onClearBoard} timersCount={timers.length} />
+
+        <div className="row2">
+          <RightMenu />
+          <div className="table">
+            {timers.map((timer: { time: string; id: string }) => (
+              <Timer key={timer.id} id={timer.id} time={timer.time} onRemoveTimer={onRemoveTimer} theme={theme} />
+            ))}
+          </div>
         </div>
       </div>
-
-      <TopMenu addTimer={onAddTimer} clearBoard={onClearBoard} />
-
-      <div className="row2">
-        <RightMenu />
-        <div className="table">
-          {timers.map((timer: { time: string; id: string }) => (
-            <Timer key={timer.id} id={timer.id} time={timer.time} onRemoveTimer={onRemoveTimer} theme={theme} />
-          ))}
-        </div>
-      </div>
-    </div>
+    </ConfigProvider>
   ) : null;
 };

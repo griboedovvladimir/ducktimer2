@@ -57,6 +57,13 @@ export const filmApiService = createApi({
         body,
       }),
     }),
+    setToken: build.mutation<string | undefined, any>({
+      query: (body) => ({
+        url: API_CONSTANTS.LOGIN,
+        method: RequestMethod.POST,
+        body,
+      }),
+    }),
   }),
 });
 
@@ -66,4 +73,5 @@ export const {
   useFetchTimeMutation,
   useCalculateTempMutation,
   useGetTokenMutation,
+  useSetTokenMutation,
 } = filmApiService;

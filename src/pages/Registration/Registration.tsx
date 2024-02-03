@@ -1,9 +1,12 @@
-import { Button, Card, Form, Input, Typography } from 'antd';
+import { Button, Card, ConfigProvider, Form, Input, Typography } from 'antd';
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
+import { ROUTE_CONSTANTS } from '../../CONSTANTS';
+import { useSetTokenMutation } from '../../services/filmApiService';
 import { storageService } from '../../services/storage.service';
 import { Logo } from '../../shared/icons';
-import styles from './Registration.module.css';
+import styles from '../Login/Login.module.css';
 
 type FieldType = {
   email?: string;
@@ -12,71 +15,81 @@ type FieldType = {
 };
 
 export const Registration = () => {
-  const [showMessage] = useState('');
+  const navigate = useNavigate();
+  const [showMessage, setShowMessage] = useState(false);
+  const [trigger] = useSetTokenMutation();
 
   useEffect(() => {
     if (storageService.getTokenFromLocalStorage() || storageService.getTokenFromSessionStorage()) {
-      // this.props.history.push('/main');
+      navigate(ROUTE_CONSTANTS.ROOT);
     }
-    // this.props.switchTheme('b-n-w');
-  }, []);
+  }, [navigate]);
 
-  const onSubmit = (): void => {
-    // restService.post(API_CONSTANTS.REGISTER, this.register).then(response => {
-    //   response.text().then(token => {
-    //     if (token) {
-    //       this.props.authorize({ authorize: token });
-    //       storageService.setTokenToSessionStorage(token);
-    //       this.props.history.push('/main');
-    //     } else {
-    //       this.setState({ ...this.state, showMessage: true });
-    //     }
-    //   });
-    // });
+  const onSubmit = (e: FieldType): void => {
+    storageService.setTokenToLocalStorage('token');
+    trigger(e)
+      .unwrap()
+      .then((response) => {
+        if (response) {
+          storageService.setTokenToSessionStorage(response);
+          navigate(ROUTE_CONSTANTS.ROOT);
+        } else {
+          setShowMessage(true);
+        }
+      });
   };
 
   return (
-    <main className={styles.main}>
-      <Card className={styles.paper}>
-        <div className={styles.logoContainer}>
-          <Logo className={styles.logo} />
-        </div>
+    <ConfigProvider
+      theme={{
+        token: {
+          colorPrimary: '#000000',
+          colorBorder: '#000000',
+        },
+      }}
+    >
+      <main className={styles.main}>
+        <Card className={styles.paper}>
+          <div className={styles.logoContainer}>
+            <Logo className={styles.logo} />
+            <Typography.Title level={3}>Registration</Typography.Title>
+          </div>
 
-        <Typography.Title level={5}>Registration</Typography.Title>
-        <Form
-          name="basic"
-          labelCol={{ span: 8 }}
-          wrapperCol={{ span: 16 }}
-          style={{ maxWidth: 600 }}
-          initialValues={{ remember: true }}
-          onFinish={onSubmit}
-          onFinishFailed={() => {}}
-          autoComplete="off"
-        >
-          <Form.Item<FieldType>
-            label="Email"
-            name="email"
-            rules={[{ required: true, message: 'Please input your username!' }]}
+          <Form
+            name="basic"
+            labelCol={{ span: 8 }}
+            wrapperCol={{ span: 16 }}
+            style={{ maxWidth: 600 }}
+            initialValues={{ remember: true }}
+            onFinish={onSubmit}
+            onFinishFailed={() => {}}
+            autoComplete="off"
           >
-            <Input bordered={false} />
-          </Form.Item>
+            <Form.Item<FieldType>
+              label="Email"
+              name="email"
+              rules={[{ required: true, message: 'Please input your username!' }]}
+            >
+              <Input bordered={false} />
+            </Form.Item>
 
-          <Form.Item<FieldType>
-            label="Password"
-            name="password"
-            rules={[{ required: true, message: 'Please input your password!' }]}
-          >
-            <Input.Password bordered={false} />
-          </Form.Item>
+            <Form.Item<FieldType>
+              label="Password"
+              name="password"
+              rules={[{ required: true, message: 'Please input your password!' }]}
+            >
+              <Input.Password bordered={false} />
+            </Form.Item>
 
-          <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-            <Button type="primary" htmlType="submit">
-              Register
-            </Button>
-          </Form.Item>
-        </Form>
-        {showMessage && <Typography.Paragraph>A user with this email already exists</Typography.Paragraph>}
-      </Card>
-    </main>
+            <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
+              <Button type="primary" htmlType="submit">
+                Register
+              </Button>
+            </Form.Item>
+          </Form>
+          {showMessage && <Typography.Paragraph>A user with this email already exists</Typography.Paragraph>}
+        </Card>
+      </main>
+    </ConfigProvider>
   );
 };

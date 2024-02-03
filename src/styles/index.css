@@ -730,12 +730,6 @@ textarea::-webkit-input-placeholder {
     border: 1px solid black;
 }
 
-.ant-btn-primary {
-    background: black;
-    border-color: var(--color-1);
-    color: var(--color-1);
-}
-
-.ant-btn-primary:not(:disabled):not(.ant-btn-disabled):hover {
-    background: gray;
+.ant-form-item-required::before {
+    color: gray !important;
 }

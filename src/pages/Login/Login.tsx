@@ -1,5 +1,5 @@
-import { Button, Checkbox, Form, Typography, Input, Card } from 'antd';
-import { useState } from 'react';
+import { Button, Checkbox, Form, Typography, Input, Card, ConfigProvider } from 'antd';
+import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 
 import { ROUTE_CONSTANTS } from '../../CONSTANTS';
@@ -31,7 +31,7 @@ export const Login = () => {
           e.remember
             ? storageService.setTokenToLocalStorage(response)
             : storageService.setTokenToSessionStorage(response);
-          navigate('/');
+          navigate(ROUTE_CONSTANTS.ROOT);
         } else {
           setShowMessage(true);
         }
@@ -39,57 +39,71 @@ export const Login = () => {
   };
 
   return (
-    <main className={styles.main}>
-      <Card className={styles.paper}>
-        <div className={styles.logoContainer}>
-          <Logo className={styles.logo} />
-        </div>
-        <Form
-          name="basic"
-          labelCol={{ span: 8 }}
-          wrapperCol={{ span: 16 }}
-          style={{ maxWidth: 600 }}
-          initialValues={{ remember: true }}
-          onFinish={onSubmit}
-          onFinishFailed={onFinishFailed}
-          autoComplete="off"
-        >
-          <Form.Item<FieldType>
-            label="Email"
-            name="email"
-            rules={[{ required: true, message: 'Please input your username!' }]}
+    <ConfigProvider
+      theme={{
+        token: {
+          colorPrimary: '#000000',
+          colorBorder: '#000000',
+          colorPrimaryHover: '#000000',
+          colorLink: '#949494',
+        },
+      }}
+    >
+      <main className={styles.main}>
+        <Card className={styles.paper}>
+          <div className={styles.logoContainer}>
+            <Logo className={styles.logo} />
+            <Typography.Title level={3}>Login</Typography.Title>
+          </div>
+
+          <Form
+            name="basic"
+            labelCol={{ span: 8 }}
+            wrapperCol={{ span: 16 }}
+            style={{ maxWidth: 600 }}
+            initialValues={{ remember: true }}
+            onFinish={onSubmit}
+            onFinishFailed={onFinishFailed}
+            autoComplete="off"
           >
-            <Input bordered={false} />
-          </Form.Item>
+            <Form.Item<FieldType>
+              label="Email"
+              name="email"
+              rules={[{ required: true, message: 'Please input your username!' }]}
+              wrapperCol={{ offset: 0, span: 16 }}
+            >
+              <Input bordered={false} />
+            </Form.Item>
 
-          <Form.Item<FieldType>
-            label="Password"
-            name="password"
-            rules={[{ required: true, message: 'Please input your password!' }]}
-          >
-            <Input.Password bordered={false} />
-          </Form.Item>
+            <Form.Item<FieldType>
+              label="Password"
+              name="password"
+              rules={[{ required: true, message: 'Please input your password!' }]}
+            >
+              <Input.Password bordered={false} />
+            </Form.Item>
 
-          <Form.Item<FieldType> name="remember" valuePropName="checked" wrapperCol={{ offset: 8, span: 16 }}>
-            <Checkbox>Remember me</Checkbox>
-          </Form.Item>
+            <Form.Item<FieldType> name="remember" valuePropName="checked" wrapperCol={{ offset: 8, span: 16 }}>
+              <Checkbox>Remember me</Checkbox>
+            </Form.Item>
 
-          <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-            <Button type="primary" htmlType="submit">
-              Submit
-            </Button>
-          </Form.Item>
-        </Form>
-        {showMessage && (
-          <Typography.Paragraph color="secondary">
-            This user does not exist, maybe your password or email is not correct
+            <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
+              <Button type="primary" htmlType="submit">
+                Submit
+              </Button>
+            </Form.Item>
+          </Form>
+          {showMessage && (
+            <Typography.Paragraph color="secondary">
+              This user does not exist, maybe your password or email is not correct
+            </Typography.Paragraph>
+          )}
+          <Typography.Paragraph>
+            If you are unable to authorize, you may need to{' '}
+            <NavLink to={ROUTE_CONSTANTS.REGISTRATION_PAGE}>register</NavLink>
           </Typography.Paragraph>
-        )}
-        <Typography.Paragraph>
-          If you are unable to authorize, you may need to{' '}
-          <NavLink to={ROUTE_CONSTANTS.REGISTRATION_PAGE}>register</NavLink>
-        </Typography.Paragraph>
-      </Card>
-    </main>
+        </Card>
+      </main>
+    </ConfigProvider>
   );
 };
