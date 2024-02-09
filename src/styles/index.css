@@ -727,9 +727,13 @@ textarea::-webkit-input-placeholder {
 }
 
 .ant-picker-time-panel-cell-selected .ant-picker-time-panel-cell-inner {
-    border: 1px solid black;
+    border: 1px solid var(--color-1);
 }
 
 .ant-form-item-required::before {
     color: gray !important;
+}
+
+.ant-picker-panel .ant-btn-primary {
+    border-color: var(--color-1) !important;
 }

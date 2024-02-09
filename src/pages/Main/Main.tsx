@@ -1,4 +1,4 @@
-import { ConfigProvider, Tooltip } from 'antd';
+import { Tooltip } from 'antd';
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -17,7 +17,6 @@ export const Main = () => {
   const navigate = useNavigate();
   const [timers, setTimers] = React.useState<{ id: string; time: string }[]>([]);
   const [theme, setTheme] = React.useState('b-n-w');
-  const isDarkTheme = theme === 'b-n-r';
 
   const onLogOut = () => {
     storageService.removeTokenFromSessionStorage();
@@ -53,46 +52,27 @@ export const Main = () => {
   }, [navigate]);
 
   return !storageService.getTokenFromSessionStorage() ? (
-    <ConfigProvider
-      theme={{
-        token: {
-          colorText: isDarkTheme ? '#ff0000' : '#000',
-          colorTextLightSolid: isDarkTheme ? '#ff0000' : '#fff',
-          boxShadowSecondary: isDarkTheme ? '0 0 0 2px #ff0000' : '0 0 0 2px #000',
-        },
-        components: {
-          DatePicker: {
-            activeBorderColor: isDarkTheme ? '#ff0000' : '#000',
-            activeShadow: '0 0 0 2px rgba(0, 0, 0, 0.2)',
-            colorTextDisabled: isDarkTheme ? '#ff0000' : '#000',
-            colorPrimary: isDarkTheme ? '#ff0000' : '#000',
-            controlItemBgActive: isDarkTheme ? '#000' : '#fff',
-          },
-        },
-      }}
-    >
-      <div className={theme}>
-        <ThemeSwitcher theme={theme} setTheme={setTheme} />
-        <div className="row1">
-          <Clock />
-          <div className="logout">
-            <Tooltip title="Log out">
-              <Person className="icon" onClick={onLogOut} />
-            </Tooltip>
-          </div>
-        </div>
-
-        <TopMenu addTimer={onAddTimer} clearBoard={onClearBoard} timersCount={timers.length} />
-
-        <div className="row2">
-          <RightMenu />
-          <div className="table">
-            {timers.map((timer: { time: string; id: string }) => (
-              <Timer key={timer.id} id={timer.id} time={timer.time} onRemoveTimer={onRemoveTimer} theme={theme} />
-            ))}
-          </div>
+    <div className={theme}>
+      <ThemeSwitcher theme={theme} setTheme={setTheme} />
+      <div className="row1">
+        <Clock />
+        <div className="logout">
+          <Tooltip title="Log out">
+            <Person className="icon" onClick={onLogOut} />
+          </Tooltip>
         </div>
       </div>
-    </ConfigProvider>
+
+      <TopMenu addTimer={onAddTimer} clearBoard={onClearBoard} timersCount={timers.length} />
+
+      <div className="row2">
+        <RightMenu />
+        <div className="table">
+          {timers.map((timer: { time: string; id: string }) => (
+            <Timer key={timer.id} id={timer.id} time={timer.time} onRemoveTimer={onRemoveTimer} theme={theme} />
+          ))}
+        </div>
+      </div>
+    </div>
   ) : null;
 };

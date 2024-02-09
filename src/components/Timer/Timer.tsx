@@ -163,6 +163,13 @@ export const Timer = ({ id, time, onRemoveTimer, theme }: IProps) => {
           />
           <ConfigProvider
             theme={{
+              token: {
+                colorText: isDarkTheme ? '#ff0000' : '#000',
+                colorTextLightSolid: isDarkTheme ? '#ff0000' : '#fff',
+                boxShadowSecondary: isDarkTheme ? '0 0 0 2px #ff0000' : '0 0 0 2px #000',
+                colorBgElevated: isDarkTheme ? '#000' : '#fff',
+                colorPrimary: '#000',
+              },
               components: {
                 DatePicker: {
                   activeBorderColor: isDarkTheme ? '#ff0000' : '#000',

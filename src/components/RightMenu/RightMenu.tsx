@@ -27,7 +27,7 @@ export const RightMenu = () => {
           <Tooltip title="Time/temp converter">
             <button
               type="button"
-              aria-label="Time/temp converter"
+              aria-label={PopupTarget.TempConverter}
               // eslint-disable-next-line react/no-unknown-property
               popovertarget={PopupTarget.TempConverter}
             >
@@ -37,7 +37,7 @@ export const RightMenu = () => {
           <Tooltip title="Push processing">
             <button
               type="button"
-              aria-label="Push processing"
+              aria-label={PopupTarget.PushProcessing}
               // eslint-disable-next-line react/no-unknown-property
               popovertarget={PopupTarget.PushProcessing}
             >
