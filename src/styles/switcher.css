@@ -1,0 +1,86 @@
+.checkbox-label {
+    display: block;
+    background: transparent;
+    height: 30px;
+    width: 60px;
+    border-radius: 50px;
+    margin: 5px auto;
+    position: relative;
+    box-shadow: 0 0 0 2px black;
+    cursor: pointer;
+}
+
+.checkbox-label .on {
+    display: block;
+    position: absolute;
+    z-index: 0;
+    left: 0;
+    line-height: 30px;
+    opacity: 0;
+    font-size: 40px;
+    user-select: none;
+    box-shadow: none;
+    border: none;
+    background: none;
+    outline: none;
+    color: var(--color-1);
+    cursor: default;
+}
+
+.checkbox-label .off {
+    display: block;
+    position: absolute;
+    z-index: 0;
+    right: 70px;
+    text-align: right;
+    opacity: 1;
+    line-height: 30px;
+    font-size: 40px;
+    user-select: none;
+    box-shadow: none;
+    border: none;
+    background: none;
+    outline: none;
+    color: var(--color-1);
+    cursor: default;
+}
+
+.checkbox-label:before {
+    content: '';
+    display: block;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    border-radius: 30px;
+    height: 30px;
+    width: 30px;
+    background: white;
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2), 0 0 0 2px black;
+}
+
+.checkbox {
+    position: absolute;
+    left: -5000px;
+}
+
+.checkbox:checked + .checkbox-label {
+    background: red;
+    box-shadow: 0 0 0 2px red;
+}
+
+.checkbox:checked + .checkbox-label .on {
+    left: 70px;
+    opacity: 1;
+}
+
+.checkbox:checked + .checkbox-label .off {
+    right: 0;
+    opacity: 0;
+}
+
+.checkbox:checked + .checkbox-label:before {
+    left: 30px;
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2), 0 0 0 2px red;
+    background-color: var(--color-2);
+}

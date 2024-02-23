@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react';
 
 import { useFetchTimeMutation } from '../../services/filmApiService';
+import styles from './FilmPropertiesForm.module.css';
 
 enum FilmPropertiesFormField {
   Asaiso = 'asaiso',
@@ -43,25 +44,25 @@ export const FilmPropertiesForm = ({ film, type, dev, filmProperties, setTimer }
   };
 
   return (
-    <div>
-      <div>
-        Select parameters
-        <p>
-          <span>ISO/ASA</span>
-          <span>dilution</span>
-          <span>temperature</span>
-        </p>
+    <div className={styles.form}>
+      <div>Select parameters</div>
+      <p className={styles.formLabels}>
+        <span>ISO/ASA</span>
+        <span>dilution</span>
+        <span>temperature</span>
+      </p>
+      <div className={styles.formRow}>
+        <select defaultValue={filmProperties?.asaiso[0]} name="iso" ref={asaiso}>
+          {filmProperties?.asaiso.map((isoProperty: any) => <option>{isoProperty}</option>)}
+        </select>
+        <select defaultValue={filmProperties?.dilution[0]} name="dilution" ref={dilution}>
+          {filmProperties?.dilution.map((dilutionProperty: any) => <option>{dilutionProperty}</option>)}
+        </select>
+        <select defaultValue={filmProperties?.temp[0]} name="temp" ref={temp}>
+          {filmProperties?.temp.map((tempProperty: any) => <option>{tempProperty}</option>)}
+        </select>
       </div>
-      <select defaultValue={filmProperties?.asaiso[0]} name="iso" ref={asaiso}>
-        {filmProperties?.asaiso.map((isoProperty: any) => <option>{isoProperty}</option>)}
-      </select>
-      <select defaultValue={filmProperties?.dilution[0]} name="dilution" ref={dilution}>
-        {filmProperties?.dilution.map((dilutionProperty: any) => <option>{dilutionProperty}</option>)}
-      </select>
-      <select defaultValue={filmProperties?.temp[0]} name="temp" ref={temp}>
-        {filmProperties?.temp.map((tempProperty: any) => <option>{tempProperty}</option>)}
-      </select>
-      <button className="trans-color-btn" onClick={setTime} type="button">
+      <button className={styles.setTimeButton} onClick={setTime} type="button">
         Set time
       </button>
       {!isLoading && time === 'false' && isFilmSelected && <p>Time not found, select other parameters</p>}

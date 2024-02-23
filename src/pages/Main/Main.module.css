@@ -1,0 +1,119 @@
+#main {
+    width: 100%;
+}
+
+
+h1 {
+    margin: 5px auto;
+    text-align: center;
+    font-family: 'ProximaNova-Bold';
+    font-size: 16px;
+}
+
+.row1 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.row2 {
+    display: grid;
+    grid-template-columns: auto 80px;
+}
+
+@media screen and (max-width: 400px) {
+    .logout {
+        flex-basis: 100%;
+        text-align: center;
+        order: -1;
+    }
+
+    .clock {
+        font-size: 20px;
+    }
+
+    .time {
+        font-size: 20px;
+    }
+
+    .time-icon {
+        width: 32px;
+    }
+}
+
+.table {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    grid-gap: 1rem;
+    grid-column-start: 1;
+    grid-column-end: 1;
+    grid-row-start: 1;
+    grid-row-end: 1;
+    align-items: start;
+}
+
+@media screen and (max-width: 1600px) {
+    .table {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows: repeat(1, 1fr);
+        grid-gap: 1rem;
+        grid-column-start: 1;
+        grid-column-end: 1;
+        grid-row-start: 1;
+        grid-row-end: 1;
+    }
+}
+
+@media screen and (max-width: 1400px) {
+    .table {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(1, 1fr);
+        grid-gap: 1rem;
+        grid-column-start: 1;
+        grid-column-end: 1;
+        grid-row-start: 1;
+        grid-row-end: 1;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .table {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(1, 1fr);
+        grid-gap: 1rem;
+        grid-column-start: 1;
+        grid-column-end: 1;
+        grid-row-start: 1;
+        grid-row-end: 1;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .table {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(1, 1fr);
+        grid-gap: 1rem;
+        grid-column-start: 1;
+        grid-column-end: 1;
+        grid-row-start: 1;
+        grid-row-end: 1;
+    }
+}
+
+@media screen and (max-width: 620px) {
+    .table {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: repeat(1, 1fr);
+        grid-gap: 1rem;
+        grid-column-start: 1;
+        grid-column-end: 1;
+        grid-row-start: 1;
+        grid-row-end: 1;
+    }
+}

@@ -4,8 +4,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ae2f3c1-f473-4031-83c8-da72db6d1454" name="Changes" comment="Fix form requests">
+    <list default="true" id="6ae2f3c1-f473-4031-83c8-da72db6d1454" name="Changes" comment="Fix time picker styles">
+      <change afterPath="$PROJECT_DIR$/src/components/Clock/Clock.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/LoadBoard/LoadBoard.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/LoadBoard/LoadBoard.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/LoadBoard/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Popover/Popover.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/RightMenu/RightMenu.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/SaveBoard/SaveBoard.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/SaveBoard/SaveBoard.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/SaveBoard/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/styles/switcher.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CONSTANTS.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/CONSTANTS.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Clock/Clock.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Clock/Clock.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/RightMenu/RightMenu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RightMenu/RightMenu.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Timer/Timer.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Timer/Timer.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Timer/Timer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Timer/Timer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/TopMenu/TopMenu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TopMenu/TopMenu.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Main/Main.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Main/Main.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Main/Main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Main/Main.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/index.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,8 +35,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="TypeScript JSX File" />
-        <option value="CSS File" />
         <option value="TypeScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -37,37 +56,37 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "js.linters.configure.manually.selectedeslint": "true",
-    "last_opened_file_path": "/home/vgriboedov/projects/ducktimer2/src",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.standard": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.standard": "",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_interpreter_path": "/home/vgriboedov/.nvm/versions/node/v18.17.0/bin/node",
-    "nodejs_package_manager_path": "npm",
-    "npm.build.executor": "Run",
-    "npm.start.executor": "Run",
-    "settings.editor.selected.configurable": "preferences.editor",
-    "ts.external.directory.path": "/home/vgriboedov/projects/ducktimer2/node_modules/typescript/lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;js.linters.configure.manually.selectedeslint&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/vgriboedov/projects/ducktimer2&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_interpreter_path&quot;: &quot;/home/vgriboedov/.nvm/versions/node/v18.17.0/bin/node&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;npm.build.executor&quot;: &quot;Run&quot;,
+    &quot;npm.start.executor&quot;: &quot;Run&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.editor&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/home/vgriboedov/projects/ducktimer2/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/components/LoadBoard" />
+      <recent name="$PROJECT_DIR$/src/pages" />
+      <recent name="$PROJECT_DIR$/src/shared/fonts" />
       <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/src/components" />
-      <recent name="$PROJECT_DIR$/src/shared/enums" />
-      <recent name="$PROJECT_DIR$/src/shared" />
-      <recent name="$PROJECT_DIR$" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/shared" />
@@ -129,54 +148,22 @@
       <workItem from="1704805360205" duration="16238000" />
       <workItem from="1705009495152" duration="46593000" />
       <workItem from="1705693638250" duration="22379000" />
-    </task>
-    <task id="LOCAL-00018" summary="Add files">
-      <option name="closed" value="true" />
-      <created>1702937109475</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1702937109475</updated>
-    </task>
-    <task id="LOCAL-00019" summary="Add files">
-      <option name="closed" value="true" />
-      <created>1702937981202</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1702937981202</updated>
-    </task>
-    <task id="LOCAL-00020" summary="Add files">
-      <option name="closed" value="true" />
-      <created>1702973201149</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1702973201149</updated>
-    </task>
-    <task id="LOCAL-00021" summary="Add files">
-      <option name="closed" value="true" />
-      <created>1702979994088</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1702979994088</updated>
-    </task>
-    <task id="LOCAL-00022" summary="Add files">
-      <option name="closed" value="true" />
-      <created>1702987404035</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1702987404035</updated>
-    </task>
-    <task id="LOCAL-00023" summary="Add files">
-      <option name="closed" value="true" />
-      <created>1702989559002</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1702989559002</updated>
+      <workItem from="1705959604925" duration="4537000" />
+      <workItem from="1706136428302" duration="2761000" />
+      <workItem from="1706192134166" duration="595000" />
+      <workItem from="1706307881805" duration="1965000" />
+      <workItem from="1706364304023" duration="4111000" />
+      <workItem from="1706519933265" duration="599000" />
+      <workItem from="1706538267915" duration="10077000" />
+      <workItem from="1707048849687" duration="599000" />
+      <workItem from="1707261207129" duration="600000" />
+      <workItem from="1707428956646" duration="6807000" />
+      <workItem from="1707642484680" duration="10127000" />
+      <workItem from="1707950895981" duration="1884000" />
+      <workItem from="1707985096028" duration="661000" />
+      <workItem from="1708021042303" duration="8902000" />
+      <workItem from="1708464785029" duration="4128000" />
+      <workItem from="1708639187954" duration="3150000" />
     </task>
     <task id="LOCAL-00024" summary="Fix code">
       <option name="closed" value="true" />
@@ -522,7 +509,55 @@
       <option name="project" value="LOCAL" />
       <updated>1705866827736</updated>
     </task>
-    <option name="localTasksCounter" value="67" />
+    <task id="LOCAL-00067" summary="Fix theme">
+      <option name="closed" value="true" />
+      <created>1705962557222</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1705962557222</updated>
+    </task>
+    <task id="LOCAL-00068" summary="Fix theme">
+      <option name="closed" value="true" />
+      <created>1705964094278</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1705964094278</updated>
+    </task>
+    <task id="LOCAL-00069" summary="Small changes">
+      <option name="closed" value="true" />
+      <created>1706138516246</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1706138516247</updated>
+    </task>
+    <task id="LOCAL-00070" summary="Small changes">
+      <option name="closed" value="true" />
+      <created>1706138583680</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1706138583681</updated>
+    </task>
+    <task id="LOCAL-00071" summary="Change login page">
+      <option name="closed" value="true" />
+      <created>1706368827832</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1706368827833</updated>
+    </task>
+    <task id="LOCAL-00072" summary="Fix time picker styles">
+      <option name="closed" value="true" />
+      <created>1707465858138</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1707465858138</updated>
+    </task>
+    <option name="localTasksCounter" value="73" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -540,10 +575,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="init app" />
-    <MESSAGE value="Add deploy file" />
-    <MESSAGE value="Test deploy file" />
-    <MESSAGE value="Delete files" />
     <MESSAGE value="Add placeholder" />
     <MESSAGE value="Change web app description" />
     <MESSAGE value="Turn on service worker" />
@@ -565,6 +596,10 @@
     <MESSAGE value="Fix error message" />
     <MESSAGE value="Fix manifest" />
     <MESSAGE value="Fix form requests" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix form requests" />
+    <MESSAGE value="Fix theme" />
+    <MESSAGE value="Small changes" />
+    <MESSAGE value="Change login page" />
+    <MESSAGE value="Fix time picker styles" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix time picker styles" />
   </component>
 </project>

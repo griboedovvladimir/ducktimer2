@@ -1,0 +1,38 @@
+.setTimeButton {
+    color: var(--color-1);
+    background-color: transparent;
+    border-radius: 5px;
+    outline: none;
+    width: 100%;
+    padding: 5px 10px;
+    border: 2px solid var(--color-1);
+}
+
+.setTimeButton:hover {
+    box-shadow: 0 0 10px var(--color-3);
+    opacity: 1;
+}
+
+.formLabels {
+    display: inline-flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.formRow {
+    display: inline-flex;
+    width: 100%;
+    gap: 7px;
+}
+
+.formRow select {
+    width: 100%;
+    height: 25px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    width: 100%;
+}

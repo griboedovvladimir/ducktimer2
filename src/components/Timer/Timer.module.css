@@ -1,11 +1,11 @@
 @import '../../styles/theme.css';
 
 .process {
-    width: 80%;
+    text-align: center;
+    height: 20px;
+    font-size: 12pt;
+    width: 95%;
     padding: 0 10px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
 }
 
 .timePicker {
@@ -24,4 +24,85 @@
 
 .timePicker:hover {
     border-color: var(--color-1);
+}
+
+.timerPanel {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.setTimerPanel {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    gap: 7px;
+    margin-top: 10px;
+}
+
+.setTimerPanel input {
+    height: 30px;
+}
+
+.setTimerPanel select {
+    height: 30px;
+}
+
+.timerPanel p {
+    text-align: left;
+    width: 100%;
+    word-break: break-all;
+}
+
+.timerButtons {
+    display: flex;
+    justify-content: space-around;
+}
+
+.time {
+    font-size: 340%;
+    font-family: 'ProximaNova-Regular';
+    text-align: left;
+    margin: 0 0 0 10px;
+    width: 100%;
+    display: inline-block;
+}
+
+.formRow {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+
+    span {
+        flex-grow: 1;
+    }
+
+    select {
+        width: 131px;
+    }
+
+    input {
+        width: 50%;
+    }
+}
+
+.textarea {
+    max-width: 245px;
+    min-width: 245px;
+}
+
+.delete {
+    position: absolute;
+    align-self: flex-end;
+    background-color: transparent;
+    right: 0;
+    border-radius: 5px;
+    font-size: 16pt;
+    box-shadow: none;
+    border: none;
+    outline: none;
+    width: 25px;
+    cursor: pointer;
+    margin: 0 5px 0 0;
 }

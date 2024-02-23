@@ -1,0 +1,14 @@
+.time {
+    display: inline-block;
+    font-size: 50px;
+    margin: auto 5px;
+    font-family: 'ProximaNova-Bold';
+}
+
+.clock {
+    display: flex;
+    margin: 3px 0 3px 0;
+    justify-content: flex-start;
+    user-select: none;
+    cursor: default;
+}

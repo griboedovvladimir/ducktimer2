@@ -2,12 +2,7 @@ import { useRef, useState } from 'react';
 
 import { useFetchFilmsPropertiesMutation, useFetchFilmsQuery } from '../../services/filmApiService';
 import { FilmPropertiesForm } from '../FilmPropertiesForm';
-
-export enum FilmFormFields {
-  Film = 'film',
-  Type = 'type',
-  Dev = 'dev',
-}
+import styles from './FilmSelectForm.module.css';
 
 export const FilmSelectForm = ({ setTimer }: { setTimer: any }) => {
   const { data: filmsOptions, isLoading, error } = useFetchFilmsQuery('');
@@ -31,28 +26,30 @@ export const FilmSelectForm = ({ setTimer }: { setTimer: any }) => {
   ) : (
     <form>
       <p>Select film, film type and developer</p>
-      <select
-        defaultValue={filmsOptions?.films[0]}
-        name="film-select"
-        ref={film}
-        onChange={() => setIsFilmSelected(false)}
-      >
-        {filmsOptions?.films.map((filmOption) => <option>{filmOption}</option>)}
-      </select>
-      <select name="film-type-select" defaultValue="35mm" ref={type} onChange={() => setIsFilmSelected(false)}>
-        <option>35mm</option>
-        <option>120</option>
-        <option>sheet</option>
-      </select>
-      <select
-        defaultValue={filmsOptions?.developers[0]}
-        name="dev-select"
-        ref={dev}
-        onChange={() => setIsFilmSelected(false)}
-      >
-        {filmsOptions?.developers.map((developer) => <option>{developer}</option>)}
-      </select>
-      <button className="trans-color-btn" onClick={() => onFilmSelect()} type="button">
+      <div className={styles.formRow}>
+        <select
+          defaultValue={filmsOptions?.films[0]}
+          name="film-select"
+          ref={film}
+          onChange={() => setIsFilmSelected(false)}
+        >
+          {filmsOptions?.films.map((filmOption) => <option>{filmOption}</option>)}
+        </select>
+        <select name="film-type-select" defaultValue="35mm" ref={type} onChange={() => setIsFilmSelected(false)}>
+          <option>35mm</option>
+          <option>120</option>
+          <option>sheet</option>
+        </select>
+        <select
+          defaultValue={filmsOptions?.developers[0]}
+          name="dev-select"
+          ref={dev}
+          onChange={() => setIsFilmSelected(false)}
+        >
+          {filmsOptions?.developers.map((developer) => <option>{developer}</option>)}
+        </select>
+      </div>
+      <button className={styles.nextButton} onClick={() => onFilmSelect()} type="button">
         Next
       </button>
       {isFilmSelected &&

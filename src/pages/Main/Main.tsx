@@ -11,6 +11,7 @@ import { ROUTE_CONSTANTS } from '../../CONSTANTS';
 import { storageService } from '../../services/storage.service';
 import { guid } from '../../shared/helpers/guid';
 import { Person } from '../../shared/icons';
+import styles from './Main.module.css';
 
 export const Main = () => {
   const maxTimersCount = 20;
@@ -54,9 +55,9 @@ export const Main = () => {
   return !storageService.getTokenFromSessionStorage() ? (
     <div className={theme}>
       <ThemeSwitcher theme={theme} setTheme={setTheme} />
-      <div className="row1">
+      <div className={styles.row1}>
         <Clock />
-        <div className="logout">
+        <div className={styles.logout}>
           <Tooltip title="Log out">
             <Person className="icon" onClick={onLogOut} />
           </Tooltip>
@@ -65,9 +66,9 @@ export const Main = () => {
 
       <TopMenu addTimer={onAddTimer} clearBoard={onClearBoard} timersCount={timers.length} />
 
-      <div className="row2">
+      <div className={styles.row2}>
         <RightMenu />
-        <div className="table">
+        <div className={styles.table}>
           {timers.map((timer: { time: string; id: string }) => (
             <Timer key={timer.id} id={timer.id} time={timer.time} onRemoveTimer={onRemoveTimer} theme={theme} />
           ))}

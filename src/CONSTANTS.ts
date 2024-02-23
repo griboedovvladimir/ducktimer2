@@ -32,4 +32,5 @@ export const SELECT_PROCESS_OPTIONS = [
   'drying',
   'stabilised',
   'exposure',
+  'other process',
 ];

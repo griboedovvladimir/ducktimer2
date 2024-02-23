@@ -1,0 +1,32 @@
+.formRow {
+    display: inline-flex;
+    width: 100%;
+    gap: 7px;
+}
+
+.formRow select {
+    width: 100%;
+    height: 25px;
+}
+
+.nextButton {
+    color: var(--color-1);
+    background-color: transparent;
+    border-radius: 5px;
+    outline: none;
+    width: 100%;
+    padding: 5px 10px;
+    border: 2px solid var(--color-1);
+}
+
+.nextButton:hover {
+    box-shadow: 0 0 10px var(--color-3);
+    opacity: 1;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    width: 100%;
+}

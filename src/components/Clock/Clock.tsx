@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
+import styles from './Clock.module.css';
 import { Time } from '../../shared/icons';
 
 export const Clock = () => {
@@ -17,9 +18,9 @@ export const Clock = () => {
   }, [locale]);
 
   return (
-    <div id="clock">
-      <Time title="" className="icon2 time-icon" onClick={onChangeClockLocale} />
-      <div id="time">{time}</div>
+    <div className={styles.clock}>
+      <Time title="" className="icon time-icon" onClick={onChangeClockLocale} />
+      <div className={styles.time}>{time}</div>
     </div>
   );
 };

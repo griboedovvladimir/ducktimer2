@@ -1,19 +1,19 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { ConfigProvider, TimePicker, Tooltip } from 'antd';
+import { ConfigProvider, TimePicker, Tooltip, Typography } from 'antd';
 import dayjs from 'dayjs';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 
 import { OTHER_CONSTANTS, SELECT_PROCESS_OPTIONS } from '../../CONSTANTS';
 import { Film, Pause, Play, Set } from '../../shared/icons';
 import { FilmSelectForm } from '../FilmSelectForm';
 import styles from './Timer.module.css';
-// @ts-ignore
-import beep from '../../assets/sounds/duck.mp3';
 
 interface IProps {
   id: string;
   time: string;
+
   onRemoveTimer(id: string): void;
+
   theme: string;
 }
 
@@ -30,10 +30,31 @@ export const Timer = ({ id, time, onRemoveTimer, theme }: IProps) => {
     note: '',
     set: 0,
   });
+  const processSelectValue = useRef<any>();
 
   const timersClassList = state.timerFinished ? 'timers finished' : 'timers';
   const process = state.otherProcess ? state.otherProcess : state.selectProcess;
   const isDarkTheme = theme === 'b-n-r';
+  const timeFormat = 'HH:mm:ss';
+  const themeConfig = {
+    token: {
+      colorText: isDarkTheme ? '#ff0000' : '#000',
+      colorTextHeading: isDarkTheme ? '#ff0000' : '#000',
+      colorTextLightSolid: isDarkTheme ? '#ff0000' : '#fff',
+      boxShadowSecondary: isDarkTheme ? '0 0 0 2px #ff0000' : '0 0 0 2px #000',
+      colorBgElevated: isDarkTheme ? '#000' : '#fff',
+      colorPrimary: '#000',
+    },
+    components: {
+      DatePicker: {
+        activeBorderColor: isDarkTheme ? '#ff0000' : '#000',
+        activeShadow: '0 0 0 2px rgba(0, 0, 0, 0.2)',
+        colorTextDisabled: isDarkTheme ? '#ff0000' : '#000',
+        colorPrimary: isDarkTheme ? '#ff0000' : '#000',
+        controlItemBgActive: isDarkTheme ? '#000' : '#fff',
+      },
+    },
+  };
 
   const onStopTimer = () => {
     cancelAnimationFrame(state.set);
@@ -55,8 +76,8 @@ export const Timer = ({ id, time, onRemoveTimer, theme }: IProps) => {
   };
 
   const setTime = (e: any) => {
-    setCurrentTimerValue(e.format('HH:mm:ss'));
-    setTimePickerValue(e.format('HH:mm:ss'));
+    setCurrentTimerValue(e.format(timeFormat));
+    setTimePickerValue(e.format(timeFormat));
   };
 
   const onTogglePanel = () => {
@@ -71,10 +92,13 @@ export const Timer = ({ id, time, onRemoveTimer, theme }: IProps) => {
     SELECT_PROCESS_OPTIONS.map((processOption) => <option key={processOption}>{processOption}</option>);
 
   const timerOverHandle = () => {
-    const audio = new Audio(beep);
+    // @ts-ignore
+    import('../../assets/sounds/duck.mp3').then((module) => {
+      const audio = new Audio(module.default);
 
-    audio.autoplay = true;
-    setState({ ...state, timerFinished: true });
+      audio.autoplay = true;
+      setState({ ...state, timerFinished: true });
+    });
   };
 
   const onStartTimer = () => {
@@ -118,14 +142,23 @@ export const Timer = ({ id, time, onRemoveTimer, theme }: IProps) => {
 
   return (
     <div className={timersClassList}>
-      <button type="button" onClick={() => onRemoveTimer(id)} className="delete trans-color-btn">
+      <button type="button" onClick={() => onRemoveTimer(id)} className={styles.delete}>
         ×
       </button>
-      <h4 className={styles.process}>{process || SELECT_PROCESS_OPTIONS[0]}</h4>
-      <div className="timer-panel">
-        <span>{currentTimerValue || OTHER_CONSTANTS.START_TIME}</span>
-        {state.note && <p> Note: {state.note}</p>}
-        <div className="timer-buttons">
+      <ConfigProvider theme={themeConfig}>
+        <Typography.Title
+          level={5}
+          ellipsis={{ rows: 1, tooltip: <div>{process || SELECT_PROCESS_OPTIONS[0]}</div> }}
+          className={styles.process}
+        >
+          {process || SELECT_PROCESS_OPTIONS[0]}
+        </Typography.Title>
+      </ConfigProvider>
+
+      <div className={styles.timerPanel}>
+        <div className={styles.time}>{currentTimerValue || OTHER_CONSTANTS.START_TIME}</div>
+        {state.note && <p>Note: {state.note}</p>}
+        <div className={styles.timerButtons}>
           {state.set ? (
             <Tooltip title="Pause">
               <button type="button" aria-label="pause">
@@ -147,44 +180,34 @@ export const Timer = ({ id, time, onRemoveTimer, theme }: IProps) => {
         </div>
       </div>
       {state.panelIsOpen && (
-        <div className="set-timer-panel" defaultValue=" ">
-          Select process
-          <select onChange={({ target }) => onSelectProcess(target.value)} name="selectProcess">
-            {getProcessOptions()}
-          </select>
-          <br />
-          Other process
-          <input
-            onChange={({ target }) => onSelectProcess(target.value)}
-            type="text"
-            name="process"
-            size={4}
-            defaultValue={state.otherProcess}
-          />
-          <ConfigProvider
-            theme={{
-              token: {
-                colorText: isDarkTheme ? '#ff0000' : '#000',
-                colorTextLightSolid: isDarkTheme ? '#ff0000' : '#fff',
-                boxShadowSecondary: isDarkTheme ? '0 0 0 2px #ff0000' : '0 0 0 2px #000',
-                colorBgElevated: isDarkTheme ? '#000' : '#fff',
-                colorPrimary: '#000',
-              },
-              components: {
-                DatePicker: {
-                  activeBorderColor: isDarkTheme ? '#ff0000' : '#000',
-                  activeShadow: '0 0 0 2px rgba(0, 0, 0, 0.2)',
-                  colorTextDisabled: isDarkTheme ? '#ff0000' : '#000',
-                  colorPrimary: isDarkTheme ? '#ff0000' : '#000',
-                  controlItemBgActive: isDarkTheme ? '#000' : '#fff',
-                },
-              },
-            }}
-          >
+        <div className={styles.setTimerPanel} defaultValue=" ">
+          <div className={styles.formRow}>
+            <span>Select process</span>
+            <select
+              onChange={({ target }) => onSelectProcess(target.value)}
+              name="selectProcess"
+              ref={processSelectValue}
+            >
+              {getProcessOptions()}
+            </select>
+          </div>
+          {processSelectValue.current?.value === 'other process' && (
+            <div className={styles.formRow}>
+              <span>Other process</span>
+              <input
+                onChange={({ target }) => onSelectProcess(target.value)}
+                type="text"
+                name="process"
+                size={4}
+                defaultValue={state.otherProcess}
+              />
+            </div>
+          )}
+          <ConfigProvider theme={themeConfig}>
             <TimePicker
               className={styles.timePicker}
               onChange={setTime}
-              defaultValue={dayjs('00:00:00', 'HH:mm:ss')}
+              defaultValue={dayjs('00:00:00', timeFormat)}
               showNow={false}
               allowClear={false}
               changeOnBlur
@@ -193,7 +216,7 @@ export const Timer = ({ id, time, onRemoveTimer, theme }: IProps) => {
           <textarea
             onChange={({ target }) => onChangeNete(target.value)}
             name="note"
-            className="timer-inputs"
+            className={styles.textarea}
             placeholder="Note"
           />
           <Tooltip title="Load film preset time">

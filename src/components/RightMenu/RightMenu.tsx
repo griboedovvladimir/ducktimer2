@@ -8,43 +8,42 @@ import { TempConverter } from '../TempConverter';
 import { Popover } from '../Popover/Popover';
 import { PushProcessing } from '../PushProcessing';
 import { VolumeMixer } from '../VolumeMixer';
+import styles from './RightMenu.module.css';
 
 export const RightMenu = () => {
   return (
     <>
-      <div className="rightpanel">
-        <div className="panel">
-          <Tooltip title="Volume mixer">
-            {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
-            <button
-              type="button"
-              // eslint-disable-next-line react/no-unknown-property
-              popovertarget={PopupTarget.VolumeMixer}
-            >
-              <Vol className="button-icon" />
-            </button>
-          </Tooltip>
-          <Tooltip title="Time/temp converter">
-            <button
-              type="button"
-              aria-label={PopupTarget.TempConverter}
-              // eslint-disable-next-line react/no-unknown-property
-              popovertarget={PopupTarget.TempConverter}
-            >
-              <Temp className="button-icon" />
-            </button>
-          </Tooltip>
-          <Tooltip title="Push processing">
-            <button
-              type="button"
-              aria-label={PopupTarget.PushProcessing}
-              // eslint-disable-next-line react/no-unknown-property
-              popovertarget={PopupTarget.PushProcessing}
-            >
-              <Exp className="button-icon" />
-            </button>
-          </Tooltip>
-        </div>
+      <div className={styles.panel}>
+        <Tooltip title="Volume mixer">
+          {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
+          <button
+            type="button"
+            // eslint-disable-next-line react/no-unknown-property
+            popovertarget={PopupTarget.VolumeMixer}
+          >
+            <Vol className="button-icon" />
+          </button>
+        </Tooltip>
+        <Tooltip title="Time/temp converter">
+          <button
+            type="button"
+            aria-label={PopupTarget.TempConverter}
+            // eslint-disable-next-line react/no-unknown-property
+            popovertarget={PopupTarget.TempConverter}
+          >
+            <Temp className="button-icon" />
+          </button>
+        </Tooltip>
+        <Tooltip title="Push processing">
+          <button
+            type="button"
+            aria-label={PopupTarget.PushProcessing}
+            // eslint-disable-next-line react/no-unknown-property
+            popovertarget={PopupTarget.PushProcessing}
+          >
+            <Exp className="button-icon" />
+          </button>
+        </Tooltip>
       </div>
 
       <Popover popoverTarget={PopupTarget.VolumeMixer}>
