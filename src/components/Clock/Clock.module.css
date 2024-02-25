@@ -12,3 +12,18 @@
     user-select: none;
     cursor: default;
 }
+
+@media screen and (max-width: 400px) {
+    .clock {
+        font-size: 20px;
+    }
+
+    .time {
+        font-size: 20px;
+    }
+
+    .timeIcon {
+        width: 32px;
+        height: 32px;
+    }
+}

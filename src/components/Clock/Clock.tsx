@@ -19,7 +19,7 @@ export const Clock = () => {
 
   return (
     <div className={styles.clock}>
-      <Time title="" className="icon time-icon" onClick={onChangeClockLocale} />
+      <Time title="" className={styles.timeIcon} onClick={onChangeClockLocale} />
       <div className={styles.time}>{time}</div>
     </div>
   );

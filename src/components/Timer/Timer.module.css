@@ -64,7 +64,7 @@
     font-size: 340%;
     font-family: 'ProximaNova-Regular';
     text-align: left;
-    margin: 0 0 0 10px;
+    margin: 0;
     width: 100%;
     display: inline-block;
 }
@@ -88,8 +88,8 @@
 }
 
 .textarea {
-    max-width: 245px;
-    min-width: 245px;
+    max-width: 220px;
+    min-width: 220px;
 }
 
 .delete {

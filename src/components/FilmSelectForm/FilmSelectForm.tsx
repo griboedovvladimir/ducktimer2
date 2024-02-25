@@ -24,7 +24,7 @@ export const FilmSelectForm = ({ setTimer }: { setTimer: any }) => {
   ) : error ? (
     <p>Something went wrong</p>
   ) : (
-    <form>
+    <form className={styles.form}>
       <p>Select film, film type and developer</p>
       <div className={styles.formRow}>
         <select

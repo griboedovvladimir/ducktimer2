@@ -59,7 +59,7 @@ export const Main = () => {
         <Clock />
         <div className={styles.logout}>
           <Tooltip title="Log out">
-            <Person className="icon" onClick={onLogOut} />
+            <Person className={styles.logoutIcon} onClick={onLogOut} />
           </Tooltip>
         </div>
       </div>
