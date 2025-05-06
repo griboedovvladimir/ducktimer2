@@ -15,32 +15,17 @@ export const RightMenu = () => {
     <>
       <div className={styles.panel}>
         <Tooltip title="Volume mixer">
-          {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
-          <button
-            type="button"
-            // eslint-disable-next-line react/no-unknown-property
-            popovertarget={PopupTarget.VolumeMixer}
-          >
+          <button type="button" popovertarget={PopupTarget.VolumeMixer}>
             <Vol className="button-icon" />
           </button>
         </Tooltip>
         <Tooltip title="Time/temp converter">
-          <button
-            type="button"
-            aria-label={PopupTarget.TempConverter}
-            // eslint-disable-next-line react/no-unknown-property
-            popovertarget={PopupTarget.TempConverter}
-          >
+          <button type="button" aria-label={PopupTarget.TempConverter} popovertarget={PopupTarget.TempConverter}>
             <Temp className="button-icon" />
           </button>
         </Tooltip>
         <Tooltip title="Push processing">
-          <button
-            type="button"
-            aria-label={PopupTarget.PushProcessing}
-            // eslint-disable-next-line react/no-unknown-property
-            popovertarget={PopupTarget.PushProcessing}
-          >
+          <button type="button" aria-label={PopupTarget.PushProcessing} popovertarget={PopupTarget.PushProcessing}>
             <Exp className="button-icon" />
           </button>
         </Tooltip>

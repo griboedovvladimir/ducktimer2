@@ -41,11 +41,7 @@
     margin-top: 10px;
 }
 
-.setTimerPanel input {
-    height: 30px;
-}
-
-.setTimerPanel select {
+.setTimerPanel input, .setTimerPanel select {
     height: 30px;
 }
 
@@ -79,7 +75,7 @@
     }
 
     select {
-        width: 131px;
+        width: 70%;
     }
 
     input {
@@ -88,7 +84,6 @@
 }
 
 .textarea {
-    max-width: 220px;
     min-width: 220px;
 }
 

@@ -63,16 +63,14 @@ export const Main = () => {
           </Tooltip>
         </div>
       </div>
-
-      <TopMenu addTimer={onAddTimer} clearBoard={onClearBoard} timersCount={timers.length} />
-
       <div className={styles.row2}>
-        <RightMenu />
+        <TopMenu addTimer={onAddTimer} clearBoard={onClearBoard} timersCount={timers.length} />
         <div className={styles.table}>
           {timers.map((timer: { time: string; id: string }) => (
             <Timer key={timer.id} id={timer.id} time={timer.time} onRemoveTimer={onRemoveTimer} theme={theme} />
           ))}
         </div>
+        <RightMenu />
       </div>
     </div>
   ) : null;

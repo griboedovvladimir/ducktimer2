@@ -1,6 +1,5 @@
 .panel {
     display: flex;
-    flex-wrap: wrap;
     flex-direction: column;
     border: 2px solid var(--color-1);
     border-radius: 10px;
@@ -8,6 +7,6 @@
     width: 60px;
     height: 192px;
     justify-content: space-around;
-    margin: 10px 0 0 10px;
     align-items: center;
+    justify-self: end;
 }

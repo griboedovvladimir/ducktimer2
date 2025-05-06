@@ -175,9 +175,7 @@ dt {
     cursor: default;
     flex-direction: column;
     border: 2px solid var(--color-1);
-    width: 225px;
     border-radius: 10px;
-    margin: 10px 0 0 0;
     padding: 10px 10px 0 10px;
 }
 
