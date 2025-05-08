@@ -20,6 +20,7 @@ interface IProps {
 export const Timer = ({ id, time, onRemoveTimer, theme }: IProps) => {
   const [timePickerValue, setTimePickerValue] = useState(OTHER_CONSTANTS.START_TIME);
   const [currentTimerValue, setCurrentTimerValue] = useState(time);
+  const [timerSet, setTimerSet] = useState(0);
   const [state, setState] = useState({
     id,
     timerFinished: false,
@@ -28,7 +29,6 @@ export const Timer = ({ id, time, onRemoveTimer, theme }: IProps) => {
     otherProcess: '',
     selectProcess: '',
     note: '',
-    set: 0,
   });
   const processSelectValue = useRef<any>();
 
@@ -57,8 +57,8 @@ export const Timer = ({ id, time, onRemoveTimer, theme }: IProps) => {
   };
 
   const onStopTimer = () => {
-    cancelAnimationFrame(state.set);
-    setState({ ...state, set: 0 });
+    cancelAnimationFrame(timerSet);
+    setTimerSet(0);
   };
 
   const onSetTimer = () => {
@@ -71,7 +71,7 @@ export const Timer = ({ id, time, onRemoveTimer, theme }: IProps) => {
     setState({ ...state, selectProcess: value });
   };
 
-  const onChangeNete = (note: string) => {
+  const onChangeNote = (note: string) => {
     setState({ ...state, note });
   };
 
@@ -132,11 +132,11 @@ export const Timer = ({ id, time, onRemoveTimer, theme }: IProps) => {
           setCurrentTimerValue(`${h}:${m}:${s}`);
 
           if (countdown.getUTCHours() > 0 || countdown.getUTCMinutes() > 0 || countdown.getUTCSeconds() > 0)
-            setState({ ...state, set: requestAnimationFrame(goTimer) });
+            setTimerSet(requestAnimationFrame(goTimer));
         }
       };
 
-      setState({ ...state, set: requestAnimationFrame(goTimer) });
+      setTimerSet(requestAnimationFrame(goTimer));
     }
   };
 
@@ -159,7 +159,7 @@ export const Timer = ({ id, time, onRemoveTimer, theme }: IProps) => {
         <div className={styles.time}>{currentTimerValue || OTHER_CONSTANTS.START_TIME}</div>
         {state.note && <p>Note: {state.note}</p>}
         <div className={styles.timerButtons}>
-          {state.set ? (
+          {timerSet ? (
             <Tooltip title="Pause">
               <button type="button" aria-label="pause">
                 <Pause className="button-icon" onClick={onStopTimer} />
@@ -210,11 +210,10 @@ export const Timer = ({ id, time, onRemoveTimer, theme }: IProps) => {
               defaultValue={dayjs('00:00:00', timeFormat)}
               showNow={false}
               allowClear={false}
-              changeOnBlur
             />
           </ConfigProvider>
           <textarea
-            onChange={({ target }) => onChangeNete(target.value)}
+            onChange={({ target }) => onChangeNote(target.value)}
             name="note"
             className={styles.textarea}
             placeholder="Note"

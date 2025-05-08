@@ -41,7 +41,7 @@
     margin-top: 10px;
 }
 
-.setTimerPanel input, .setTimerPanel select {
+.setTimerPanel :is(input, select) {
     height: 30px;
 }
 
