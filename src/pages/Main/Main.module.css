@@ -71,6 +71,7 @@ h1 {
 
     .topMenu {
         justify-self: end;
+        flex-direction: row-reverse;
       }
 }
 
@@ -88,5 +89,6 @@ h1 {
     
     .topMenu {
         justify-self: end;
+        flex-direction: row-reverse;
       }
 }
