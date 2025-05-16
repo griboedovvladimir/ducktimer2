@@ -23,7 +23,7 @@ h1 {
 
 .row2 {
     display: grid;
-    grid-template-columns: 1fr 80px;
+    grid-template-columns: 1fr 74px;
     grid-template-rows: auto auto;
     gap: 1em;
 }
@@ -36,7 +36,7 @@ h1 {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     grid-template-rows: repeat(1, 1fr);
-    gap: 1rem;
+    gap: 1em;
     align-items: start;
 }
 

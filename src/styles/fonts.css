@@ -1,13 +1,17 @@
 @font-face {
     font-family: 'ProximaNova-Regular';
-    src: url('../shared/fonts/Proxima-Nova-Semibold.woff2');
+    src: 
+    local('Proxima Nova Lt'), local('ProximaNova-Semibold'),
+    url('../shared/fonts/Proxima-Nova-Semibold.woff2');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'ProximaNova-Bold';
-    src: url('../shared/fonts/Proxima-Nova-Bold.woff2');
+    src: 
+    local('Proxima Nova Rg'), local('ProximaNova-Bold'),
+    url('../shared/fonts/Proxima-Nova-Bold.woff2');
     font-style: normal;
     font-weight: normal;
 }
