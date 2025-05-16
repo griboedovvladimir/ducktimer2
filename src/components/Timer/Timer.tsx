@@ -34,7 +34,7 @@ export const Timer = ({ id, time, onRemoveTimer, theme }: IProps) => {
 
   const timersClassList = state.timerFinished ? 'timers finished' : 'timers';
   const process = state.otherProcess ? state.otherProcess : state.selectProcess;
-  const isDarkTheme = theme === 'b-n-r';
+  const isDarkTheme = theme === 'dark';
   const timeFormat = 'HH:mm:ss';
   const themeConfig = {
     token: {

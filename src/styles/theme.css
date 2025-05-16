@@ -1,15 +1,39 @@
-.b-n-w {
-    --main-color: transpetent;
-    --color-1: black;
-    --color-2: white;
-    --color-3: gray;
-    --shadowColor: 0 0 10px rgba(0, 0, 0, 0.5)
-}
+@layer theme {
+    :root {
+        --color-theme: light;
+    }
 
-.b-n-r {
-    --main-color: black;
-    --color-1: red;
-    --color-2: black;
-    --color-3: red;
-    --shadowColor: 0 0 10px rgba(255, 0, 0, 0.5);
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --color-theme: dark;
+        }
+    }
+
+    [data-theme='dark'] {
+        --color-theme: dark;
+    }
+
+    [data-theme='light'] {
+        --color-theme: light;
+    }
+
+    @container style(--color-theme: dark) {
+        body {
+            --main-color: black;
+            --color-1: red;
+            --color-2: black;
+            --color-3: red;
+            --shadowColor: 0 0 10px rgba(255, 0, 0, 0.5);
+        }
+    }
+
+    @container style(--color-theme: light) {
+        body {
+            --main-color: transpetent;
+            --color-1: black;
+            --color-2: white;
+            --color-3: gray;
+            --shadowColor: 0 0 10px rgba(0, 0, 0, 0.5)
+        }
+    }
 }

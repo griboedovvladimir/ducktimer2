@@ -17,7 +17,7 @@ export const Main = () => {
   const maxTimersCount = 20;
   const navigate = useNavigate();
   const [timers, setTimers] = React.useState<{ id: string; time: string }[]>([]);
-  const [theme, setTheme] = React.useState('b-n-w');
+  const [theme, setTheme] = React.useState('light');
 
   const onLogOut = () => {
     storageService.removeTokenFromSessionStorage();
@@ -38,14 +38,14 @@ export const Main = () => {
 
   const setDefaultTheme = () => {
     if (!storageService.getThemeFromLocalStorage()) {
-      storageService.setThemeToSessionStorage('b-n-w');
+      storageService.setThemeToSessionStorage('light');
     }
   };
 
   useEffect(() => {
     setDefaultTheme();
-    document.documentElement.classList.add(storageService.getThemeFromLocalStorage() || 'b-n-w');
-    setTheme(storageService.getThemeFromLocalStorage() || 'b-n-w');
+    document.documentElement.setAttribute('data-theme', storageService.getThemeFromLocalStorage() || 'light');
+    setTheme(storageService.getThemeFromLocalStorage() || 'light');
 
     if (!storageService.getTokenFromSessionStorage() && !storageService.getTokenFromLocalStorage()) {
       navigate(ROUTE_CONSTANTS.LOGIN_PAGE);

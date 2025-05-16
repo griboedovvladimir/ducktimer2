@@ -2,16 +2,15 @@ import { storageService } from '../../services/storage.service';
 import { Lamp, Sun } from '../../shared/icons';
 
 export const ThemeSwitcher = ({ theme, setTheme }: any) => {
-  const isSwitcher = (themeValue: string) => themeValue === 'b-n-r';
+  const isSwitcher = (themeValue: string) => themeValue === 'dark';
   const switchHandle = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    const themeValue: string = event.target.checked ? 'b-n-r' : 'b-n-w';
+    const themeValue: string = event.target.checked ? 'dark' : 'light';
 
-    document.documentElement.classList.remove(event.target.checked ? 'b-n-w' : 'b-n-r');
-    document.documentElement.classList.add(event.target.checked ? 'b-n-r' : 'b-n-w');
+    document.documentElement.setAttribute('data-theme', themeValue);
     storageService.setThemeToSessionStorage(themeValue);
     setTheme(themeValue);
 
-    if (themeValue === 'b-n-r') {
+    if (themeValue === 'dark') {
       document.documentElement.requestFullscreen();
     } else {
       document.exitFullscreen().then(() => {});
