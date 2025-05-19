@@ -57,7 +57,6 @@
 }
 
 .time {
-    font-size: 340%;
     font-family: 'ProximaNova-Regular';
     text-align: left;
     margin: 0;
@@ -81,10 +80,6 @@
     input {
         width: 50%;
     }
-}
-
-.textarea {
-    min-width: 220px;
 }
 
 .delete {

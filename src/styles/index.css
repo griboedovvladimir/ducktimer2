@@ -65,6 +65,16 @@ button:hover,
         border: 2px solid var(--color-1);
         border-radius: 10px;
         padding: 10px 10px 0 10px;
+        container: time / inline-size;
+
+        .time {
+            font-size: 24cqw;
+            font-family: 'ProximaNova-Regular';
+            text-align: left;
+            margin: 0;
+            width: 100%;
+            display: inline-block;
+        }
     }
 
     .finished {

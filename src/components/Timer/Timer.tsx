@@ -156,7 +156,7 @@ export const Timer = ({ id, time, onRemoveTimer, theme }: IProps) => {
       </ConfigProvider>
 
       <div className={styles.timerPanel}>
-        <div className={styles.time}>{currentTimerValue || OTHER_CONSTANTS.START_TIME}</div>
+        <div className="time">{currentTimerValue || OTHER_CONSTANTS.START_TIME}</div>
         {state.note && <p>Note: {state.note}</p>}
         <div className={styles.timerButtons}>
           {timerSet ? (
