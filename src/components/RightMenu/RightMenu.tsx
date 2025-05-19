@@ -1,5 +1,4 @@
 // @ts-nocheck // TODO: remove this line after stable popover API
-import { Tooltip } from 'antd';
 import React from 'react';
 
 import { PopupTarget } from '../../shared/enums/popup-target';
@@ -14,21 +13,15 @@ export const RightMenu = () => {
   return (
     <>
       <div className={styles.panel}>
-        <Tooltip title="Volume mixer">
-          <button type="button" popovertarget={PopupTarget.VolumeMixer}>
-            <Vol className="button-icon" />
-          </button>
-        </Tooltip>
-        <Tooltip title="Time/temp converter">
-          <button type="button" aria-label={PopupTarget.TempConverter} popovertarget={PopupTarget.TempConverter}>
-            <Temp className="button-icon" />
-          </button>
-        </Tooltip>
-        <Tooltip title="Push processing">
-          <button type="button" aria-label={PopupTarget.PushProcessing} popovertarget={PopupTarget.PushProcessing}>
-            <Exp className="button-icon" />
-          </button>
-        </Tooltip>
+        <button type="button" popovertarget={PopupTarget.VolumeMixer}>
+          <Vol className="button-icon" />
+        </button>
+        <button type="button" aria-label={PopupTarget.TempConverter} popovertarget={PopupTarget.TempConverter}>
+          <Temp className="button-icon" />
+        </button>
+        <button type="button" aria-label={PopupTarget.PushProcessing} popovertarget={PopupTarget.PushProcessing}>
+          <Exp className="button-icon" />
+        </button>
       </div>
 
       <Popover popoverTarget={PopupTarget.VolumeMixer}>

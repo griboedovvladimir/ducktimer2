@@ -1,4 +1,3 @@
-import { Tooltip } from 'antd';
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -58,9 +57,7 @@ export const Main = () => {
       <div className={styles.row1}>
         <Clock />
         <div className={styles.logout}>
-          <Tooltip title="Log out">
-            <Person className={styles.logoutIcon} onClick={onLogOut} />
-          </Tooltip>
+          <Person className={styles.logoutIcon} onClick={onLogOut} />
         </div>
       </div>
       <div className={styles.row2}>

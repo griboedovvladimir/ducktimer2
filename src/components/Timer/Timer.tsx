@@ -1,5 +1,5 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { ConfigProvider, TimePicker, Tooltip, Typography } from 'antd';
+import { ConfigProvider, TimePicker, Typography } from 'antd';
 import dayjs from 'dayjs';
 import { useRef, useState } from 'react';
 
@@ -160,23 +160,17 @@ export const Timer = ({ id, time, onRemoveTimer, theme }: IProps) => {
         {state.note && <p>Note: {state.note}</p>}
         <div className={styles.timerButtons}>
           {timerSet ? (
-            <Tooltip title="Pause">
-              <button type="button" aria-label="pause">
-                <Pause className="button-icon" onClick={onStopTimer} />
-              </button>
-            </Tooltip>
-          ) : (
-            <Tooltip title="Start">
-              <button type="button" aria-label="start">
-                <Play onClick={onStartTimer} className="button-icon" />
-              </button>
-            </Tooltip>
-          )}
-          <Tooltip title="Set">
-            <button type="button" aria-label="set">
-              <Set onClick={onSetTimer} className="button-icon" />
+            <button type="button" aria-label="pause">
+              <Pause className="button-icon" onClick={onStopTimer} />
             </button>
-          </Tooltip>
+          ) : (
+            <button type="button" aria-label="start">
+              <Play onClick={onStartTimer} className="button-icon" />
+            </button>
+          )}
+          <button type="button" aria-label="set">
+            <Set onClick={onSetTimer} className="button-icon" />
+          </button>
         </div>
       </div>
       {state.panelIsOpen && (
@@ -218,16 +212,14 @@ export const Timer = ({ id, time, onRemoveTimer, theme }: IProps) => {
             className={styles.textarea}
             placeholder="Note"
           />
-          <Tooltip title="Load film preset time">
-            <button
-              type="button"
-              aria-label="film"
-              className="film-button trans-color-btn"
-              onClick={showFilmSelectionForm}
-            >
-              <Film />
-            </button>
-          </Tooltip>
+          <button
+            type="button"
+            aria-label="film"
+            className="film-button trans-color-btn"
+            onClick={showFilmSelectionForm}
+          >
+            <Film />
+          </button>
           {state.formIsActivated && <FilmSelectForm setTimer={setCurrentTimerValue} />}
         </div>
       )}
