@@ -1,4 +1,4 @@
-export const dictionaryModel: any = {
+export const dictionaryModel = {
   code: 0,
   en: 1,
   ru: 2,

@@ -146,11 +146,7 @@ export const Timer = ({ id, time, onRemoveTimer, theme }: IProps) => {
         ×
       </button>
       <ConfigProvider theme={themeConfig}>
-        <Typography.Title
-          level={5}
-          ellipsis={{ rows: 1, tooltip: <div>{process || SELECT_PROCESS_OPTIONS[0]}</div> }}
-          className={styles.process}
-        >
+        <Typography.Title level={5} ellipsis={{ rows: 1 }} className={styles.process}>
           {process || SELECT_PROCESS_OPTIONS[0]}
         </Typography.Title>
       </ConfigProvider>
