@@ -34,7 +34,6 @@ button:hover,
 }
 
 @layer variables {
-
     input,
     textarea,
     select,
@@ -78,7 +77,7 @@ button:hover,
     }
 
     .finished {
-        box-shadow: 0 0 20px rgb(255, 0, 0);
+        box-shadow: 0 0 20px rgb(255 0 0);
         border-color: red;
     }
 

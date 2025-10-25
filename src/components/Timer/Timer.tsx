@@ -48,7 +48,7 @@ export const Timer = ({ id, time, onRemoveTimer, theme }: IProps) => {
     components: {
       DatePicker: {
         activeBorderColor: isDarkTheme ? '#ff0000' : '#000',
-        activeShadow: '0 0 0 2px rgba(0, 0, 0, 0.2)',
+        activeShadow: '0 0 0 2px rgb0 0 0 / 0.2)',
         colorTextDisabled: isDarkTheme ? '#ff0000' : '#000',
         colorPrimary: isDarkTheme ? '#ff0000' : '#000',
         controlItemBgActive: isDarkTheme ? '#000' : '#fff',
@@ -219,7 +219,7 @@ export const Timer = ({ id, time, onRemoveTimer, theme }: IProps) => {
             onClick={showFilmSelectionForm}
           >
             <Film />
-          </button>
+            </button>
           {state.formIsActivated && <FilmSelectForm setTimer={setCurrentTimerValue} />}
         </div>
       )}
