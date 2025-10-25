@@ -56,9 +56,9 @@ export const Main = () => {
       <ThemeSwitcher theme={theme} setTheme={setTheme} />
       <div className={styles.row1}>
         <Clock />
-        <div className={styles.logout}>
+        {/*<div className={styles.logout}>
           <Person className={styles.logoutIcon} onClick={onLogOut} />
-        </div>
+        </div>*/}
       </div>
       <div className={styles.row2}>
         <TopMenu addTimer={onAddTimer} clearBoard={onClearBoard} timersCount={timers.length} />

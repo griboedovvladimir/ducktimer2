@@ -10,3 +10,9 @@
     align-items: center;
     justify-self: end;
 }
+
+@media (max-width: 400px) {
+    .panel {
+        display: none;
+    }
+}
