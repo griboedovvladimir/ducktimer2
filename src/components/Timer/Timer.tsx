@@ -219,7 +219,7 @@ export const Timer = ({ id, time, onRemoveTimer, theme }: IProps) => {
             onClick={showFilmSelectionForm}
           >
             <Film />
-            </button>
+          </button>
           {state.formIsActivated && <FilmSelectForm setTimer={setCurrentTimerValue} />}
         </div>
       )}
