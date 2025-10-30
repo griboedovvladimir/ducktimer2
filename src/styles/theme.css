@@ -1,39 +1,24 @@
 @layer theme {
     :root {
-        --color-theme: light;
+          color-scheme: light dark;
+          --main-color: light-dark(transparent, black);
+          --color-1: light-dark(black, red);
+          --color-2: light-dark(white, black);
+          --color-3: light-dark(gray, red);
+          --shadowColor: 0 0 10px light-dark(rgb(0  0  0 / 0.5), rgb(255  0  0 / 0.5));
     }
 
     @media (prefers-color-scheme: dark) {
         :root {
-            --color-theme: dark;
+            color-scheme: dark;
         }
     }
 
     [data-theme='dark'] {
-        --color-theme: dark;
+          color-scheme: dark;
     }
 
     [data-theme='light'] {
-        --color-theme: light;
-    }
-
-    @container style(--color-theme: dark) {
-        body {
-            --main-color: black;
-            --color-1: red;
-            --color-2: black;
-            --color-3: red;
-            --shadowColor: 0 0 10px rgb(255  0  0 / 0.5);
-        }
-    }
-
-    @container style(--color-theme: light) {
-        body {
-            --main-color: transpetent;
-            --color-1: black;
-            --color-2: white;
-            --color-3: gray;
-            --shadowColor: 0 0 10px rgb(0  0  0 / 0.5)
-        }
+          color-scheme: light;
     }
 }
