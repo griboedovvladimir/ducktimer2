@@ -14,13 +14,13 @@ export const RightMenu = () => {
     <>
       <div className={styles.panel}>
         <button type="button" popovertarget={PopupTarget.VolumeMixer}>
-          <Vol className="button-icon" />
+          <Vol />
         </button>
         <button type="button" aria-label={PopupTarget.TempConverter} popovertarget={PopupTarget.TempConverter}>
-          <Temp className="button-icon" />
+          <Temp />
         </button>
         <button type="button" aria-label={PopupTarget.PushProcessing} popovertarget={PopupTarget.PushProcessing}>
-          <Exp className="button-icon" />
+          <Exp />
         </button>
       </div>
 

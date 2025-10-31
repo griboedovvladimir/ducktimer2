@@ -11,14 +11,19 @@ import styles from '../../pages/Main/Main.module.css';
 export const TopMenu = ({ addTimer, clearBoard }: any) => {
   return (
     <div id="controlpanel" className={styles.topMenu}>
-      <Timer className="controlpanel icon" onClick={addTimer} />
+      <button type="button" onClick={addTimer}>
+        <Timer />
+      </button>
       <button type="button" aria-label={PopupTarget.Load} popovertarget={PopupTarget.Load}>
-        <Load className="controlpanel icon" />
+        <Load />
       </button>
       <button type="button" aria-label={PopupTarget.Save} popovertarget={PopupTarget.Save}>
-        <Save className="controlpanel icon" />
+        <Save />
       </button>
-      <Clear onClick={clearBoard} className="controlpanel icon" />
+      <button type="button" onClick={clearBoard}>
+        <Clear />
+      </button>
+
       <Popover popoverTarget={PopupTarget.Save}>
         <SaveBoard />
       </Popover>

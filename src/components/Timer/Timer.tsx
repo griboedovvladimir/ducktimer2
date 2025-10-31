@@ -47,6 +47,7 @@ export const Timer = ({ id, time, onRemoveTimer, theme }: IProps) => {
     },
     components: {
       DatePicker: {
+        hoverBg: isDarkTheme ? '#000' : 'white',
         activeBorderColor: isDarkTheme ? '#ff0000' : '#000',
         activeShadow: '0 0 0 2px rgb0 0 0 / 0.2)',
         colorTextDisabled: isDarkTheme ? '#ff0000' : '#000',
@@ -157,15 +158,15 @@ export const Timer = ({ id, time, onRemoveTimer, theme }: IProps) => {
         <div className={styles.timerButtons}>
           {timerSet ? (
             <button type="button" aria-label="pause">
-              <Pause className="button-icon" onClick={onStopTimer} />
+              <Pause onClick={onStopTimer} />
             </button>
           ) : (
             <button type="button" aria-label="start">
-              <Play onClick={onStartTimer} className="button-icon" />
+              <Play onClick={onStartTimer} />
             </button>
           )}
           <button type="button" aria-label="set">
-            <Set onClick={onSetTimer} className="button-icon" />
+            <Set onClick={onSetTimer} />
           </button>
         </div>
       </div>

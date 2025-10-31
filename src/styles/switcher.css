@@ -25,6 +25,7 @@
     outline: none;
     color: var(--color-1);
     cursor: default;
+    top: -9px;
 }
 
 .checkbox-label .off {
@@ -43,6 +44,7 @@
     outline: none;
     color: var(--color-1);
     cursor: default;
+    top: -9px;
 }
 
 .checkbox-label:before {
