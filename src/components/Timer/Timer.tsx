@@ -85,6 +85,16 @@ export const Timer = ({ id, time, onRemoveTimer, theme }: IProps) => {
     setState({ ...state, panelIsOpen: !state.panelIsOpen, formIsActivated: false });
   };
 
+  const onContainerClick = (e: any) => {
+    if (!window.matchMedia?.('(max-width: 768px)').matches) return;
+
+    // Don't toggle when interacting with form controls or buttons inside the timer
+    const target = e?.target as HTMLElement | null;
+    if (target && target.closest && target.closest('button, input, select, textarea, a')) return;
+
+    onTogglePanel();
+  };
+
   const showFilmSelectionForm = () => {
     setState({ ...state, formIsActivated: true });
   };
@@ -142,7 +152,7 @@ export const Timer = ({ id, time, onRemoveTimer, theme }: IProps) => {
   };
 
   return (
-    <div className={timersClassList}>
+    <div className={timersClassList} onClick={onContainerClick}>
       <button type="button" onClick={() => onRemoveTimer(id)} className={styles.delete}>
         ×
       </button>
@@ -220,7 +230,11 @@ export const Timer = ({ id, time, onRemoveTimer, theme }: IProps) => {
           {state.formIsActivated && <FilmSelectForm setTimer={setCurrentTimerValue} />}
         </div>
       )}
-      <button type="button" onClick={onTogglePanel} className="stork trans-color-btn">
+      <button
+        type="button"
+        onClick={onTogglePanel}
+        className={`stork trans-color-btn ${state.panelIsOpen ? 'active' : ''}`}
+      >
         {state.panelIsOpen ? '▲' : '▼'}
       </button>
     </div>

@@ -129,6 +129,16 @@ button:hover,
         height: 30px;
         cursor: pointer;
     }
+    
+    @media (max-width: 480px) {
+        .stork {
+            display: none;
+        }
+        
+        .stork.active {
+            display: block;
+        }
+    }
 
     .stork:hover {
         font-size: 22px;
