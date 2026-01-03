@@ -1,40 +1,28 @@
 name: 🚀 Deploy website on push
 
-on:
-  push:
-    branches:
-      - main
-
 jobs:
   web-deploy:
+    name: 🎉 Deploy
     runs-on: ubuntu-latest
     steps:
-      # 1️⃣ Получаем код
-      - name: 🚚 Checkout code
+      - name: 🚚 Get latest code
         uses: actions/checkout@v3
 
-      # 2️⃣ Настраиваем Node.js
       - name: Use Node.js 22
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v2
         with:
           node-version: '22'
 
-      # 3️⃣ Сборка проекта
-      - name: 🔨 Build project
+      - name: 🔨 Build Project
         run: |
           npm install
           npm run build
 
-      # 4️⃣ Деплой на cPanel через SSH
-      - name: 🚀 Deploy via SSH (rsync)
-        uses: appleboy/ssh-action@v0.1.9
+      - name: 📂 Sync files
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
-          host: ${{ secrets.CPANEL_HOST }}
-          username: ${{ secrets.CPANEL_USER }}
-          key: ${{ secrets.CPANEL_SSH_KEY }}
-          port: 22
-          script: |
-            # Создаём папку, если не существует
-            mkdir -p /home/ducktimero/public_html/
-            # Синхронизируем файлы через rsync
-            rsync -avz --delete -e "ssh -p 22" ./dist/ ${{ secrets.CPANEL_USER }}@${{ secrets.CPANEL_HOST }}:/home/ducktimero/public_html/
+          server: ${{ secrets.GIT_CPANEL_REACT_SERVER }}
+          username: ${{ secrets.GIT_CPANEL_REACT_USER }}
+          password: ${{ secrets.GIT_CPANEL_REACT_PWD }}
+          protocol: ${{ secrets.GIT_CPANEL_REACT_PROTOCOL }}
+          local-dir: ./dist/
