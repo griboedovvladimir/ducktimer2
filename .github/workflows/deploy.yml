@@ -30,4 +30,4 @@ jobs:
           password: ${{ secrets.GIT_CPANEL_REACT_PWD }}
           protocol: ${{ secrets.GIT_CPANEL_REACT_PROTOCOL }}
           local-dir: ./dist/
-          server-dir: public_html/
+          server-dir: home/ducktimero/public_html/
