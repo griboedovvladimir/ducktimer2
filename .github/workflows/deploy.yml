@@ -1,35 +1,40 @@
+name: 🚀 Deploy website on push
+
 on:
   push:
     branches:
       - main
-name: 🚀 Deploy website on push
 
 jobs:
   web-deploy:
-    name: 🎉 Deploy
     runs-on: ubuntu-latest
     steps:
-      - name: 🚚 Get latest code
+      # 1️⃣ Получаем код
+      - name: 🚚 Checkout code
         uses: actions/checkout@v3
 
+      # 2️⃣ Настраиваем Node.js
       - name: Use Node.js 22
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: '22'
 
-      - name: 🔨 Build Project
+      # 3️⃣ Сборка проекта
+      - name: 🔨 Build project
         run: |
           npm install
           npm run build
 
+      # 4️⃣ Деплой на cPanel через SSH
       - name: 🚀 Deploy via SSH (rsync)
-        uses: easingthemes/ssh-deploy@v4
+        uses: appleboy/ssh-action@v0.1.9
         with:
-          SSH_PRIVATE_KEY: ${{ secrets.CPANEL_SSH_KEY }}
-          REMOTE_USER: ${{ secrets.CPANEL_USER }}
-          REMOTE_HOST: ${{ secrets.CPANEL_HOST }}
-          REMOTE_PORT: 22
-          SOURCE: "dist/"
-          TARGET: "/home/ducktimero/public_html/"
-          ARGS: "-avz --delete"
-          SSH_CMD_ARGS: "-o StrictHostKeyChecking=no"
+          host: ${{ secrets.CPANEL_HOST }}
+          username: ${{ secrets.CPANEL_USER }}
+          key: ${{ secrets.CPANEL_SSH_KEY }}
+          port: 22
+          script: |
+            # Создаём папку, если не существует
+            mkdir -p /home/ducktimero/public_html/
+            # Синхронизируем файлы через rsync
+            rsync -avz --delete -e "ssh -p 22" ./dist/ ${{ secrets.CPANEL_USER }}@${{ secrets.CPANEL_HOST }}:/home/ducktimero/public_html/
