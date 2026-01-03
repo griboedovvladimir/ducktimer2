@@ -25,9 +25,9 @@ jobs:
       - name: 🚀 Deploy via SSH (rsync)
         uses: easingthemes/ssh-deploy@v4
         with:
-          SSH_PRIVATE_KEY: ${{ secrets.CPANEL_SSH_KEY }}
-          REMOTE_HOST: ${{ secrets.CPANEL_HOST }}
-          REMOTE_USER: ${{ secrets.CPANEL_USER }}
-          ARGS: "-avz --delete"
-          SOURCE: "dist/"
-          TARGET: "/home/ducktimero/public_html/"
+          ssh-private-key: ${{ secrets.CPANEL_SSH_KEY }}
+          remote-user: ${{ secrets.CPANEL_USER }}
+          server-ip: ${{ secrets.CPANEL_HOST }}
+          remote-path: "/home/ducktimero/public_html/"
+          source: "dist/"
+          args: "-avz --delete"
