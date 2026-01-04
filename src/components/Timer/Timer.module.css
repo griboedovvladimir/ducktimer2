@@ -56,6 +56,12 @@
     justify-content: space-around;
 }
 
+@media (max-width: 480px) {
+    .timerButtons {
+        display: none;
+    }
+}
+
 .time {
     font-family: 'ProximaNova-Regular';
     text-align: left;

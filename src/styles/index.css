@@ -90,7 +90,7 @@ body:has([popover]:popover-open) [popover] {
 
         .time {
             font-size: 24cqw;
-            font-family: 'ProximaNova-Regular';
+            font-family: 'ProximaNova-Regular', serif;
             text-align: left;
             margin: 0;
             width: 100%;
@@ -173,7 +173,7 @@ body:has([popover]:popover-open) [popover] {
     max-height: 70vh;
     box-shadow: var(--shadowColor);
     border-radius: 5px;
-    font-family: 'ProximaNova-Regular';
+    font-family: 'ProximaNova-Regular', serif;
     font-size: 10pt;
     background-color: var(--color-2);
     top: 10vh;
@@ -246,7 +246,7 @@ dt {
     margin: 0 5px 10px 5px;
     width: 95%;
     background-color: transparent;
-    font-family: 'ProximaNova-Bold';
+    font-family: 'ProximaNova-Bold', serif;
     letter-spacing: 0.1em;
     outline: none;
     cursor: pointer;
@@ -260,7 +260,7 @@ dt {
 }
 
 #convertResult {
-    font-family: 'ProximaNova-Bold';
+    font-family: 'ProximaNova-Bold', serif;
 }
 
 .mixer-field {
