@@ -1,7 +1,6 @@
 export const TempConverter = () => {
   return (
     <div className="content">
-      <h2 className="converter__header">Time/Temp Conversion Chart</h2>
       <h5>Conversion chart instructions:</h5>
       <p>
         {' '}

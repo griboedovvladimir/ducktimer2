@@ -5,7 +5,7 @@ import { PopupTarget } from '../../shared/enums/popup-target';
 
 const PopupsTitles = {
   [PopupTarget.VolumeMixer]: 'Volume mixer',
-  [PopupTarget.TempConverter]: 'Time/temp converter',
+  [PopupTarget.TempConverter]: 'Time/Temp Conversion Chart',
   [PopupTarget.PushProcessing]: 'Push processing',
 };
 
