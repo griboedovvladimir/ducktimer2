@@ -46,12 +46,10 @@ button:hover,
     opacity: .7;
 }
 
-/* Когда ЛЮБОЙ popover открыт — блокируем страницу */
 body:has([popover]:popover-open) #root {
     pointer-events: none;
 }
 
-/* Но разрешаем события самому popover */
 body:has([popover]:popover-open) [popover] {
     pointer-events: auto;
 }
