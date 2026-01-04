@@ -179,6 +179,17 @@ export const Timer = ({ id, time, onRemoveTimer, theme }: IProps) => {
             <Set onClick={onSetTimer} />
           </button>
         </div>
+        <div className={styles.timerButtonsSmall}>
+          {timerSet ? (
+            <button type="button" aria-label="pause">
+              Pause
+            </button>
+          ) : (
+            <button type="button" aria-label="start">
+              Start
+            </button>
+          )}
+        </div>
       </div>
       {state.panelIsOpen && (
         <div className={styles.setTimerPanel} defaultValue=" ">

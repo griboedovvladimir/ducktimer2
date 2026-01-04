@@ -56,9 +56,22 @@
     justify-content: space-around;
 }
 
+.timerButtonsSmall {
+    justify-content: space-around;
+    display: none;
+}
+
 @media (max-width: 480px) {
     .timerButtons {
         display: none;
+    }
+
+    .timerButtonsSmall {
+        display: flex;
+
+        button {
+            border: revert;
+        }
     }
 }
 
