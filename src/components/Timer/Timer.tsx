@@ -53,6 +53,7 @@ export const Timer = ({ id, time, onRemoveTimer, theme }: IProps) => {
         colorTextDisabled: isDarkTheme ? '#ff0000' : '#000',
         colorPrimary: isDarkTheme ? '#ff0000' : '#000',
         controlItemBgActive: isDarkTheme ? '#000' : '#fff',
+        activeBg: isDarkTheme ? '#000' : 'white',
       },
     },
   };
