@@ -1,5 +1,5 @@
 .time {
-    display: inline-block;
+    display: flex;
     font-size: 50px;
     font-family: 'ProximaNova-Bold', serif;
     align-items: center;
@@ -15,11 +15,11 @@
 
 @media screen and (max-width: 400px) {
     .clock {
-        font-size: 20px;
+        font-size: 30px;
     }
 
     .time {
-        font-size: 20px;
+        font-size: 30px;
     }
 
     .timeIcon {
