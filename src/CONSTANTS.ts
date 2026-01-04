@@ -11,7 +11,6 @@ export enum API_CONSTANTS {
   FILM_FORM_FIRST_STEP = 'backend/filmform.php',
   FILM_FORM_SECOND_STEP = 'backend/filmform2.php',
   GET_TIME_BY_PARAMS = 'backend/filmformset.php',
-  CALCULATE_TEMPERATURE = 'backend/todigitaltruth.php',
 }
 
 export enum STORAGE_CONSTANTS {

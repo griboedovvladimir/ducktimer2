@@ -43,13 +43,6 @@ export const filmApiService = createApi({
         body,
       }),
     }),
-    calculateTemp: build.mutation<null, string>({
-      query: (body) => ({
-        url: API_CONSTANTS.CALCULATE_TEMPERATURE,
-        method: RequestMethod.POST,
-        body,
-      }),
-    }),
     getToken: build.mutation<string | undefined, any>({
       query: (body) => ({
         url: API_CONSTANTS.LOGIN,
@@ -71,7 +64,6 @@ export const {
   useFetchFilmsQuery,
   useFetchFilmsPropertiesMutation,
   useFetchTimeMutation,
-  useCalculateTempMutation,
   useGetTokenMutation,
   useSetTokenMutation,
 } = filmApiService;
