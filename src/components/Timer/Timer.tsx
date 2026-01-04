@@ -181,11 +181,11 @@ export const Timer = ({ id, time, onRemoveTimer, theme }: IProps) => {
         </div>
         <div className={styles.timerButtonsSmall}>
           {timerSet ? (
-            <button className="button" type="button" aria-label="pause" onClick={onStopTimer}>
+            <button type="button" aria-label="pause" onClick={onStopTimer}>
               Pause
             </button>
           ) : (
-            <button className="button" type="button" aria-label="start" onClick={onStartTimer}>
+            <button type="button" aria-label="start" onClick={onStartTimer}>
               Start
             </button>
           )}
