@@ -46,7 +46,7 @@ button:hover,
     opacity: .7;
 }
 
-body:has(::backdrop) > *:not(.popup) {
+body:has(div::backdrop) > *:not(.popup) {
     pointer-events: none;
 }
 
@@ -54,7 +54,7 @@ body:has(::backdrop) > *:not(.popup) {
     pointer-events: auto;
 }
 
-body:has(::backdrop) {
+body:has(div::backdrop) {
     overflow: hidden;
 }
 
