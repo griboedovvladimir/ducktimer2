@@ -46,19 +46,15 @@ button:hover,
     opacity: .7;
 }
 
-.popup-container::backdrop {
-    background: rgba(0, 0, 0, 0.5);
-}
-
-body:has(.popup-container[open]) > *:not(.popup-container) {
+body:has(.popup[open]) > *:not(.popup) {
     pointer-events: none;
 }
 
-.popup-container {
+.popup {
     pointer-events: auto;
 }
 
-body:has(.popup-container[open]) {
+body:has(.popup[open]) {
     overflow: hidden;
 }
 
