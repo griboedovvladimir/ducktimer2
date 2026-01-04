@@ -31,6 +31,7 @@ h1 {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    padding-bottom: 1em;
 }
 
 .row2 {
@@ -55,6 +56,7 @@ h1 {
 .topMenu {
     justify-self: end;
     flex-direction: row-reverse;
+    align-self: end;
 }
 
 @media (max-width: 1600px) {
@@ -92,5 +94,13 @@ h1 {
         display: grid;
         grid-template-columns: 1fr;
         grid-template-rows: auto;
+    }
+
+    .row1 {
+        flex-direction: column;
+    }
+
+    .topMenu {
+        min-width: 96%;
     }
 }
