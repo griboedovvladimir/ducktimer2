@@ -3,6 +3,7 @@
     font-size: 50px;
     font-family: 'ProximaNova-Bold', serif;
     align-items: center;
+    gap: 0.2em;
 }
 
 .clock {
@@ -11,6 +12,7 @@
     justify-content: flex-start;
     user-select: none;
     cursor: default;
+    align-items: center;
 }
 
 @media screen and (max-width: 400px) {
