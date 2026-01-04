@@ -3,7 +3,7 @@
 }
 
 .logout {
-    display: none; // TODO: Restore logout button
+    display: none;
     position: absolute;
     top: 15px;
     right: 15px;
