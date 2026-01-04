@@ -56,12 +56,12 @@ export const Main = () => {
       <ThemeSwitcher theme={theme} setTheme={setTheme} />
       <div className={styles.row1}>
         <Clock />
+        <TopMenu addTimer={onAddTimer} clearBoard={onClearBoard} timersCount={timers.length} />
         <div className={styles.logout}>
           <Person className={styles.logoutIcon} onClick={onLogOut} />
         </div>
       </div>
       <div className={styles.row2}>
-        <TopMenu addTimer={onAddTimer} clearBoard={onClearBoard} timersCount={timers.length} />
         <div className={styles.table}>
           {timers.map((timer: { time: string; id: string }) => (
             <Timer key={timer.id} id={timer.id} time={timer.time} onRemoveTimer={onRemoveTimer} theme={theme} />

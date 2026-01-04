@@ -2,6 +2,18 @@
     width: 100%;
 }
 
+.logout {
+    display: none; // TODO: Restore logout button
+    position: absolute;
+    top: 15px;
+    right: 15px;
+
+    .logoutIcon {
+        width: 42px;
+        height: 42px;
+    }
+}
+
 .logoutIcon {
     width: 70px;
     height: 60px;
@@ -11,7 +23,7 @@
 h1 {
     margin: 5px auto;
     text-align: center;
-    font-family: 'ProximaNova-Bold';
+    font-family: 'ProximaNova-Bold', serif;
     font-size: 16px;
 }
 
@@ -38,6 +50,11 @@ h1 {
     grid-template-rows: repeat(1, 1fr);
     gap: 1em;
     align-items: start;
+}
+
+.topMenu {
+    justify-self: end;
+    flex-direction: row-reverse;
 }
 
 @media (max-width: 1600px) {
@@ -68,34 +85,12 @@ h1 {
     .table {
         grid-template-columns: repeat(1, 1fr);
     }
-
-    .topMenu {
-        justify-self: end;
-        flex-direction: row-reverse;
-      }
 }
 
 @media (max-width: 400px) {
-    .logout {
-        display: none;
-        position: absolute;
-        top: 15px;
-        right: 15px;
-
-        .logoutIcon {
-            width: 42px;
-            height: 42px;
-        }
-    }
-    
     .row2 {
         display: grid;
         grid-template-columns: 1fr;
         grid-template-rows: auto;
     }
-    
-    .topMenu {
-        justify-self: end;
-        flex-direction: row-reverse;
-      }
 }
