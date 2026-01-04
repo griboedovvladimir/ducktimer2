@@ -46,6 +46,22 @@ button:hover,
     opacity: .7;
 }
 
+.popup-container::backdrop {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+body:has(.popup-container[open]) > *:not(.popup-container) {
+    pointer-events: none;
+}
+
+.popup-container {
+    pointer-events: auto;
+}
+
+body:has(.popup-container[open]) {
+    overflow: hidden;
+}
+
 @layer variables {
     input,
     textarea,
