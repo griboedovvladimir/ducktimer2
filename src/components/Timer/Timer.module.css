@@ -69,6 +69,7 @@
     .timerButtonsSmall {
         display: flex;
         width: 100%;
+        margin-bottom: 10px;
 
         button {
             width: 100%;
@@ -78,6 +79,11 @@
             outline: none;
             padding: 5px 10px;
             border: 2px solid var(--color-1);
+        }
+
+        button:hover {
+            box-shadow: 0 0 10px var(--color-3);
+            opacity: 1;
         }
     }
 }
