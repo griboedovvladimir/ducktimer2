@@ -37,6 +37,24 @@ export const Timer = ({ id, time, onRemoveTimer, theme, compactView }: IProps) =
   const process = state.otherProcess ? state.otherProcess : state.selectProcess;
   const isDarkTheme = theme === 'dark';
   const timeFormat = 'HH:mm:ss';
+  
+  // Styles for compact view buttons
+  const compactButtonStyle = compactView ? {
+    width: '100%',
+    color: 'var(--color-1)',
+    backgroundColor: 'transparent',
+    borderRadius: '5px',
+    outline: 'none',
+    padding: '5px 10px',
+    border: '2px solid var(--color-1)'
+  } : undefined;
+  
+  const compactContainerStyle = compactView ? {
+    display: 'flex',
+    width: '100%',
+    marginBottom: '10px'
+  } : undefined;
+  
   const themeConfig = {
     token: {
       colorText: isDarkTheme ? '#ff0000' : '#000',
@@ -169,14 +187,14 @@ export const Timer = ({ id, time, onRemoveTimer, theme, compactView }: IProps) =
         {state.note && <p>Note: {state.note}</p>}
         <div 
           className={compactView ? styles.timerButtonsSmall : styles.timerButtons}
-          style={compactView ? { display: 'flex', width: '100%', marginBottom: '10px' } : undefined}
+          style={compactContainerStyle}
         >
           {timerSet ? (
             <button 
               type="button" 
               aria-label="pause" 
               onClick={onStopTimer}
-              style={compactView ? { width: '100%', color: 'var(--color-1)', backgroundColor: 'transparent', borderRadius: '5px', outline: 'none', padding: '5px 10px', border: '2px solid var(--color-1)' } : undefined}
+              style={compactButtonStyle}
             >
               {compactView ? 'Pause' : <Pause />}
             </button>
@@ -185,7 +203,7 @@ export const Timer = ({ id, time, onRemoveTimer, theme, compactView }: IProps) =
               type="button" 
               aria-label="start" 
               onClick={onStartTimer}
-              style={compactView ? { width: '100%', color: 'var(--color-1)', backgroundColor: 'transparent', borderRadius: '5px', outline: 'none', padding: '5px 10px', border: '2px solid var(--color-1)' } : undefined}
+              style={compactButtonStyle}
             >
               {compactView ? 'Start' : <Play />}
             </button>
