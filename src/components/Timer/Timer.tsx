@@ -167,30 +167,32 @@ export const Timer = ({ id, time, onRemoveTimer, theme, compactView }: IProps) =
       <div className={styles.timerPanel}>
         <div className="time">{currentTimerValue || OTHER_CONSTANTS.START_TIME}</div>
         {state.note && <p>Note: {state.note}</p>}
-        <div className={styles.timerButtons}>
+        <div 
+          className={compactView ? styles.timerButtonsSmall : styles.timerButtons}
+          style={compactView ? { display: 'flex', width: '100%', marginBottom: '10px' } : undefined}
+        >
           {timerSet ? (
-            <button type="button" aria-label="pause">
-              <Pause onClick={onStopTimer} />
+            <button 
+              type="button" 
+              aria-label="pause" 
+              onClick={onStopTimer}
+              style={compactView ? { width: '100%', color: 'var(--color-1)', backgroundColor: 'transparent', borderRadius: '5px', outline: 'none', padding: '5px 10px', border: '2px solid var(--color-1)' } : undefined}
+            >
+              {compactView ? 'Pause' : <Pause />}
             </button>
           ) : (
-            <button type="button" aria-label="start">
-              <Play onClick={onStartTimer} />
+            <button 
+              type="button" 
+              aria-label="start" 
+              onClick={onStartTimer}
+              style={compactView ? { width: '100%', color: 'var(--color-1)', backgroundColor: 'transparent', borderRadius: '5px', outline: 'none', padding: '5px 10px', border: '2px solid var(--color-1)' } : undefined}
+            >
+              {compactView ? 'Start' : <Play />}
             </button>
           )}
           {!compactView && (
-            <button type="button" aria-label="set">
-              <Set onClick={onSetTimer} />
-            </button>
-          )}
-        </div>
-        <div className={styles.timerButtonsSmall}>
-          {timerSet ? (
-            <button type="button" aria-label="pause" onClick={onStopTimer}>
-              Pause
-            </button>
-          ) : (
-            <button type="button" aria-label="start" onClick={onStartTimer}>
-              Start
+            <button type="button" aria-label="set" onClick={onSetTimer}>
+              <Set />
             </button>
           )}
         </div>
