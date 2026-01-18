@@ -22,7 +22,7 @@ export const RightMenu = ({ compactView, setCompactView }: IProps) => {
   return (
     <>
       <div className={styles.panel}>
-        <button type="button" popovertarget={PopupTarget.VolumeMixer}>
+        <button type="button" aria-label={PopupTarget.VolumeMixer} popovertarget={PopupTarget.VolumeMixer}>
           <Vol />
         </button>
         <button type="button" aria-label={PopupTarget.TempConverter} popovertarget={PopupTarget.TempConverter}>
