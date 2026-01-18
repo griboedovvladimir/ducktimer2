@@ -38,23 +38,6 @@ export const Timer = ({ id, time, onRemoveTimer, theme, compactView }: IProps) =
   const isDarkTheme = theme === 'dark';
   const timeFormat = 'HH:mm:ss';
   
-  // Styles for compact view buttons
-  const compactButtonStyle = compactView ? {
-    width: '100%',
-    color: 'var(--color-1)',
-    backgroundColor: 'transparent',
-    borderRadius: '5px',
-    outline: 'none',
-    padding: '5px 10px',
-    border: '2px solid var(--color-1)'
-  } : undefined;
-  
-  const compactContainerStyle = compactView ? {
-    display: 'flex',
-    width: '100%',
-    marginBottom: '10px'
-  } : undefined;
-  
   const themeConfig = {
     token: {
       colorText: isDarkTheme ? '#ff0000' : '#000',
@@ -185,16 +168,12 @@ export const Timer = ({ id, time, onRemoveTimer, theme, compactView }: IProps) =
       <div className={styles.timerPanel}>
         <div className="time">{currentTimerValue || OTHER_CONSTANTS.START_TIME}</div>
         {state.note && <p>Note: {state.note}</p>}
-        <div 
-          className={compactView ? styles.timerButtonsSmall : styles.timerButtons}
-          style={compactContainerStyle}
-        >
+        <div className={compactView ? styles.timerButtonsSmallActive : styles.timerButtons}>
           {timerSet ? (
             <button 
               type="button" 
               aria-label="pause" 
               onClick={onStopTimer}
-              style={compactButtonStyle}
             >
               {compactView ? 'Pause' : <Pause />}
             </button>
@@ -203,7 +182,6 @@ export const Timer = ({ id, time, onRemoveTimer, theme, compactView }: IProps) =
               type="button" 
               aria-label="start" 
               onClick={onStartTimer}
-              style={compactButtonStyle}
             >
               {compactView ? 'Start' : <Play />}
             </button>

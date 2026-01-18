@@ -2,7 +2,7 @@
 import React from 'react';
 
 import { PopupTarget } from '../../shared/enums/popup-target';
-import { Exp, Grid, Temp, Vol } from '../../shared/icons';
+import { Exp, Temp, ViewChange, Vol } from '../../shared/icons';
 import { TempConverter } from '../TempConverter';
 import { Popover } from '../Popover/Popover';
 import { PushProcessing } from '../PushProcessing';
@@ -37,7 +37,7 @@ export const RightMenu = ({ compactView, setCompactView }: IProps) => {
           onClick={toggleCompactView}
           title={compactView ? 'Grid view' : 'Compact view'}
         >
-          <Grid />
+          <ViewChange />
         </button>
       </div>
 

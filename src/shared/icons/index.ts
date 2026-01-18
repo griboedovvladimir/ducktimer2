@@ -1,7 +1,6 @@
 export { default as Clear } from './clear.svg';
 export { default as Exp } from './exp.svg';
 export { default as Film } from './film.svg';
-export { default as Grid } from './grid.svg';
 export { default as Lamp } from './lamp.svg';
 export { default as Load } from './load.svg';
 export { default as Pause } from './pause.svg';
@@ -13,5 +12,6 @@ export { default as Sun } from './sun.svg';
 export { default as Temp } from './temp.svg';
 export { default as Time } from './time2.svg';
 export { default as Timer } from './timer.svg';
+export { default as ViewChange } from './view-change.svg';
 export { default as Vol } from './vol.svg';
 export { default as Logo } from './logo.svg';
