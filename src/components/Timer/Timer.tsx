@@ -15,9 +15,10 @@ interface IProps {
   onRemoveTimer(id: string): void;
 
   theme: string;
+  compactView?: boolean;
 }
 
-export const Timer = ({ id, time, onRemoveTimer, theme }: IProps) => {
+export const Timer = ({ id, time, onRemoveTimer, theme, compactView = false }: IProps) => {
   const [timePickerValue, setTimePickerValue] = useState(OTHER_CONSTANTS.START_TIME);
   const [currentTimerValue, setCurrentTimerValue] = useState(time);
   const [timerSet, setTimerSet] = useState(0);
@@ -176,9 +177,11 @@ export const Timer = ({ id, time, onRemoveTimer, theme }: IProps) => {
               <Play onClick={onStartTimer} />
             </button>
           )}
-          <button type="button" aria-label="set">
-            <Set onClick={onSetTimer} />
-          </button>
+          {!compactView && (
+            <button type="button" aria-label="set">
+              <Set onClick={onSetTimer} />
+            </button>
+          )}
         </div>
         <div className={styles.timerButtonsSmall}>
           {timerSet ? (

@@ -54,10 +54,6 @@ h1 {
     align-items: start;
 }
 
-.compactView {
-    grid-template-columns: repeat(1, 1fr) !important;
-}
-
 .topMenu {
     justify-self: end;
     flex-direction: row-reverse;

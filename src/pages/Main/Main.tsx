@@ -63,9 +63,9 @@ export const Main = () => {
         </div>
       </div>
       <div className={styles.row2}>
-        <div className={`${styles.table} ${compactView ? styles.compactView : ''}`}>
+        <div className={styles.table}>
           {timers.map((timer: { time: string; id: string }) => (
-            <Timer key={timer.id} id={timer.id} time={timer.time} onRemoveTimer={onRemoveTimer} theme={theme} />
+            <Timer key={timer.id} id={timer.id} time={timer.time} onRemoveTimer={onRemoveTimer} theme={theme} compactView={compactView} />
           ))}
         </div>
         <RightMenu compactView={compactView} setCompactView={setCompactView} />
