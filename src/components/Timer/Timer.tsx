@@ -265,13 +265,15 @@ export const Timer = ({ id, time, onRemoveTimer, theme, compactView }: IProps) =
           {state.formIsActivated && <FilmSelectForm setTimer={setCurrentTimerValue} />}
         </div>
       )}
-      <button
-        type="button"
-        onClick={onTogglePanel}
-        className={`stork trans-color-btn ${state.panelIsOpen ? 'active' : ''}`}
-      >
-        {state.panelIsOpen ? '▲' : '▼'}
-      </button>
+      {!compactView && (
+        <button
+          type="button"
+          onClick={onTogglePanel}
+          className={`stork trans-color-btn ${state.panelIsOpen ? 'active' : ''}`}
+        >
+          {state.panelIsOpen ? '▲' : '▼'}
+        </button>
+      )}
     </div>
   );
 };
