@@ -1,6 +1,7 @@
 export { default as Clear } from './clear.svg';
 export { default as Exp } from './exp.svg';
 export { default as Film } from './film.svg';
+export { default as Grid } from './grid.svg';
 export { default as Lamp } from './lamp.svg';
 export { default as Load } from './load.svg';
 export { default as Pause } from './pause.svg';
