@@ -31,7 +31,12 @@ export const RightMenu = ({ compactView, setCompactView }: IProps) => {
         <button type="button" aria-label={PopupTarget.PushProcessing} popovertarget={PopupTarget.PushProcessing}>
           <Exp />
         </button>
-        <button type="button" aria-label="Toggle compact view" onClick={toggleCompactView} title={compactView ? "Grid view" : "Compact view"}>
+        <button
+          type="button"
+          aria-label="Toggle compact view"
+          onClick={toggleCompactView}
+          title={compactView ? 'Grid view' : 'Compact view'}
+        >
           <Grid />
         </button>
       </div>
