@@ -15,10 +15,10 @@ interface IProps {
   onRemoveTimer(id: string): void;
 
   theme: string;
-  compactView?: boolean;
+  compactView: boolean;
 }
 
-export const Timer = ({ id, time, onRemoveTimer, theme, compactView = false }: IProps) => {
+export const Timer = ({ id, time, onRemoveTimer, theme, compactView }: IProps) => {
   const [timePickerValue, setTimePickerValue] = useState(OTHER_CONSTANTS.START_TIME);
   const [currentTimerValue, setCurrentTimerValue] = useState(time);
   const [timerSet, setTimerSet] = useState(0);
