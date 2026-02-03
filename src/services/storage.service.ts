@@ -32,6 +32,15 @@ function getThemeFromLocalStorage(): string | null {
   return sessionStorage.getItem(STORAGE_CONSTANTS.THEME);
 }
 
+function setCompactViewToSessionStorage(compactView: boolean) {
+  sessionStorage.setItem(STORAGE_CONSTANTS.COMPACT_VIEW, compactView.toString());
+}
+
+function getCompactViewFromSessionStorage(): boolean {
+  const value = sessionStorage.getItem(STORAGE_CONSTANTS.COMPACT_VIEW);
+  return value === 'true';
+}
+
 export const storageService = {
   setTokenToLocalStorage,
   setTokenToSessionStorage,
@@ -41,4 +50,6 @@ export const storageService = {
   removeTokenFromSessionStorage,
   setThemeToSessionStorage,
   getThemeFromLocalStorage,
+  setCompactViewToSessionStorage,
+  getCompactViewFromSessionStorage,
 };

@@ -17,6 +17,7 @@ export const Main = () => {
   const navigate = useNavigate();
   const [timers, setTimers] = React.useState<{ id: string; time: string }[]>([]);
   const [theme, setTheme] = React.useState('light');
+  const [isCompactView, setIsCompactView] = React.useState(false);
 
   const onLogOut = () => {
     storageService.removeTokenFromSessionStorage();
@@ -41,10 +42,17 @@ export const Main = () => {
     }
   };
 
+  const toggleCompactView = () => {
+    const newValue = !isCompactView;
+    setIsCompactView(newValue);
+    storageService.setCompactViewToSessionStorage(newValue);
+  };
+
   useEffect(() => {
     setDefaultTheme();
     document.documentElement.setAttribute('data-theme', storageService.getThemeFromLocalStorage() || 'light');
     setTheme(storageService.getThemeFromLocalStorage() || 'light');
+    setIsCompactView(storageService.getCompactViewFromSessionStorage());
 
     if (!storageService.getTokenFromSessionStorage() && !storageService.getTokenFromLocalStorage()) {
       navigate(ROUTE_CONSTANTS.LOGIN_PAGE);
@@ -56,15 +64,15 @@ export const Main = () => {
       <ThemeSwitcher theme={theme} setTheme={setTheme} />
       <div className={styles.row1}>
         <Clock />
-        <TopMenu addTimer={onAddTimer} clearBoard={onClearBoard} timersCount={timers.length} />
+        <TopMenu addTimer={onAddTimer} clearBoard={onClearBoard} timersCount={timers.length} isCompactView={isCompactView} toggleCompactView={toggleCompactView} />
         <div className={styles.logout}>
           <Person className={styles.logoutIcon} onClick={onLogOut} />
         </div>
       </div>
       <div className={styles.row2}>
-        <div className={styles.table}>
+        <div className={`${styles.table} ${isCompactView ? styles.compact : ''}`}>
           {timers.map((timer: { time: string; id: string }) => (
-            <Timer key={timer.id} id={timer.id} time={timer.time} onRemoveTimer={onRemoveTimer} theme={theme} />
+            <Timer key={timer.id} id={timer.id} time={timer.time} onRemoveTimer={onRemoveTimer} theme={theme} isCompactView={isCompactView} />
           ))}
         </div>
         <RightMenu />

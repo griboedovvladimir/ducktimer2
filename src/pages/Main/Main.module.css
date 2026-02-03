@@ -54,15 +54,29 @@ h1 {
     align-items: start;
 }
 
+.table.compact {
+    gap: 0.5em;
+}
+
 .topMenu {
     justify-self: end;
     flex-direction: row-reverse;
     align-self: end;
 }
 
+@media (min-width: 769px) {
+    .table.compact {
+        grid-template-columns: repeat(8, 1fr);
+    }
+}
+
 @media (max-width: 1600px) {
     .table {
         grid-template-columns: repeat(5, 1fr);
+    }
+
+    .table.compact {
+        grid-template-columns: repeat(7, 1fr);
     }
 }
 
@@ -70,11 +84,19 @@ h1 {
     .table {
         grid-template-columns: repeat(4, 1fr);
     }
+
+    .table.compact {
+        grid-template-columns: repeat(6, 1fr);
+    }
 }
 
 @media (max-width: 1200px) {
     .table {
         grid-template-columns: repeat(3, 1fr);
+    }
+
+    .table.compact {
+        grid-template-columns: repeat(5, 1fr);
     }
 }
 
@@ -82,11 +104,19 @@ h1 {
     .table {
         grid-template-columns: repeat(2, 1fr);
     }
+
+    .table.compact {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
 
 @media (max-width: 620px) {
     .table {
         grid-template-columns: repeat(1, 1fr);
+    }
+
+    .table.compact {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 

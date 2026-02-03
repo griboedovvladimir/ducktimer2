@@ -16,6 +16,7 @@ export enum API_CONSTANTS {
 export enum STORAGE_CONSTANTS {
   AUTH_TOKEN = 'authToken',
   THEME = 'theme',
+  COMPACT_VIEW = 'compactView',
 }
 
 export enum OTHER_CONSTANTS {

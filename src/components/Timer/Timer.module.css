@@ -128,3 +128,24 @@
     cursor: pointer;
     margin: 0 5px 0 0;
 }
+
+:global(.timers.compact) .delete {
+    font-size: 12pt;
+    width: 20px;
+    margin: 0 2px 0 0;
+}
+
+:global(.timers.compact) .process {
+    font-size: 10pt;
+    height: 16px;
+    padding: 0 5px;
+}
+
+:global(.timers.compact) .timerPanel {
+    gap: 3px;
+}
+
+:global(.timers.compact) svg {
+    width: 35px;
+    height: 35px;
+}

@@ -2,17 +2,25 @@
 import React from 'react';
 
 import { PopupTarget } from '../../shared/enums/popup-target';
-import { Clear, Load, Save, Timer } from '../../shared/icons';
+import { Clear, Compact, Load, Save, Timer } from '../../shared/icons';
 import { LoadBoard } from '../LoadBoard';
 import { Popover } from '../Popover/Popover';
 import { SaveBoard } from '../SaveBoard/SaveBoard';
 import styles from '../../pages/Main/Main.module.css';
 
-export const TopMenu = ({ addTimer, clearBoard }: any) => {
+export const TopMenu = ({ addTimer, clearBoard, isCompactView, toggleCompactView }: any) => {
   return (
     <div id="controlpanel" className={styles.topMenu}>
       <button type="button" onClick={addTimer}>
         <Timer />
+      </button>
+      <button 
+        type="button" 
+        onClick={toggleCompactView}
+        title={isCompactView ? "Switch to normal view" : "Switch to compact view"}
+        style={{ opacity: isCompactView ? 1 : 0.5 }}
+      >
+        <Compact />
       </button>
       <button type="button" aria-label={PopupTarget.Load} popovertarget={PopupTarget.Load}>
         <Load />
