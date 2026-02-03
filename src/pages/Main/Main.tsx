@@ -12,6 +12,10 @@ import { guid } from '../../shared/helpers/guid';
 import { Person } from '../../shared/icons';
 import styles from './Main.module.css';
 
+const isAuthenticated = () => {
+  return !!(storageService.getTokenFromSessionStorage() || storageService.getTokenFromLocalStorage());
+};
+
 export const Main = () => {
   const maxTimersCount = 20;
   const navigate = useNavigate();
@@ -54,12 +58,12 @@ export const Main = () => {
     setTheme(storageService.getThemeFromLocalStorage() || 'light');
     setIsCompactView(storageService.getCompactViewFromSessionStorage());
 
-    if (!storageService.getTokenFromSessionStorage() && !storageService.getTokenFromLocalStorage()) {
+    if (!isAuthenticated()) {
       navigate(ROUTE_CONSTANTS.LOGIN_PAGE);
     }
   }, [navigate]);
 
-  return storageService.getTokenFromSessionStorage() || storageService.getTokenFromLocalStorage() ? (
+  return isAuthenticated() ? (
     <div className={theme}>
       <ThemeSwitcher theme={theme} setTheme={setTheme} />
       <div className={styles.row1}>

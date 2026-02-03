@@ -8,7 +8,14 @@ import { Popover } from '../Popover/Popover';
 import { SaveBoard } from '../SaveBoard/SaveBoard';
 import styles from '../../pages/Main/Main.module.css';
 
-export const TopMenu = ({ addTimer, clearBoard, isCompactView, toggleCompactView }: any) => {
+interface TopMenuProps {
+  addTimer: () => void;
+  clearBoard: () => void;
+  isCompactView: boolean;
+  toggleCompactView: () => void;
+}
+
+export const TopMenu = ({ addTimer, clearBoard, isCompactView, toggleCompactView }: TopMenuProps) => {
   return (
     <div id="controlpanel" className={styles.topMenu}>
       <button type="button" onClick={addTimer}>
@@ -18,7 +25,7 @@ export const TopMenu = ({ addTimer, clearBoard, isCompactView, toggleCompactView
         type="button" 
         onClick={toggleCompactView}
         title={isCompactView ? "Switch to normal view" : "Switch to compact view"}
-        style={{ opacity: isCompactView ? 1 : 0.5 }}
+        className={isCompactView ? styles.compactViewActive : styles.compactViewInactive}
       >
         <Compact />
       </button>
