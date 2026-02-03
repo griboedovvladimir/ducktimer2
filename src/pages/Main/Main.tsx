@@ -59,7 +59,7 @@ export const Main = () => {
     }
   }, [navigate]);
 
-  return !storageService.getTokenFromSessionStorage() ? (
+  return storageService.getTokenFromSessionStorage() || storageService.getTokenFromLocalStorage() ? (
     <div className={theme}>
       <ThemeSwitcher theme={theme} setTheme={setTheme} />
       <div className={styles.row1}>
