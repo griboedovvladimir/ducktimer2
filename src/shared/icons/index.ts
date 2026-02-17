@@ -12,5 +12,6 @@ export { default as Sun } from './sun.svg';
 export { default as Temp } from './temp.svg';
 export { default as Time } from './time2.svg';
 export { default as Timer } from './timer.svg';
+export { default as ViewChange } from './view-change.svg';
 export { default as Vol } from './vol.svg';
 export { default as Logo } from './logo.svg';
