@@ -32,6 +32,24 @@ function getThemeFromLocalStorage(): string | null {
   return sessionStorage.getItem(STORAGE_CONSTANTS.THEME);
 }
 
+/**
+ * Persists the compact view preference to session storage.
+ * Compact view reduces spacing and sizes to fit more timers on screen.
+ * @param compactView - Boolean indicating if compact view is enabled
+ */
+function setCompactViewToSessionStorage(compactView: boolean) {
+  sessionStorage.setItem(STORAGE_CONSTANTS.COMPACT_VIEW, compactView.toString());
+}
+
+/**
+ * Retrieves the compact view preference from session storage.
+ * @returns Boolean indicating if compact view is enabled (defaults to false)
+ */
+function getCompactViewFromSessionStorage(): boolean {
+  const value = sessionStorage.getItem(STORAGE_CONSTANTS.COMPACT_VIEW);
+  return value === 'true';
+}
+
 export const storageService = {
   setTokenToLocalStorage,
   setTokenToSessionStorage,
@@ -41,4 +59,6 @@ export const storageService = {
   removeTokenFromSessionStorage,
   setThemeToSessionStorage,
   getThemeFromLocalStorage,
+  setCompactViewToSessionStorage,
+  getCompactViewFromSessionStorage,
 };

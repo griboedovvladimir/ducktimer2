@@ -60,9 +60,36 @@ h1 {
     align-self: end;
 }
 
+/* Compact view mode reduces gap for denser layout */
+.table.compact {
+    gap: 0.5em;
+}
+
+/* Visual indicators for compact view toggle button state */
+.compactViewActive {
+    opacity: 1;
+}
+
+.compactViewInactive {
+    opacity: 0.5;
+}
+
+/* Responsive grid adjustments for compact mode - adds 2 columns per breakpoint */
+@media (min-width: 769px) {
+    /* Desktop: 8 columns in compact vs 6 in normal */
+    .table.compact {
+        grid-template-columns: repeat(8, 1fr);
+    }
+}
+
 @media (max-width: 1600px) {
     .table {
         grid-template-columns: repeat(5, 1fr);
+    }
+
+    /* 7 columns in compact mode */
+    .table.compact {
+        grid-template-columns: repeat(7, 1fr);
     }
 }
 
@@ -70,11 +97,21 @@ h1 {
     .table {
         grid-template-columns: repeat(4, 1fr);
     }
+
+    /* 6 columns in compact mode */
+    .table.compact {
+        grid-template-columns: repeat(6, 1fr);
+    }
 }
 
 @media (max-width: 1200px) {
     .table {
         grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* 5 columns in compact mode */
+    .table.compact {
+        grid-template-columns: repeat(5, 1fr);
     }
 }
 
@@ -82,11 +119,21 @@ h1 {
     .table {
         grid-template-columns: repeat(2, 1fr);
     }
+
+    /* 3 columns in compact mode */
+    .table.compact {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
 
 @media (max-width: 620px) {
     .table {
         grid-template-columns: repeat(1, 1fr);
+    }
+
+    /* 2 columns in compact mode */
+    .table.compact {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 

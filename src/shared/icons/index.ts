@@ -1,4 +1,5 @@
 export { default as Clear } from './clear.svg';
+export { default as Compact } from './compact.svg';
 export { default as Exp } from './exp.svg';
 export { default as Film } from './film.svg';
 export { default as Lamp } from './lamp.svg';

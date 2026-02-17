@@ -15,9 +15,11 @@ interface IProps {
   onRemoveTimer(id: string): void;
 
   theme: string;
+  // Optional flag to render timer in compact mode with reduced spacing and icon sizes
+  isCompactView?: boolean;
 }
 
-export const Timer = ({ id, time, onRemoveTimer, theme }: IProps) => {
+export const Timer = ({ id, time, onRemoveTimer, theme, isCompactView = false }: IProps) => {
   const [timePickerValue, setTimePickerValue] = useState(OTHER_CONSTANTS.START_TIME);
   const [currentTimerValue, setCurrentTimerValue] = useState(time);
   const [timerSet, setTimerSet] = useState(0);
@@ -32,7 +34,8 @@ export const Timer = ({ id, time, onRemoveTimer, theme }: IProps) => {
   });
   const processSelectValue = useRef<any>();
 
-  const timersClassList = state.timerFinished ? 'timers finished' : 'timers';
+  // Build CSS class list: base 'timers' class + optional 'finished' and 'compact' modifiers
+  const timersClassList = `timers${state.timerFinished ? ' finished' : ''}${isCompactView ? ' compact' : ''}`;
   const process = state.otherProcess ? state.otherProcess : state.selectProcess;
   const isDarkTheme = theme === 'dark';
   const timeFormat = 'HH:mm:ss';

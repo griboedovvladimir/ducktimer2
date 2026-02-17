@@ -98,6 +98,12 @@ body:has([popover]:popover-open) [popover] {
         }
     }
 
+    /* Compact mode reduces padding and border width for denser layout */
+    :scope.compact {
+        padding: 5px 5px 0 5px;
+        border-width: 1px;
+    }
+
     .finished {
         box-shadow: 0 0 20px rgb(255 0 0);
         border-color: red;

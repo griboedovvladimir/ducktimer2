@@ -12,11 +12,21 @@ import { guid } from '../../shared/helpers/guid';
 import { Person } from '../../shared/icons';
 import styles from './Main.module.css';
 
+/**
+ * Helper function to check if user is authenticated
+ * @returns true if user has a valid auth token in session or local storage
+ */
+const isAuthenticated = () => {
+  return !!(storageService.getTokenFromSessionStorage() || storageService.getTokenFromLocalStorage());
+};
+
 export const Main = () => {
   const maxTimersCount = 20;
   const navigate = useNavigate();
   const [timers, setTimers] = React.useState<{ id: string; time: string }[]>([]);
   const [theme, setTheme] = React.useState('light');
+  // State for compact view mode (denser layout with more columns)
+  const [isCompactView, setIsCompactView] = React.useState(false);
 
   const onLogOut = () => {
     storageService.removeTokenFromSessionStorage();
@@ -41,30 +51,47 @@ export const Main = () => {
     }
   };
 
+  /**
+   * Toggles between normal and compact timer view modes
+   * Persists preference to session storage for current session
+   */
+  const toggleCompactView = () => {
+    const newValue = !isCompactView;
+    setIsCompactView(newValue);
+    storageService.setCompactViewToSessionStorage(newValue);
+  };
+
   useEffect(() => {
     setDefaultTheme();
     document.documentElement.setAttribute('data-theme', storageService.getThemeFromLocalStorage() || 'light');
     setTheme(storageService.getThemeFromLocalStorage() || 'light');
+    // Restore compact view preference from session storage
+    setIsCompactView(storageService.getCompactViewFromSessionStorage());
 
-    if (!storageService.getTokenFromSessionStorage() && !storageService.getTokenFromLocalStorage()) {
+    // Redirect to login if not authenticated (fixed inverted logic from original)
+    if (!isAuthenticated()) {
       navigate(ROUTE_CONSTANTS.LOGIN_PAGE);
     }
   }, [navigate]);
 
-  return !storageService.getTokenFromSessionStorage() ? (
+  // Render main content only if authenticated (fixed inverted logic from original)
+  return isAuthenticated() ? (
     <div className={theme}>
       <ThemeSwitcher theme={theme} setTheme={setTheme} />
       <div className={styles.row1}>
         <Clock />
-        <TopMenu addTimer={onAddTimer} clearBoard={onClearBoard} timersCount={timers.length} />
+        {/* Pass compact view state and toggle function to top menu */}
+        <TopMenu addTimer={onAddTimer} clearBoard={onClearBoard} timersCount={timers.length} isCompactView={isCompactView} toggleCompactView={toggleCompactView} />
         <div className={styles.logout}>
           <Person className={styles.logoutIcon} onClick={onLogOut} />
         </div>
       </div>
       <div className={styles.row2}>
-        <div className={styles.table}>
+        {/* Apply compact class to grid for responsive column adjustments */}
+        <div className={`${styles.table} ${isCompactView ? styles.compact : ''}`}>
           {timers.map((timer: { time: string; id: string }) => (
-            <Timer key={timer.id} id={timer.id} time={timer.time} onRemoveTimer={onRemoveTimer} theme={theme} />
+            // Pass compact view flag to each timer for reduced spacing
+            <Timer key={timer.id} id={timer.id} time={timer.time} onRemoveTimer={onRemoveTimer} theme={theme} isCompactView={isCompactView} />
           ))}
         </div>
         <RightMenu />

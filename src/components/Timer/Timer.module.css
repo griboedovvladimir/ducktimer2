@@ -128,3 +128,29 @@
     cursor: pointer;
     margin: 0 5px 0 0;
 }
+
+/* Compact mode styles for reduced visual density */
+/* Smaller delete button for compact layout */
+:global(.timers.compact) .delete {
+    font-size: 12pt;
+    width: 20px;
+    margin: 0 2px 0 0;
+}
+
+/* Reduced process title size and padding */
+:global(.timers.compact) .process {
+    font-size: 10pt;
+    height: 16px;
+    padding: 0 5px;
+}
+
+/* Tighter spacing between timer controls */
+:global(.timers.compact) .timerPanel {
+    gap: 3px;
+}
+
+/* Smaller icon sizes in compact mode (35px vs 50px) */
+:global(.timers.compact) svg {
+    width: 35px;
+    height: 35px;
+}
