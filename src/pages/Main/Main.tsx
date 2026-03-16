@@ -17,6 +17,7 @@ export const Main = () => {
   const navigate = useNavigate();
   const [timers, setTimers] = React.useState<{ id: string; time: string }[]>([]);
   const [theme, setTheme] = React.useState('light');
+  const [compactView, setCompactView] = React.useState(false);
 
   const onLogOut = () => {
     storageService.removeTokenFromSessionStorage();
@@ -64,10 +65,10 @@ export const Main = () => {
       <div className={styles.row2}>
         <div className={styles.table}>
           {timers.map((timer: { time: string; id: string }) => (
-            <Timer key={timer.id} id={timer.id} time={timer.time} onRemoveTimer={onRemoveTimer} theme={theme} />
+            <Timer key={timer.id} id={timer.id} time={timer.time} onRemoveTimer={onRemoveTimer} theme={theme} compactView={compactView} />
           ))}
         </div>
-        <RightMenu />
+        <RightMenu compactView={compactView} setCompactView={setCompactView} />
       </div>
     </div>
   ) : null;

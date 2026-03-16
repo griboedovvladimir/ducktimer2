@@ -15,9 +15,10 @@ interface IProps {
   onRemoveTimer(id: string): void;
 
   theme: string;
+  compactView: boolean;
 }
 
-export const Timer = ({ id, time, onRemoveTimer, theme }: IProps) => {
+export const Timer = ({ id, time, onRemoveTimer, theme, compactView }: IProps) => {
   const [timePickerValue, setTimePickerValue] = useState(OTHER_CONSTANTS.START_TIME);
   const [currentTimerValue, setCurrentTimerValue] = useState(time);
   const [timerSet, setTimerSet] = useState(0);
@@ -36,6 +37,7 @@ export const Timer = ({ id, time, onRemoveTimer, theme }: IProps) => {
   const process = state.otherProcess ? state.otherProcess : state.selectProcess;
   const isDarkTheme = theme === 'dark';
   const timeFormat = 'HH:mm:ss';
+  
   const themeConfig = {
     token: {
       colorText: isDarkTheme ? '#ff0000' : '#000',
@@ -166,28 +168,27 @@ export const Timer = ({ id, time, onRemoveTimer, theme }: IProps) => {
       <div className={styles.timerPanel}>
         <div className="time">{currentTimerValue || OTHER_CONSTANTS.START_TIME}</div>
         {state.note && <p>Note: {state.note}</p>}
-        <div className={styles.timerButtons}>
+        <div className={compactView ? styles.timerButtonsSmallActive : styles.timerButtons}>
           {timerSet ? (
-            <button type="button" aria-label="pause">
-              <Pause onClick={onStopTimer} />
+            <button 
+              type="button" 
+              aria-label="pause" 
+              onClick={onStopTimer}
+            >
+              {compactView ? 'Pause' : <Pause />}
             </button>
           ) : (
-            <button type="button" aria-label="start">
-              <Play onClick={onStartTimer} />
+            <button 
+              type="button" 
+              aria-label="start" 
+              onClick={onStartTimer}
+            >
+              {compactView ? 'Start' : <Play />}
             </button>
           )}
-          <button type="button" aria-label="set">
-            <Set onClick={onSetTimer} />
-          </button>
-        </div>
-        <div className={styles.timerButtonsSmall}>
-          {timerSet ? (
-            <button type="button" aria-label="pause" onClick={onStopTimer}>
-              Pause
-            </button>
-          ) : (
-            <button type="button" aria-label="start" onClick={onStartTimer}>
-              Start
+          {!compactView && (
+            <button type="button" aria-label="set" onClick={onSetTimer}>
+              <Set />
             </button>
           )}
         </div>
@@ -242,13 +243,15 @@ export const Timer = ({ id, time, onRemoveTimer, theme }: IProps) => {
           {state.formIsActivated && <FilmSelectForm setTimer={setCurrentTimerValue} />}
         </div>
       )}
-      <button
-        type="button"
-        onClick={onTogglePanel}
-        className={`stork trans-color-btn ${state.panelIsOpen ? 'active' : ''}`}
-      >
-        {state.panelIsOpen ? '▲' : '▼'}
-      </button>
+      {!compactView && (
+        <button
+          type="button"
+          onClick={onTogglePanel}
+          className={`stork trans-color-btn ${state.panelIsOpen ? 'active' : ''}`}
+        >
+          {state.panelIsOpen ? '▲' : '▼'}
+        </button>
+      )}
     </div>
   );
 };
